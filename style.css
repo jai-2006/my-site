@@ -1,112 +1,16 @@
-<link rel="stylesheet" href="style.css">
+/* =================================
+   BASIC RESET
+   ================================= */
 
-/* Basic Reset */
-body, h1, h2, h3, p, ul, li, section, nav {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: "Verdana", "Arial", sans-serif;
-    background-color: #fff8f0; /* warm cream */
-    color: #333333; /* readable dark grey */
-    line-height: 1.5;
+body, h1, h2, h3, p, ul, li, section, nav, footer {
+  margin: 0;
+  padding: 0;
 }
 
-/* Navigation Menu */
-nav {
-    background-color: #ffecd1; /* warm pastel */
-    border-bottom: 2px solid #ffb07c; /* warm border */
-    padding: 10px 0;
-}
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-}
-nav ul li {
-    margin: 0 15px;
-}
-nav ul li a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #e76f51; /* muted coral */
-}
-nav ul li a:hover {
-    color: #d45d3c; /* hover */
-}
+/* =================================
+   GLOBAL STYLES
+   ================================= */
 
-/* Sections */
-.section {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 15px;
-    border: 2px dotted #ffb07c; /* soft outline */
-    background-color: #ffecd1; /* pastel peach */
-}
-
-/* Diary Entries */
-.entry {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ffb07c;
-    background-color: #ffd8b3; /* warm diary/music/blog entries */
-}
-.entry img, .entry video {
-    display: block;
-    margin: 10px 0;
-    max-width: 100%;
-}
-
-/* Music Entries */
-.music-entry {
-    border: 1px solid #ffb07c;
-    padding: 10px;
-    margin-bottom: 15px;
-    background-color: #ffd8b3;
-}
-
-/* Blog Entries */
-.blog-entry {
-    border: 1px dashed #ffb07c;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #ffd8b3;
-}
-
-/* Links */
-#links ul {
-    list-style-type: square;
-    margin-left: 20px;
-}
-#links ul li a {
-    text-decoration: none;
-    color: #e76f51;
-}
-#links ul li a:hover {
-    color: #d45d3c;
-}
-
-/* Avatar */
-.avatar {
-    width: 150px;
-    border: 2px solid #ffb07c;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    margin: 20px 0;
-    padding: 10px;
-    background-color: #ffecd1;
-    border-top: 2px solid #ffb07c;
-}
-
-/* ================================
-   CLASSIC WINDOWS SCROLLBAR + RETRO SETTINGS
-   ================================ */
-
-/* Disable modern smooth scrolling */
 html {
   scroll-behavior: auto;
 
@@ -115,31 +19,142 @@ html {
   scrollbar-color: #e0e0e0 #c0c0c0;
 }
 
-/* Use old-school system fonts */
 body {
   font-family: Tahoma, Verdana, Arial, sans-serif;
+  background-color: #fff8f0; /* warm cream */
+  color: #333333; /* readable dark grey */
+  line-height: 1.5;
 }
 
-/* Remove all rounded corners globally */
+/* Remove all rounded corners (retro look) */
 * {
   border-radius: 0 !important;
 }
 
-/* ----------------
-   WebKit Scrollbars
-   (Chrome, Edge, Safari)
-   ---------------- */
+/* =================================
+   NAVIGATION
+   ================================= */
 
-::-webkit-scrollbar {
+nav {
+  background-color: #ffecd1;
+  border-bottom: 2px solid #ffb07c;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #e76f51;
+}
+
+nav ul li a:hover {
+  color: #d45d3c;
+}
+
+/* =================================
+   SECTIONS
+   ================================= */
+
+.section {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 15px;
+  border: 2px dotted #ffb07c;
+  background-color: #ffecd1;
+}
+
+/* =================================
+   DIARY / BLOG / MUSIC ENTRIES
+   ================================= */
+
+.entry,
+.music-entry,
+.blog-entry {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #ffd8b3;
+  border: 1px solid #ffb07c;
+}
+
+.blog-entry {
+  border-style: dashed;
+}
+
+/* Media inside entries */
+.entry img,
+.entry video {
+  display: block;
+  margin: 10px 0;
+  max-width: 100%;
+}
+
+/* =================================
+   LINKS
+   ================================= */
+
+#links ul {
+  list-style-type: square;
+  margin-left: 20px;
+}
+
+#links ul li a {
+  text-decoration: none;
+  color: #e76f51;
+}
+
+#links ul li a:hover {
+  color: #d45d3c;
+}
+
+/* =================================
+   AVATAR
+   ================================= */
+
+.avatar {
+  width: 150px;
+  border: 2px solid #ffb07c;
+}
+
+/* =================================
+   FOOTER
+   ================================= */
+
+footer {
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #ffecd1;
+  border-top: 2px solid #ffb07c;
+}
+
+/* =================================
+   CLASSIC WINDOWS SCROLLBAR
+   Chrome / Edge / Safari
+   ================================= */
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
   width: 16px;
 }
 
-::-webkit-scrollbar-track {
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
   background: #c0c0c0;
   border-left: 1px solid #808080;
 }
 
-::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
   background: #e0e0e0;
   border: 2px solid #808080;
   box-shadow:
@@ -147,11 +162,13 @@ body {
     inset 1px 1px 0 #404040;
 }
 
-::-webkit-scrollbar-thumb:hover {
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
   background: #d6d6d6;
 }
 
-::-webkit-scrollbar-button {
+html::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button {
   height: 16px;
   background: #c0c0c0;
   border: 1px solid #808080;
@@ -160,7 +177,18 @@ body {
     inset 1px 1px 0 #404040;
 }
 
-/* Optional: corner where horizontal & vertical scrollbars meet */
-::-webkit-scrollbar-corner {
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner {
   background: #c0c0c0;
 }
+
+/* =================================
+   DEBUG (REMOVE LATER IF YOU WANT)
+   Forces scroll so you can see scrollbar
+   ================================= */
+
+/*
+body {
+  min-height: 200vh;
+}
+*/
