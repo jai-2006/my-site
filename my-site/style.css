@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="style.css">
+
+/* Basic Reset */
+body, h1, h2, h3, p, ul, li, section, nav {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Verdana", "Arial", sans-serif;
+    background-color: #fff8f0; /* warm cream */
+    color: #333333; /* readable dark grey */
+    line-height: 1.5;
+}
+
+/* Navigation Menu */
+nav {
+    background-color: #ffecd1; /* warm pastel */
+    border-bottom: 2px solid #ffb07c; /* warm border */
+    padding: 10px 0;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+nav ul li {
+    margin: 0 15px;
+}
+nav ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #e76f51; /* muted coral */
+}
+nav ul li a:hover {
+    color: #d45d3c; /* hover */
+}
+
+/* Sections */
+.section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 2px dotted #ffb07c; /* soft outline */
+    background-color: #ffecd1; /* pastel peach */
+}
+
+/* Diary Entries */
+.entry {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ffb07c;
+    background-color: #ffd8b3; /* warm diary/music/blog entries */
+}
+.entry img, .entry video {
+    display: block;
+    margin: 10px 0;
+    max-width: 100%;
+}
+
+/* Music Entries */
+.music-entry {
+    border: 1px solid #ffb07c;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #ffd8b3;
+}
+
+/* Blog Entries */
+.blog-entry {
+    border: 1px dashed #ffb07c;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #ffd8b3;
+}
+
+/* Links */
+#links ul {
+    list-style-type: square;
+    margin-left: 20px;
+}
+#links ul li a {
+    text-decoration: none;
+    color: #e76f51;
+}
+#links ul li a:hover {
+    color: #d45d3c;
+}
+
+/* Avatar */
+.avatar {
+    width: 150px;
+    border: 2px solid #ffb07c;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #ffecd1;
+    border-top: 2px solid #ffb07c;
+}
+
