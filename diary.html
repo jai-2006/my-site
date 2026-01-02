@@ -14,7 +14,8 @@
     <img src="images/avatar.png" alt="Avatar" class="avatar">
 
     <h2>Music</h2>
-    <iframe class="spotify" src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" allow="encrypted-media" allowtransparency="true"></iframe>
+    <iframe class="spotify" src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
+            frameborder="0" allow="encrypted-media" allowtransparency="true"></iframe>
 
     <h2>Recent Films</h2>
     <div id="films-container"></div>
@@ -31,14 +32,12 @@
   <main id="content">
     <h1>Diary</h1>
 
-    <!-- Example diary entry -->
+    <!-- Diary entry -->
     <div class="entry">
       <h2 class="subtitle">2025-12-30</h2>
       <p>Today I watched an amazing film and took some notes. Felt really inspired by the visuals.</p>
-
       <img src="images/diary-photo1.jpg" alt="Diary Image">
       <p class="caption">A snapshot from the day</p>
-
       <video controls>
         <source src="video/diary-video1.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -49,7 +48,6 @@
     <div class="entry">
       <h2 class="subtitle">2025-12-28</h2>
       <p>Went for a walk and captured some cool moments. Feeling reflective.</p>
-
       <img src="images/diary-photo2.jpg" alt="Diary Image">
       <p class="caption">Evening street scene</p>
     </div>
@@ -58,8 +56,8 @@
 
 </div>
 
-<!-- FILMS SCRIPT -->
 <script>
+// Films data
 const filmsData = [
   {"title":"Marty Supreme","link":"https://letterboxd.com/jai_movies/film/marty-supreme/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/1/1/9/7/4/9/9/1197499-marty-supreme-0-600-0-900-crop.jpg?v=b14a26bb43","pubDate":"2025-12-26"},
   {"title":"One to One: John & Yoko","link":"https://letterboxd.com/jai_movies/film/one-to-one-john-yoko/1/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/1/2/0/0/8/7/4/1200874-one-to-one-john-yoko-0-600-0-900-crop.jpg?v=9b9613f3af","pubDate":"2025-12-25"},
@@ -80,11 +78,10 @@ filmsData.forEach(film => {
   container.appendChild(div);
 });
 
-// HIT COUNTER
+// Hit counter
 let count = localStorage.getItem('hitCount') || 0;
 count = parseInt(count) + 1;
 localStorage.setItem('hitCount', count);
-
 const counterWrapper = document.createElement('div');
 counterWrapper.id = 'hit-counter-wrapper';
 counterWrapper.innerHTML = `Visitors: <span id="counter-display">${count}</span>`;
@@ -92,7 +89,7 @@ document.body.appendChild(counterWrapper);
 </script>
 
 <footer>
-    <p>© 2026 My Site</p>
+  <p>© 2026 My Site</p>
 </footer>
 
 </body>
