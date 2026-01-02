@@ -4,149 +4,44 @@
 <meta charset="UTF-8">
 <title>title</title>
 <link rel="stylesheet" href="style.css">
-<style>
-/* Body & background */
-body {
-    background: url('media/background1.png') repeat;
-    background-color: #fdf8f0;
-    font-family: Verdana, Tahoma, Arial, sans-serif;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-/* Container for homepage content */
-#container {
-    width: 880px;
-    margin: 20px auto;
-    padding: 20px;
-    background: rgba(255,255,255,0.85);
-    border: 2px dashed #ffb07c;
-    box-shadow: 3px 3px 10px rgba(0,0,0,0.15);
-    position: relative;
-}
-
-/* Header */
-h1 {
-    font-family: "Courier New", monospace;
-    font-size: 40px;
-    color: #ff6f61;
-    margin-top: 0;
-    text-shadow: 1px 1px #ffe4d6;
-}
-
-/* Subtitle style */
-h2.subtitle {
-    font-family: "Courier New", monospace;
-    font-size: 20px;
-    color: #ff8b75;
-    margin: 5px 0 15px 0;
-    text-shadow: 1px 1px #ffe4d6;
-}
-
-/* Avatar image */
-.avatar {
-    width: 200px;
-    display: block;
-    margin: 10px 0;
-    border: 2px solid #ffb07c;
-}
-
-/* Links */
-.links ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin: 10px 0;
-}
-.links ul li {
-    margin-bottom: 4px;
-}
-.links a {
-    color: #ff6f61;
-    text-decoration: none;
-}
-.links a:hover {
-    text-decoration: underline;
-}
-
-/* Films section */
-#films-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-}
-#films-container div {
-    text-align: center;
-}
-#films-container img {
-    width: 100px;
-    border: 2px solid #ffb07c;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-#films-container p {
-    font-size: 11px;
-    margin: 3px 0 0 0;
-}
-
-/* Decorative / playful style */
-h2.subtitle:before {
-    content: "★ ";
-    color: #ffb07c;
-}
-a:hover:before {
-    content: "♥ ";
-    color: #ff6f61;
-    margin-right: 3px;
-}
-</style>
 </head>
 <body>
 
-<div id="container">
+<div id="page">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <img src="images/avatar.png" alt="Avatar" class="avatar">
+    <h2>Music</h2>
+    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" frameborder="0" allow="encrypted-media" allowtransparency="true"></iframe>
+
+    <h2>Recent Films</h2>
+    <div id="films-container"></div>
+
+    <h2>Links</h2>
+    <ul>
+      <li><a href="index.html">home</a></li>
+      <li><a href="diary.html">diary</a></li>
+      <li><a href="#guestbook">guestbook</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main id="content">
     <h1>title</h1>
     <h2 class="subtitle">subtitle</h2>
-    <img src="images/avatar.png" alt="Avatar" class="avatar">
-
     <p>description</p>
+  </main>
 
-    <div class="links">
-        <p><strong>pages:</strong></p>
-        <ul>
-            <li><a href="index.html">home</a></li>
-            <li><a href="diary.html">diary</a></li>
-            <li><a href="#links">links</a></li>
-            <li><a href="#guestbook">guestbook</a></li>
-        </ul>
-    </div>
-
-    <h2 class="subtitle">recent films</h2>
-    <div id="films-container"></div>
 </div>
 
-<!-- Films script -->
 <script>
 const jsonData = {
   "status": "ok",
   "items": [
-    {
-      "title": "title1",
-      "link": "https://letterboxd.com/jai_movies/film/marty-supreme/",
-      "thumbnail": "https://a.ltrbxd.com/resized/film-poster/1/1/9/7/4/9/9/1197499-marty-supreme-0-600-0-900-crop.jpg?v=b14a26bb43",
-      "pubDate": "date1"
-    },
-    {
-      "title": "title2",
-      "link": "https://letterboxd.com/jai_movies/film/one-to-one-john-yoko/1/",
-      "thumbnail": "https://a.ltrbxd.com/resized/film-poster/1/2/0/0/8/7/4/1200874-one-to-one-john-yoko-0-600-0-900-crop.jpg?v=9b9613f3af",
-      "pubDate": "date2"
-    },
-    {
-      "title": "title3",
-      "link": "https://letterboxd.com/jai_movies/film/the-place-beyond-the-pines/",
-      "thumbnail": "https://a.ltrbxd.com/resized/film-poster/8/0/2/0/0/80200-the-place-beyond-the-pines-0-600-0-900-crop.jpg?v=e30d64f591",
-      "pubDate": "date3"
-    }
+    {"title":"title1","link":"https://letterboxd.com/jai_movies/film/marty-supreme/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/1/1/9/7/4/9/9/1197499-marty-supreme-0-600-0-900-crop.jpg?v=b14a26bb43","pubDate":"date1"},
+    {"title":"title2","link":"https://letterboxd.com/jai_movies/film/one-to-one-john-yoko/1/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/1/2/0/0/8/7/4/1200874-one-to-one-john-yoko-0-600-0-900-crop.jpg?v=9b9613f3af","pubDate":"date2"},
+    {"title":"title3","link":"https://letterboxd.com/jai_movies/film/the-place-beyond-the-pines/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/8/0/2/0/0/80200-the-place-beyond-the-pines-0-600-0-900-crop.jpg?v=e30d64f591","pubDate":"date3"}
   ]
 };
 
