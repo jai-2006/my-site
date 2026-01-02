@@ -361,22 +361,3 @@ footer {
     display: block;
     margin-bottom: 10px;
 }
-
-.profile-inner {
-    display: flex;
-    gap: 20px;            /* space between image and text */
-    align-items: flex-start;
-}
-
-.profile-text {
-    flex: 1;               /* text fills remaining space */
-}
-
-/* Stack on small screens (phones) */
-@media (max-width: 600px) {
-    .profile-inner {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-}
