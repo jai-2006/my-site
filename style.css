@@ -2,7 +2,7 @@
    BODY
 ------------------------------- */
 body {
-    background: #f0e6d2 url('images/pattern.png') repeat; /* optional subtle pattern */
+    background: #f0e6d2 url('images/pattern.png') repeat;
     font-family: 'Inter', Arial, sans-serif;
     color: #222;
     margin: 0;
@@ -14,11 +14,11 @@ body {
 ------------------------------- */
 #header {
     width: 100%;
-    background: #ffe5b4;
+    background: #1db954; /* unified Spotify-like green */
     border-bottom: 2px dashed #ff8c42;
     display: flex;
-    flex-direction: column; /* stack rows */
-    padding: 5px 20px;      /* smaller padding for compactness */
+    flex-direction: column;
+    padding: 3px 20px;      /* slimmer padding */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -26,10 +26,10 @@ body {
 #header .top-row {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* align left */
-    gap: 20px;                  /* spacing between avatar/title/nav */
+    justify-content: flex-start;
+    gap: 20px;
     flex-wrap: wrap;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
 #header .left {
@@ -39,7 +39,7 @@ body {
 }
 
 #header .left img {
-    width: 40px; /* smaller avatar */
+    width: 35px; /* smaller avatar */
     border: 2px solid #222;
 }
 
@@ -54,30 +54,27 @@ body {
 
 #header nav ul li a {
     text-decoration: none;
-    color: #222;
+    color: #fff;          /* white links on green */
     font-weight: bold;
-    padding: 3px 6px;  /* smaller padding */
-    font-size: 14px;   /* slightly smaller text */
+    padding: 2px 5px;
+    font-size: 13px;
 }
 
 #header nav ul li a:hover {
     text-decoration: underline;
-    color: #555;
+    color: #eee;
 }
 
 /* Bottom row: Spotify banner */
-#header .music-row {
-    width: 100%;
-}
-
 #header .music-row iframe {
     width: 100%;
-    max-width: 500px; /* slightly smaller max-width */
-    height: 80px;     /* shorter for compactness */
-    border-radius: 3px;
+    max-width: 500px;
+    height: 80px;
+    border-radius: 0;
     border: none;
     display: block;
-    margin: 0 auto;   /* center horizontally */
+    margin: 0 auto;
+    background: #1db954;
 }
 
 /* -----------------------------
@@ -150,6 +147,8 @@ p {
     font-size: 10px;
     color: #222;
     white-space: nowrap;
+    width: 80px; /* match image width */
+    display: inline-block;
 }
 
 /* -----------------------------
