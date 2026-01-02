@@ -12,14 +12,13 @@ body {
 /* -----------------------------
    HEADER / TOP BANNER
 ------------------------------- */
-
 #header {
     width: 100%;
-    background: #1db954; /* unified green for header + Spotify */
+    background: #ccc; /* gray banner */
     border-bottom: 2px dashed #ff8c42;
     display: flex;
     flex-direction: column;
-    padding: 2px 20px;      /* very slim */
+    padding: 2px 20px;      /* slim padding */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -29,7 +28,13 @@ body {
     justify-content: flex-start;
     gap: 20px;
     flex-wrap: wrap;
-    margin-bottom: 0; /* remove margin below top row */
+    margin-bottom: 0;
+}
+
+#header .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 #header .left img {
@@ -37,15 +42,25 @@ body {
     border: 2px solid #222;
 }
 
+#header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
 #header nav ul li a {
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
     padding: 2px 5px;
     font-size: 13px;
-    color: #fff;
 }
 
 #header nav ul li a:hover {
     text-decoration: underline;
-    color: #eee;
+    color: #555;
 }
 
 /* Bottom row: Spotify banner */
@@ -56,11 +71,11 @@ body {
 }
 
 #header .music-row iframe {
-    width: 500px;    /* fixed width */
-    height: 80px;    /* same as before */
+    width: 500px;
+    height: 80px;
     border: none;
     display: block;
-    background: #1db954;
+    background: transparent; /* match gray header */
 }
 
 /* -----------------------------
@@ -105,7 +120,6 @@ p {
     line-height: 1.5;
 }
 
-
 /* -----------------------------
    FILMS ROW
 ------------------------------- */
@@ -119,7 +133,7 @@ p {
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center; /* centers image and text */
+    align-items: center;
 }
 
 .film-item img {
