@@ -153,8 +153,9 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 4px double black; /* match header */
-    
+    /* remove the border so films are clean */
+    padding: 5px;
+    border-radius: 0;
 }
 
 .film-item img {
@@ -298,3 +299,4 @@ footer {
         justify-content: flex-start;
     }
 }
+
