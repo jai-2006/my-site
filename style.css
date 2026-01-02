@@ -220,3 +220,33 @@ footer {
     letter-spacing: 1px;
     display: inline-block;
 }
+
+/* Football Diary Specific */
+.football-games .game-entry {
+    max-width: 600px;
+    margin: 0 auto 15px auto; /* narrow columns, centered */
+    padding: 10px;
+    background: #fffef9;
+    border: 2px dashed black;
+}
+
+.football-games .game-entry hr {
+    border: none;
+    border-top: 1px solid #222;
+    margin: 5px 0;
+}
+
+.game-entry a {
+    font-size: 12px;
+    text-decoration: underline;
+    color: #222;
+}
+
+/* Match page videos */
+.box iframe {
+    width: 100%;
+    max-width: 560px; /* keep reasonable width */
+    height: 315px;
+    display: block;
+    margin: 5px 0;
+}
