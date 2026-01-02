@@ -17,7 +17,7 @@ body {
     min-height: 100vh;
     max-width: 1000px;
     margin: 20px auto;
-    border: 2px dashed #ff8c42; /* playful retro accent */
+    border: 2px dashed #ff8c42;
     background: #fffef9;
     box-shadow: 4px 4px 10px rgba(0,0,0,0.15);
 }
@@ -28,7 +28,7 @@ body {
 #sidebar {
     width: 220px;
     padding: 20px;
-    background: #ffe5b4; /* muted orange */
+    background: #ffe5b4;
     border-right: 2px dashed #ff8c42;
     box-shadow: 2px 0 5px rgba(0,0,0,0.05);
 }
@@ -48,14 +48,6 @@ body {
     margin-bottom: 15px;
     border: 2px solid #222;
     border-radius: 3px;
-}
-
-/* Spotify full embed */
-#sidebar iframe.spotify {
-    width: 180px;
-    height: 80px;
-    margin-bottom: 15px;
-    border-radius: 5px;
 }
 
 /* Films horizontal */
@@ -141,7 +133,7 @@ body {
     line-height: 1.6;
 }
 
-/* Diary entries */
+/* Diary / blog entries */
 .entry {
     margin-bottom: 25px;
     border-bottom: 1px dotted #ff8c42;
@@ -195,4 +187,13 @@ footer {
     font-size: 1rem;
     letter-spacing: 1px;
     display: inline-block;
+}
+
+/* -----------------------------
+   MUSIC BANNER
+------------------------------- */
+#music-banner {
+    width: 100%;
+    height: 90px;
+    margin-bottom: 15px;
 }
