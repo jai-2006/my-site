@@ -111,13 +111,6 @@ body {
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
 }
 
-/* Make diary entry boxes full width */
-.entry,
-#latest-entry {
-    flex: 1 1 100%;
-    max-width: 100%;
-}
-
 /* Profile box first-child */
 #content .box:first-child {
     text-align: center;
@@ -144,6 +137,14 @@ p {
     font-size: 14px;
     line-height: 1.5;
 }
+
+/* Make diary entry boxes full width so they’re not squished */
+.entry,
+#latest-entry {
+    flex: 1 1 100%;
+    max-width: 100%;
+}
+
 
 /* ---------------------------------
    FILMS ROW
