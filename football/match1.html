@@ -29,11 +29,29 @@
     <p>Here’s a brief summary of the game, your impressions, etc. This is manually entered text.</p>
   </div>
 
+  
   <div class="box">
     <h2 class="subtitle">Videos</h2>
 
-    <!-- Example embedded video from Internet Archive -->
+   <div class="box">
+  <h2 class="subtitle">Videos</h2>
+
+  <!-- Thumbnail row -->
+  <div class="video-thumbnails">
+    <img src="https://archive.org/services/img/example-video-1" 
+         data-iframe="https://archive.org/embed/example-video-1" 
+         alt="Video 1">
+    <img src="https://archive.org/services/img/example-video-2" 
+         data-iframe="https://archive.org/embed/example-video-2" 
+         alt="Video 2">
+  </div>
+
+  <!-- Main video player -->
+  <div class="box" id="video-player">
     <iframe src="https://archive.org/embed/example-video-1" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
 
     <!-- Optional clickable list for multiple videos -->
     <ul>
