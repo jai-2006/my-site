@@ -92,11 +92,10 @@ body {
 
 /* Boxes for MySpace vibe with two-column layout */
 #content .box {
-    flex: 1 1 calc(50% - 20px); /* two columns minus gap */
+    flex: 1 1 calc(50% - 20px);
     max-width: calc(50% - 20px);
     background: #fffef9;
-    border: 3px dashed black;
-    border-style: double;
+    border: 3px double black;   /* combine width, style, color in one line */
     padding: 15px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
     box-sizing: border-box;
