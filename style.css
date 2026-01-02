@@ -341,3 +341,39 @@ footer {
     }
 }
 
+/* ---------------------------------
+   PROFILE BOX (MySpace-style)
+---------------------------------- */
+.profile-box {
+    padding: 15px;
+}
+
+.profile-inner {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.profile-image img {
+    width: 120px;              /* classic MySpace size */
+    height: auto;
+    border: 4px double black;  /* matches site borders */
+    background: #fffef9;
+}
+
+.profile-text {
+    flex: 1;
+}
+
+/* Stack on small screens */
+@media (max-width: 600px) {
+    .profile-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-image img {
+        margin-bottom: 10px;
+    }
+}
