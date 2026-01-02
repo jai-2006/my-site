@@ -2,9 +2,9 @@
    GLOBAL RESET & BODY
 ---------------------------------- */
 html, body {
-    overflow-x: hidden;   /* prevents horizontal scrolling */
-    width: 100vw;         /* ensures body matches viewport width */
-    position: relative;   /* keeps elements contained */
+    overflow-x: hidden;
+    width: 100vw;
+    position: relative;
 }
 
 * {
@@ -25,7 +25,7 @@ body {
 #header {
     width: 100%;
     background: #ccc; /* gray banner */
-    border-bottom: 3px double black;
+    border-bottom: 3px double black; /* perfect double line like you wanted */
     display: flex;
     flex-direction: column;
     padding: 2px 20px;
@@ -95,7 +95,7 @@ body {
     flex: 1 1 calc(50% - 20px);
     max-width: calc(50% - 20px);
     background: #fffef9;
-    border: 3px double black;   /* combine width, style, color in one line */
+    border: 3px double black;   /* same style as header */
     padding: 15px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
     box-sizing: border-box;
@@ -143,12 +143,13 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 3px double black;  /* double border like header */
+    padding: 5px;
+    border-radius: 3px;
 }
 
 .film-item img {
     width: 80px;
-    border: 2px solid #222;
-    border-radius: 3px;
     margin-bottom: 3px;
 }
 
@@ -165,8 +166,8 @@ p {
 ---------------------------------- */
 .entry {
     margin-bottom: 15px;
-    border-bottom: 1px dotted #ff8c42;
     padding-bottom: 10px;
+    border: 3px double black; /* double border like header */
 }
 
 .entry img, .entry video {
@@ -189,6 +190,8 @@ footer {
     font-size:11px;
     color:#555;
     margin:20px 0;
+    border-top: 3px double black; /* double border like header */
+    padding-top: 5px;
 }
 
 /* ---------------------------------
@@ -199,7 +202,7 @@ footer {
     bottom: 10px;
     right: 10px;
     background: #ffe5b4;
-    border: 2px dashed #000; /* retro ascii-like black border */
+    border: 3px double black; /* retro double line */
     padding: 5px 10px;
     font-family: 'Inter', Arial, sans-serif;
     font-size: 0.9rem;
@@ -222,16 +225,18 @@ footer {
    FOOTBALL DIARY SPECIFIC
 ---------------------------------- */
 .football-games .game-entry {
-    max-width: 600px;
-    margin: 0 auto 15px auto;
+    max-width: 300px;
+    margin: 0 10px 20px 0;
     padding: 10px;
     background: #fffef9;
-    border: 2px dashed black;
+    border: 3px double black; /* double border like header */
+    display: inline-block;
+    vertical-align: top;
 }
 
 .football-games .game-entry hr {
     border: none;
-    border-top: 1px solid #222;
+    border-top: 3px double black; /* horizontal double line like header */
     margin: 5px 0;
 }
 
@@ -252,7 +257,7 @@ footer {
 .video-thumbnails img {
     width: 100px;
     cursor: pointer;
-    border: 2px solid black;
+    border: 3px double black; /* same border for thumbnails */
     border-radius: 3px;
 }
 
