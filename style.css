@@ -302,3 +302,9 @@ footer {
     }
 }
 
+/* Full-width boxes for diary page entries */
+body#diary-page #all-entries .box {
+    flex: 1 1 100% !important;   /* force full width */
+    max-width: 100% !important;  /* prevent shrinking */
+    margin-bottom: 20px;         /* spacing between entries */
+}
