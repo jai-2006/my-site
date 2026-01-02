@@ -1,10 +1,10 @@
-/* -----------------------------
-   GLOBAL
-------------------------------- */
+/* ---------------------------------
+   GLOBAL RESET & BODY
+---------------------------------- */
 html, body {
-    overflow-x: hidden;   
-    width: 100vw;         
-    position: relative;   
+    overflow-x: hidden;   /* prevents horizontal scrolling */
+    width: 100vw;         /* ensures body matches viewport width */
+    position: relative;   /* keeps elements contained */
 }
 
 * {
@@ -19,14 +19,13 @@ body {
     color: #222;
 }
 
-/* -----------------------------
+/* ---------------------------------
    HEADER / TOP BANNER
-------------------------------- */
+---------------------------------- */
 #header {
     width: 100%;
     background: #ccc; /* gray banner */
-    border-bottom: 3px dashed black;
-    border-style: double;
+    border-bottom: 3px double black;
     display: flex;
     flex-direction: column;
     padding: 2px 20px;
@@ -40,17 +39,6 @@ body {
     gap: 20px;
     flex-wrap: wrap;
     margin-bottom: 0;
-}
-
-#header .left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-#header .left img {
-    width: 30px;
-    border: 2px solid #222;
 }
 
 #header nav ul {
@@ -78,48 +66,48 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 5px;
 }
 
 #header .music-row iframe {
     width: 500px;
-    max-width: 100%; 
+    max-width: 100%;
     height: 80px;
     border: none;
-    display: block;
     background: transparent;
 }
 
-/* -----------------------------
+/* ---------------------------------
    MAIN CONTENT
-------------------------------- */
+---------------------------------- */
 #content {
     max-width: 1000px;
     margin: 20px auto;
     padding: 0 20px;
     display: flex;
-    flex-wrap: wrap;          /* allow two-column layout */
+    flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
-/* Boxes for MySpace vibe */
+/* Boxes for MySpace vibe with two-column layout */
 #content .box {
-    flex: 0 1 48%;             /* roughly half-width for two columns */
+    flex: 1 1 calc(50% - 20px); /* two columns minus gap */
+    max-width: calc(50% - 20px);
     background: #fffef9;
     border: 3px dashed black;
+    border-style: double;
     padding: 15px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
     box-sizing: border-box;
-    margin-bottom: 20px;
 }
 
-/* Profile/intro box stays prominent */
+/* Profile box first-child */
 #content .box:first-child {
-    flex: 0 1 48%;
     text-align: center;
 }
 
-/* Titles inside boxes */
+/* Headings inside boxes */
 h1, h2.subtitle {
     font-family: 'Inter', Arial, sans-serif;
     font-weight: 700;
@@ -141,31 +129,41 @@ p {
     line-height: 1.5;
 }
 
-/* -----------------------------
+/* ---------------------------------
    FILMS ROW
-------------------------------- */
+---------------------------------- */
 #films-container {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
+    gap: 10px;
     justify-content: flex-start;
 }
 
-#films-container .film-item {
-    width: 120px;       
-    text-align: center;
-    margin-bottom: 10px;
+.film-item {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#films-container .film-item img {
-    width: 100%;        
-    border: 2px solid black;
+.film-item img {
+    width: 80px;
+    border: 2px solid #222;
     border-radius: 3px;
+    margin-bottom: 3px;
 }
 
-/* -----------------------------
+.film-item p {
+    margin: 0;
+    font-size: 10px;
+    color: #222;
+    text-align: center;
+    width: 80px;
+}
+
+/* ---------------------------------
    DIARY ENTRIES
-------------------------------- */
+---------------------------------- */
 .entry {
     margin-bottom: 15px;
     border-bottom: 1px dotted #ff8c42;
@@ -184,9 +182,9 @@ p {
     margin-top: 3px;
 }
 
-/* -----------------------------
+/* ---------------------------------
    FOOTER
-------------------------------- */
+---------------------------------- */
 footer {
     text-align:center;
     font-size:11px;
@@ -194,15 +192,15 @@ footer {
     margin:20px 0;
 }
 
-/* -----------------------------
+/* ---------------------------------
    VISITOR COUNTER
-------------------------------- */
+---------------------------------- */
 #hit-counter-wrapper {
     position: fixed;
     bottom: 10px;
     right: 10px;
     background: #ffe5b4;
-    border: 2px dashed #ff8c42;
+    border: 2px dashed #000; /* retro ascii-like black border */
     padding: 5px 10px;
     font-family: 'Inter', Arial, sans-serif;
     font-size: 0.9rem;
@@ -221,12 +219,12 @@ footer {
     display: inline-block;
 }
 
-/* -----------------------------
+/* ---------------------------------
    FOOTBALL DIARY SPECIFIC
-------------------------------- */
+---------------------------------- */
 .football-games .game-entry {
     max-width: 600px;
-    margin: 0 auto 15px auto; /* narrow columns, centered */
+    margin: 0 auto 15px auto;
     padding: 10px;
     background: #fffef9;
     border: 2px dashed black;
@@ -244,26 +242,45 @@ footer {
     color: #222;
 }
 
-/* -----------------------------
-   MATCH PAGE VIDEOS
-------------------------------- */
-.box iframe {
-    width: 100%;
-    max-width: 560px; 
-    height: 315px;
-    display: block;
-    margin: 5px 0;
-}
-
+/* Video thumbnails row */
 .video-thumbnails {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 10px;
 }
 
 .video-thumbnails img {
-    width: 100px;      
+    width: 100px;
     cursor: pointer;
     border: 2px solid black;
     border-radius: 3px;
+}
+
+/* Match page videos */
+#video-player iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    display: block;
+    margin: 5px 0;
+}
+
+/* ---------------------------------
+   RESPONSIVE LAYOUT
+---------------------------------- */
+@media (max-width: 700px) {
+    #content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #content .box {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .video-thumbnails {
+        justify-content: flex-start;
+    }
 }
