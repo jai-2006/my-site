@@ -1,147 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>(Site Name)</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* PAGE LAYOUT */
-        body {
-            background: #fdf8f0;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<title>(Site Name)</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* Body & Background */
+body {
+    background: url('media/background1.png') repeat;
+    background-color: #fdf8f0;
+    font-family: Verdana, Tahoma, Arial, sans-serif;
+    font-size: 13px;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
 
-        #page {
-            width: 880px;
-            margin: 0 auto;
-            display: flex;
-            font-family: Verdana, Arial, sans-serif;
-            font-size: 13px;
-            color: #333;
-        }
+/* Page layout */
+#page {
+    width: 880px;
+    margin: 30px auto;
+    display: flex;
+    min-height: 100vh;
+}
 
-        /* SIDEBAR */
-        #sidebar {
-            width: 220px;
-            padding: 10px;
-            background: #f6f2ea;
-            border-right: 2px dotted #ccc;
-        }
+/* Sidebar */
+#sidebar {
+    width: 220px;
+    padding: 10px;
+    background: #f6f2ea;
+    border: 2px dashed #ffb07c;
+    margin-right: 20px;
+}
 
-        #sidebar h2 {
-            font-size: 18px;
-            margin: 0 0 5px 0;
-        }
+#sidebar h2 {
+    font-size: 18px;
+    margin: 0 0 5px 0;
+    color: #ff6f61;
+}
 
-        #sidebar p, #sidebar ul {
-            font-size: 12px;
-            margin: 5px 0;
-        }
+#sidebar p {
+    font-size: 12px;
+    margin: 5px 0;
+}
 
-        #sidebar ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
+#sidebar ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
 
-        #sidebar img.avatar {
-            width: 180px;
-            display: block;
-            margin-bottom: 10px;
-        }
+#sidebar img.avatar {
+    width: 180px;
+    display: block;
+    margin-bottom: 10px;
+}
 
-        #sidebar .updated {
-            font-size: 11px;
-            color: #777;
-            margin-top: 15px;
-        }
+/* Spotify embed */
+#sidebar iframe {
+    margin-top: 10px;
+}
 
-        hr {
-            border: none;
-            border-top: 1px dotted #aaa;
-            margin: 10px 0;
-        }
+/* Letterboxd Films */
+#films-container div {
+    margin-bottom: 10px;
+}
 
-        /* MAIN CONTENT */
-        #content {
-            width: 640px;
-            padding: 15px;
-        }
+#films-container img {
+    width: 100px;
+    border: 2px solid #ffb07c;
+}
 
-        .entry {
-            margin-bottom: 30px;
-        }
+#films-container p {
+    font-size: 11px;
+    margin: 3px 0 0 0;
+}
 
-        .entry-header {
-            font-size: 11px;
-            color: #555;
-            margin-bottom: 10px;
-        }
+/* Main Content / Diary */
+#content {
+    flex: 1;
+    padding: 15px;
+    background: rgba(255,255,255,0.9);
+    border: 2px dashed #ffb07c;
+}
 
-        .entry img {
-            max-width: 100%;
-            border: 2px solid #ffb07c;
-            margin-top: 5px;
-        }
+.entry {
+    margin-bottom: 30px;
+}
 
-        .caption {
-            font-size: 11px;
-            color: #777;
-            font-style: italic;
-            margin: 4px 0 10px;
-        }
+.entry-header {
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 10px;
+}
 
-        .meta {
-            font-size: 11px;
-            color: #444;
-        }
+.entry img {
+    max-width: 100%;
+    border: 2px solid #ffb07c;
+    margin-top: 5px;
+}
 
-        .divider {
-            border: none;
-            border-top: 1px dotted #aaa;
-        }
+.caption {
+    font-size: 11px;
+    color: #777;
+    font-style: italic;
+    margin: 4px 0 10px;
+}
 
-        /* Hit Counter */
-        #hit-counter-wrapper {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(254,246,240,0.9);
-            border: 2px dashed #ffb07c;
-            padding: 5px 10px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            color: #ff6f61;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-            z-index: 999;
-        }
+.meta {
+    font-size: 11px;
+    color: #444;
+}
 
-        #counter-display {
-            font-weight: bold;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            display: inline-block;
-            transition: transform 0.2s ease, color 0.2s ease;
-        }
+.divider {
+    border: none;
+    border-top: 1px dotted #aaa;
+}
 
-        /* Films container */
-        #films-container div {
-            margin-bottom: 10px;
-        }
+/* Hit Counter */
+#hit-counter-wrapper {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(254,246,240,0.9);
+    border: 2px dashed #ffb07c;
+    padding: 5px 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    color: #ff6f61;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+}
 
-        #films-container img {
-            width: 100px;
-            border: 2px solid #ffb07c;
-        }
+#counter-display {
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
 
-        #films-container p {
-            font-size: 11px;
-            margin: 3px 0 0 0;
-        }
-    </style>
+footer {
+    text-align: center;
+    font-size: 11px;
+    color: #555;
+    margin-top: 30px;
+}
+</style>
 </head>
 <body>
 
@@ -155,22 +162,30 @@
 
         <hr>
 
-        <p><strong>currently listening to</strong><br>
-        Chanel Beads – Police Scanner</p>
-
-        <hr>
-
-        <p><strong>pages</strong></p>
-        <ul>
-            <li><a href="index.html">home / diary</a></li>
-            <li><a href="#links">links</a></li>
-            <li><a href="#guestbook">guestbook</a></li>
-        </ul>
+        <p><strong>currently listening to</strong></p>
+        <iframe 
+            src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
+            width="200" 
+            height="80" 
+            frameborder="0" 
+            allow="encrypted-media" 
+            allowtransparency="true">
+        </iframe>
 
         <hr>
 
         <p><strong>recent films</strong></p>
         <div id="films-container"></div>
+
+        <hr>
+
+        <p><strong>pages</strong></p>
+        <ul>
+            <li><a href="index.html">home</a></li>
+            <li><a href="diary.html">diary</a></li>
+            <li><a href="#links">links</a></li>
+            <li><a href="#guestbook">guestbook</a></li>
+        </ul>
 
         <p class="updated">last updated: jan 2026</p>
     </div>
@@ -178,7 +193,7 @@
     <!-- MAIN CONTENT -->
     <div id="content">
 
-        <!-- DIARY ENTRY EXAMPLE -->
+        <!-- DIARY ENTRY -->
         <div class="entry">
             <div class="entry-header">
                 <span class="date">02 jan 2006</span> | <span class="time">01:43 am</span>
@@ -192,7 +207,7 @@
             <img src="media/photos/bedroom.jpg" alt="bedroom">
             <p class="caption">taken in my room</p>
 
-            <!-- Internet Archive embed -->
+            <!-- Internet Archive video -->
             <iframe 
                 src="https://archive.org/embed/YOUR_VIDEO_ID"
                 width="480"
@@ -257,4 +272,32 @@ const jsonData = {
     },
     {
       "title": "The Place Beyond the Pines, 2012",
-      "link": "https:
+      "link": "https://letterboxd.com/jai_movies/film/the-place-beyond-the-pines/",
+      "thumbnail": "https://a.ltrbxd.com/resized/film-poster/8/0/2/0/0/80200-the-place-beyond-the-pines-0-600-0-900-crop.jpg?v=e30d64f591",
+      "pubDate": "2025-12-19"
+    }
+  ]
+};
+
+const recentFilms = jsonData.items.slice(0, 3);
+const container = document.getElementById('films-container');
+recentFilms.forEach(film => {
+  const filmHTML = `
+    <div>
+      <a href="${film.link}" target="_blank">
+        <img src="${film.thumbnail}" alt="${film.title}">
+      </a>
+      <p><strong>${film.title}</strong></p>
+      <p>Watched: ${film.pubDate}</p>
+    </div>
+  `;
+  container.innerHTML += filmHTML;
+});
+</script>
+
+<footer>
+    <p>© 2026 (Site Name)</p>
+</footer>
+
+</body>
+</html>
