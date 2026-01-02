@@ -321,20 +321,3 @@ footer {
         max-width: 100%;
     }
 }
-/* -----------------------------
-   DIARY PAGE - SINGLE COLUMN
-------------------------------- */
-body.diary-page #content {
-    display: block;          /* disable flex layout */
-    max-width: 800px;        /* narrow diary column */
-    margin: 20px auto;
-    padding: 0 20px;
-}
-
-body.diary-page #content .box {
-    width: 100%;             /* full width */
-    max-width: 100%;
-    flex: none;              /* ignore flex properties */
-    margin-bottom: 20px;     /* space between entries */
-}
-
