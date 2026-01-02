@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>(Site Name)</title>
+<title>(Site Name) - Welcome</title>
 <link rel="stylesheet" href="style.css">
 <style>
-/* Body & Background */
 body {
     background: url('media/background1.png') repeat;
     background-color: #fdf8f0;
@@ -15,243 +14,87 @@ body {
     margin: 0;
     padding: 0;
 }
-
-/* Page layout */
-#page {
+#container {
     width: 880px;
     margin: 30px auto;
-    display: flex;
-    min-height: 100vh;
-}
-
-/* Sidebar */
-#sidebar {
-    width: 220px;
-    padding: 10px;
-    background: #f6f2ea;
+    padding: 20px;
+    background: rgba(255,255,255,0.9);
     border: 2px dashed #ffb07c;
-    margin-right: 20px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
 }
-
-#sidebar h2 {
-    font-size: 18px;
-    margin: 0 0 5px 0;
+h1 {
+    font-size: 36px;
+    margin-top: 0;
     color: #ff6f61;
 }
-
-#sidebar p {
-    font-size: 12px;
-    margin: 5px 0;
+p {
+    line-height: 1.4;
 }
-
-#sidebar ul {
-    list-style-type: disc;
-    padding-left: 20px;
+a {
+    color: #ff6f61;
+    text-decoration: none;
 }
-
-#sidebar img.avatar {
-    width: 180px;
+a:hover {
+    text-decoration: underline;
+}
+.avatar {
+    width: 200px;
     display: block;
-    margin-bottom: 10px;
+    margin: 15px 0;
 }
-
-/* Spotify embed */
-#sidebar iframe {
-    margin-top: 10px;
-}
-
-/* Letterboxd Films */
 #films-container div {
-    margin-bottom: 10px;
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
 }
-
 #films-container img {
     width: 100px;
     border: 2px solid #ffb07c;
 }
-
 #films-container p {
     font-size: 11px;
     margin: 3px 0 0 0;
 }
-
-/* Main Content / Diary */
-#content {
-    flex: 1;
-    padding: 15px;
-    background: rgba(255,255,255,0.9);
-    border: 2px dashed #ffb07c;
+.links ul {
+    list-style-type: disc;
+    padding-left: 20px;
 }
-
-.entry {
-    margin-bottom: 30px;
-}
-
-.entry-header {
-    font-size: 11px;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-.entry img {
-    max-width: 100%;
-    border: 2px solid #ffb07c;
-    margin-top: 5px;
-}
-
-.caption {
-    font-size: 11px;
-    color: #777;
-    font-style: italic;
-    margin: 4px 0 10px;
-}
-
-.meta {
-    font-size: 11px;
-    color: #444;
-}
-
-.divider {
+.links hr {
     border: none;
     border-top: 1px dotted #aaa;
+    margin: 10px 0;
 }
-
-/* Hit Counter */
-#hit-counter-wrapper {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(254,246,240,0.9);
-    border: 2px dashed #ffb07c;
-    padding: 5px 10px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.9rem;
-    color: #ff6f61;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-    z-index: 999;
-}
-
-#counter-display {
-    font-weight: bold;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    display: inline-block;
-    transition: transform 0.2s ease, color 0.2s ease;
-}
-
 footer {
-    text-align: center;
-    font-size: 11px;
-    color: #555;
-    margin-top: 30px;
+    text-align:center;
+    font-size:11px;
+    color:#555;
+    margin-top:30px;
 }
 </style>
 </head>
 <body>
+<div id="container">
+    <h1>Welcome to My Cozy Corner</h1>
+    <img src="images/avatar.png" alt="Avatar" class="avatar">
+    <p>hi! i’m Jai. this is my little corner of the internet where i share diary entries, what i’m watching, music i like, and links i find interesting. feel free to wander around!</p>
 
-<div id="page">
-
-    <!-- SIDEBAR -->
-    <div id="sidebar">
-        <h2>Jai</h2>
-        <p>i’m tired</p>
-        <img src="images/avatar.png" alt="Avatar" class="avatar">
-
+    <div class="links">
         <hr>
-
-        <p><strong>currently listening to</strong></p>
-        <iframe 
-            src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
-            width="200" 
-            height="80" 
-            frameborder="0" 
-            allow="encrypted-media" 
-            allowtransparency="true">
-        </iframe>
-
-        <hr>
-
-        <p><strong>recent films</strong></p>
-        <div id="films-container"></div>
-
-        <hr>
-
-        <p><strong>pages</strong></p>
+        <p><strong>pages:</strong></p>
         <ul>
             <li><a href="index.html">home</a></li>
             <li><a href="diary.html">diary</a></li>
             <li><a href="#links">links</a></li>
             <li><a href="#guestbook">guestbook</a></li>
         </ul>
-
-        <p class="updated">last updated: jan 2026</p>
+        <hr>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="content">
+    <p><strong>recent films i watched:</strong></p>
+    <div id="films-container"></div>
 
-        <!-- DIARY ENTRY -->
-        <div class="entry">
-            <div class="entry-header">
-                <span class="date">02 jan 2006</span> | <span class="time">01:43 am</span>
-            </div>
-
-            <p>
-                couldn’t sleep again.<br>
-                uploaded these even though they’re bad quality.
-            </p>
-
-            <img src="media/photos/bedroom.jpg" alt="bedroom">
-            <p class="caption">taken in my room</p>
-
-            <!-- Internet Archive video -->
-            <iframe 
-                src="https://archive.org/embed/YOUR_VIDEO_ID"
-                width="480"
-                height="360"
-                frameborder="0"
-                allowfullscreen>
-            </iframe>
-            <p class="caption">don’t remember why i filmed this</p>
-
-            <p class="meta">
-                mood: restless<br>
-                listening to: radiohead
-            </p>
-        </div>
-
-        <hr class="divider">
-
-        <!-- COPY .entry BLOCKS FOR NEW DIARY ENTRIES -->
-
-    </div>
-
+    <p style="font-size:11px; color:#777;">last updated: jan 2026</p>
 </div>
-
-<!-- HIT COUNTER -->
-<div id="hit-counter-wrapper">
-  <span id="counter-text">Hello! You are visitor #</span>
-  <span id="counter-display">0000</span>
-</div>
-
-<script>
-  // Hit counter
-  let count = localStorage.getItem('hitCount') || 0;
-  count = parseInt(count) + 1;
-  localStorage.setItem('hitCount', count);
-
-  const counterEl = document.getElementById('counter-display');
-  const formattedCount = count.toString().padStart(4, '0');
-  counterEl.textContent = formattedCount;
-
-  counterEl.animate([
-    { transform: 'scale(1.5)', color: '#ffb07c' },
-    { transform: 'scale(1)', color: '#ff6f61' }
-  ], { duration: 300, easing: 'ease-out' });
-</script>
 
 <!-- RECENT FILMS SCRIPT -->
 <script>
@@ -298,6 +141,6 @@ recentFilms.forEach(film => {
 <footer>
     <p>© 2026 (Site Name)</p>
 </footer>
-
 </body>
 </html>
+
