@@ -62,7 +62,7 @@ html, body {
     color: #222;
     font-weight: bold;
     padding: 2px 5px;
-    font-size: 13px;
+    font-size: 14px; /* increased by +1 */
 }
 
 #header nav ul li a:hover {
@@ -70,11 +70,12 @@ html, body {
     color: #555;
 }
 
+/* Center Spotify nicely */
 #header .music-row {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 15px;
+    padding: 10px 0; /* space above & below for vertical centering */
 }
 
 #header .music-row iframe {
@@ -84,8 +85,7 @@ html, body {
     border: 4px double black;   
     border-radius: 3px;
     background: #fffef9;
-    display: block;
-    margin: 0 auto;              
+    display: block;             
 }
 
 /* ---------------------------------
@@ -126,10 +126,12 @@ h1, h2.subtitle {
 
 h1 {
     font-size: 28px;
+    white-space: nowrap; /* keep on one line */
 }
 
 h2.subtitle {
     font-size: 18px;
+    text-align: left; /* left align subtitles under profile heading */
 }
 
 /* Paragraphs */
@@ -144,7 +146,7 @@ p {
 #films-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 5px; /* less space around posters */
     justify-content: flex-start;
 }
 
@@ -156,10 +158,11 @@ p {
 }
 
 .film-item img {
-    width: 80px;
+    width: auto;
+    max-width: 120px; /* fit better to poster size */
+    height: auto;
     margin-bottom: 3px;
     border-radius: 3px;
-    /* no border */
 }
 
 .film-item p {
@@ -167,7 +170,7 @@ p {
     font-size: 10px;
     color: #222;
     text-align: center;
-    width: 80px;
+    width: auto;
 }
 
 /* ---------------------------------
