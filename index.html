@@ -4,61 +4,226 @@
     <meta charset="UTF-8">
     <title>(Site Name)</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* PAGE LAYOUT */
+        body {
+            background: #fdf8f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #page {
+            width: 880px;
+            margin: 0 auto;
+            display: flex;
+            font-family: Verdana, Arial, sans-serif;
+            font-size: 13px;
+            color: #333;
+        }
+
+        /* SIDEBAR */
+        #sidebar {
+            width: 220px;
+            padding: 10px;
+            background: #f6f2ea;
+            border-right: 2px dotted #ccc;
+        }
+
+        #sidebar h2 {
+            font-size: 18px;
+            margin: 0 0 5px 0;
+        }
+
+        #sidebar p, #sidebar ul {
+            font-size: 12px;
+            margin: 5px 0;
+        }
+
+        #sidebar ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        #sidebar img.avatar {
+            width: 180px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #sidebar .updated {
+            font-size: 11px;
+            color: #777;
+            margin-top: 15px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px dotted #aaa;
+            margin: 10px 0;
+        }
+
+        /* MAIN CONTENT */
+        #content {
+            width: 640px;
+            padding: 15px;
+        }
+
+        .entry {
+            margin-bottom: 30px;
+        }
+
+        .entry-header {
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .entry img {
+            max-width: 100%;
+            border: 2px solid #ffb07c;
+            margin-top: 5px;
+        }
+
+        .caption {
+            font-size: 11px;
+            color: #777;
+            font-style: italic;
+            margin: 4px 0 10px;
+        }
+
+        .meta {
+            font-size: 11px;
+            color: #444;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px dotted #aaa;
+        }
+
+        /* Hit Counter */
+        #hit-counter-wrapper {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(254,246,240,0.9);
+            border: 2px dashed #ffb07c;
+            padding: 5px 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            color: #ff6f61;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+
+        #counter-display {
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            display: inline-block;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        /* Films container */
+        #films-container div {
+            margin-bottom: 10px;
+        }
+
+        #films-container img {
+            width: 100px;
+            border: 2px solid #ffb07c;
+        }
+
+        #films-container p {
+            font-size: 11px;
+            margin: 3px 0 0 0;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Menu -->
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#diary">Diary</a></li>
-            <li><a href="#music">Music</a></li>
-            <li><a href="#links">Links</a></li>
-            <li><a href="#blog">Blog / Updates</a></li>
-        </ul>
-    </nav>
 
-    <!-- Home Section -->
-    <section id="home" class="section">
-        <h1>Jai</h1>
-        <p>I'm tired</p>
+<div id="page">
+
+    <!-- SIDEBAR -->
+    <div id="sidebar">
+        <h2>Jai</h2>
+        <p>i’m tired</p>
         <img src="images/avatar.png" alt="Avatar" class="avatar">
-    </section>
-    
-    <!-- Humanized Corner Hit Counter -->
+
+        <hr>
+
+        <p><strong>currently listening to</strong><br>
+        Chanel Beads – Police Scanner</p>
+
+        <hr>
+
+        <p><strong>pages</strong></p>
+        <ul>
+            <li><a href="index.html">home / diary</a></li>
+            <li><a href="#links">links</a></li>
+            <li><a href="#guestbook">guestbook</a></li>
+        </ul>
+
+        <hr>
+
+        <p><strong>recent films</strong></p>
+        <div id="films-container"></div>
+
+        <p class="updated">last updated: jan 2026</p>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="content">
+
+        <!-- DIARY ENTRY EXAMPLE -->
+        <div class="entry">
+            <div class="entry-header">
+                <span class="date">02 jan 2006</span> | <span class="time">01:43 am</span>
+            </div>
+
+            <p>
+                couldn’t sleep again.<br>
+                uploaded these even though they’re bad quality.
+            </p>
+
+            <img src="media/photos/bedroom.jpg" alt="bedroom">
+            <p class="caption">taken in my room</p>
+
+            <!-- Internet Archive embed -->
+            <iframe 
+                src="https://archive.org/embed/YOUR_VIDEO_ID"
+                width="480"
+                height="360"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            <p class="caption">don’t remember why i filmed this</p>
+
+            <p class="meta">
+                mood: restless<br>
+                listening to: radiohead
+            </p>
+        </div>
+
+        <hr class="divider">
+
+        <!-- COPY .entry BLOCKS FOR NEW DIARY ENTRIES -->
+
+    </div>
+
+</div>
+
+<!-- HIT COUNTER -->
 <div id="hit-counter-wrapper">
   <span id="counter-text">Hello! You are visitor #</span>
   <span id="counter-display">0000</span>
 </div>
 
-<style>
-  #hit-counter-wrapper {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(254,246,240,0.9);
-    border: 2px dashed #ffb07c; /* rectangular border, no radius */
-    padding: 5px 10px;
-    font-family: 'Courier New', Courier, monospace; /* retro but readable */
-    font-size: 0.9rem;
-    color: #ff6f61;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-    z-index: 999;
-  }
-
-  #counter-display {
-    font-weight: bold;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    display: inline-block;
-    transition: transform 0.2s ease, color 0.2s ease;
-  }
-</style>
-
 <script>
-  // Get previous count or start at 0
+  // Hit counter
   let count = localStorage.getItem('hitCount') || 0;
   count = parseInt(count) + 1;
   localStorage.setItem('hitCount', count);
@@ -67,73 +232,14 @@
   const formattedCount = count.toString().padStart(4, '0');
   counterEl.textContent = formattedCount;
 
-  // Pop animation for the number
   counterEl.animate([
     { transform: 'scale(1.5)', color: '#ffb07c' },
     { transform: 'scale(1)', color: '#ff6f61' }
   ], { duration: 300, easing: 'ease-out' });
 </script>
 
-
-
-    <!-- Diary Section -->
-    <section id="diary" class="section">
-        <h2>Diary</h2>
-        <div class="entry">
-            <h3>(Insert date here)</h3>
-            <p>(Insert diary entry here)</p>
-            <img src="images/diary-photo.jpg" alt="Diary Image">
-            <video controls width="320">
-                <source src="video/diary-video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <!-- Add more diary entries here -->
-    </section>
-
-    <!-- Music Section -->
-    <section id="music" class="section">
-        <h2>Currently listening to</h2>
-        <div class="music-entry">
-            <p><strong>(Chanel Beads – Police Scanner)</strong></p>
-            <!-- Replace with your Spotify track embed -->
-            <iframe 
-    src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
-    width="300" 
-    height="80" 
-    frameborder="0" 
-    allow="encrypted-media" 
-    allowtransparency="true">
-</iframe>
-        </div>
-        <!-- Add more tracks as needed -->
-    </section>
-
-    <!-- Links Section -->
-    <section id="links" class="section">
-        <h2>My Links</h2>
-        <ul>
-            <li><a href="(Insert URL here)" target="_blank">(Insert link name here)</a></li>
-            <!-- Add more links -->
-        </ul>
-    </section>
-
-    <!-- Blog / Updates Section -->
-    <section id="blog" class="section">
-        <h2>Blog / Updates</h2>
-        <div class="blog-entry">
-            <h3>(Insert date here)</h3>
-            <p>(Insert blog update here)</p>
-        </div>
-        <!-- Add more updates -->
-    </section>
-<section class="section" id="recent-films">
-  <h2>Recently Watched Films</h2>
-  <div id="films-container" style="display:flex; gap:15px; flex-wrap:wrap;"></div>
-</section>
-
+<!-- RECENT FILMS SCRIPT -->
 <script>
-// Replace this with your RSS-to-JSON data or your own JSON file
 const jsonData = {
   "status": "ok",
   "items": [
@@ -151,36 +257,4 @@ const jsonData = {
     },
     {
       "title": "The Place Beyond the Pines, 2012",
-      "link": "https://letterboxd.com/jai_movies/film/the-place-beyond-the-pines/",
-      "thumbnail": "https://a.ltrbxd.com/resized/film-poster/8/0/2/0/0/80200-the-place-beyond-the-pines-0-600-0-900-crop.jpg?v=e30d64f591",
-      "pubDate": "2025-12-19"
-    }
-  ]
-};
-
-// Grab the first three items
-const recentFilms = jsonData.items.slice(0, 3);
-
-// Build HTML
-const container = document.getElementById('films-container');
-recentFilms.forEach(film => {
-  const filmHTML = `
-    <div style="flex:1 1 150px; max-width:150px; text-align:center;">
-      <a href="${film.link}" target="_blank">
-        <img src="${film.thumbnail}" alt="${film.title}" style="width:150px; border:2px solid #ffb07c; border-radius:4px;">
-      </a>
-      <p style="margin:5px 0 0 0; font-weight:bold;">${film.title}</p>
-      <p style="margin:0; font-size:0.9em; color:#555;">Watched: ${film.pubDate}</p>
-    </div>
-  `;
-  container.innerHTML += filmHTML;
-});
-</script>
-
-    <footer>
-        <p>© (Insert year) (Insert site name)</p>
-    </footer>
-</body>
-
-
-</html>
+      "link": "https:
