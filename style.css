@@ -208,7 +208,7 @@ p {
 
 #all-entries .box img,
 #all-entries .box video {
-    max-width: 100%;
+    max-width: 150%;
     margin-top: 10px;
     border-radius: 3px;
 }
