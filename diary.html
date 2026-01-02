@@ -12,7 +12,7 @@
   <!-- SIDEBAR -->
   <aside id="sidebar">
     <img src="images/avatar.png" alt="Avatar" class="avatar">
-    
+
     <h2>Music</h2>
     <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" allow="encrypted-media" allowtransparency="true"></iframe>
 
@@ -54,7 +54,8 @@
       <p class="caption">Evening street scene</p>
     </div>
 
-    <!-- Add more entries here -->
+    <!-- Add more diary entries here using the same structure -->
+
   </main>
 
 </div>
@@ -80,6 +81,16 @@ filmsData.forEach(film => {
   `;
   container.appendChild(div);
 });
+
+// HIT COUNTER
+let count = localStorage.getItem('hitCount') || 0;
+count = parseInt(count) + 1;
+localStorage.setItem('hitCount', count);
+
+const counterWrapper = document.createElement('div');
+counterWrapper.id = 'hit-counter-wrapper';
+counterWrapper.innerHTML = `Visitors: <span id="counter-display">${count}</span>`;
+document.body.appendChild(counterWrapper);
 </script>
 
 <footer>
