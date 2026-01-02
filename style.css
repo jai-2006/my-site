@@ -1,21 +1,22 @@
 /* -----------------------------
-   GENERAL BODY & PAGE
+   GENERAL BODY
 ------------------------------- */
 body {
-    background: url('media/background1.png') repeat;
     background-color: #fdf8f0;
     font-family: Verdana, Tahoma, Arial, sans-serif;
-    font-size: 13px;
     color: #333;
     margin: 0;
     padding: 0;
 }
 
+/* -----------------------------
+   PAGE LAYOUT
+------------------------------- */
 #page {
-    width: 880px;
-    margin: 30px auto;
     display: flex;
     min-height: 100vh;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 /* -----------------------------
@@ -23,19 +24,17 @@ body {
 ------------------------------- */
 #sidebar {
     width: 220px;
-    padding: 10px;
+    padding: 15px;
     background: #f6f2ea;
-    border: 2px dashed #ffb07c;
-    margin-right: 20px;
+    border: 2px dashed #aaa;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
 #sidebar h2 {
     font-family: "Courier New", monospace;
     font-size: 18px;
-    color: #ff6f61;
+    color: #444;
     margin: 0 0 10px 0;
-    text-shadow: 1px 1px #ffe4d6;
 }
 
 #sidebar p {
@@ -54,30 +53,32 @@ body {
 }
 
 #sidebar a {
-    color: #ff6f61;
+    color: #333;
     text-decoration: none;
     transition: all 0.2s ease;
 }
 
 #sidebar a:hover {
     text-decoration: underline;
-    color: #ff3b2f;
+    color: #555;
 }
 
 #sidebar img.avatar {
     width: 180px;
     display: block;
     margin-bottom: 10px;
+    border: 2px solid #aaa;
 }
 
-/* Spotify embed smaller for sidebar */
+/* -----------------------------
+   SIDEBAR MEDIA
+------------------------------- */
 #sidebar iframe {
     margin-top: 10px;
     width: 180px;
-    height: 50px;
+    height: 50px; /* smaller music embed */
 }
 
-/* Films in sidebar */
 #films-container div {
     margin-bottom: 10px;
     text-align: center;
@@ -85,8 +86,7 @@ body {
 
 #films-container img {
     width: 100px;
-    border: 2px solid #ffb07c;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    border: 2px solid #aaa;
 }
 
 #films-container p {
@@ -95,78 +95,48 @@ body {
 }
 
 /* -----------------------------
-   MAIN CONTENT / DIARY
+   MAIN CONTENT
 ------------------------------- */
 #content {
     flex: 1;
-    padding: 15px;
-    background: rgba(255,255,255,0.9);
-    border: 2px dashed #ffb07c;
+    padding: 20px;
+    background: rgba(255,255,255,0.95);
+    border: 2px dashed #aaa;
+    margin-left: 15px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
-.entry {
-    margin-bottom: 30px;
-}
-
-.entry-header {
-    font-size: 11px;
-    color: #555;
-    margin-bottom: 10px;
-}
-
-.entry img {
-    max-width: 100%;
-    border: 2px solid #ffb07c;
-    margin-top: 5px;
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.15);
-}
-
-.caption {
-    font-size: 11px;
-    color: #777;
-    font-style: italic;
-    margin: 4px 0 10px;
-}
-
-.meta {
-    font-size: 11px;
+#content h1 {
+    font-family: "Courier New", monospace;
+    font-size: 36px;
     color: #444;
+    margin-top: 0;
 }
 
-/* Dividers */
-.divider {
-    border: none;
-    border-top: 1px dotted #aaa;
-    margin: 15px 0;
+#content h2.subtitle {
+    font-family: "Courier New", monospace;
+    font-size: 20px;
+    color: #555;
+    margin: 5px 0 15px 0;
+}
+
+#content p {
+    line-height: 1.4;
+    font-size: 13px;
 }
 
 /* -----------------------------
-   HIT COUNTER
+   DECORATIVE TOUCHES
 ------------------------------- */
-#hit-counter-wrapper {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(254,246,240,0.9);
-    border: 2px dashed #ffb07c;
-    padding: 5px 10px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.9rem;
-    color: #ff6f61;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-    z-index: 999;
+h2.subtitle:before {
+    content: "★ ";
+    color: #aaa;
 }
 
-#counter-display {
-    font-weight: bold;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    display: inline-block;
-    transition: transform 0.2s ease, color 0.2s ease;
+a:hover:before {
+    content: "♥ ";
+    color: #555;
+    margin-right: 3px;
 }
 
 /* -----------------------------
@@ -180,34 +150,29 @@ footer {
 }
 
 /* -----------------------------
-   OPTIONAL DECORATIONS
+   HIT COUNTER
 ------------------------------- */
-/* Tiny star before h2 */
-h2:before {
-    content: "★ ";
-    color: #ffb07c;
+#hit-counter-wrapper {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.9);
+    border: 2px dashed #aaa;
+    padding: 5px 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+    z-index: 999;
 }
 
-/* Links hover icon effect */
-a:hover:before {
-    content: "♥ ";
-    color: #ff6f61;
-    margin-right: 3px;
-    transition: all 0.2s ease;
-}
-
-/* Main headings retro style */
-h1 {
-    font-family: "Courier New", monospace;
-    font-size: 36px;
-    color: #ff6f61;
-    text-shadow: 1px 1px #ffe4d6;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-/* Optional hover on diary images */
-.entry img:hover {
-    transform: scale(1.02);
-    transition: transform 0.2s ease;
+#counter-display {
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
