@@ -7,7 +7,6 @@
 </head>
 <body class="diary-page">
 
-
 <!-- HEADER / TOP BANNER -->
 <div id="header">
   <div class="top-row">
@@ -23,12 +22,18 @@
       </ul>
     </nav>
   </div>
+
+  <div class="music-row">
+    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
+            allow="encrypted-media" allowtransparency="true"></iframe>
+  </div>
 </div>
 
 <!-- MAIN CONTENT -->
 <div id="content">
   <h1 class="subtitle">Diary</h1>
 
+  <!-- All diary entries in boxes -->
   <div id="all-entries"></div>
 </div>
 
@@ -48,45 +53,30 @@ const diaryData = [
     "images":["images/blog-photo2.jpg"],
     "videos":[],
     "captions":["Evening street scene"]
-  },
-  {
-    "date":"2025-12-26",
-    "text":"Another earlier diary entry...",
-    "images":[],
-    "videos":[],
-    "captions":[]
   }
 ];
 
 // Render all diary entries
 const allDiv = document.getElementById('all-entries');
 diaryData.forEach(entry=>{
-  let html = `<div class="box entry">
-                <h3 class="subtitle">${entry.date}</h3>
-                <p>${entry.text}</p>`;
+  let html=`<div class="box entry"><h3 class="subtitle">${entry.date}</h3><p>${entry.text}</p>`;
   entry.images.forEach((img,i)=>{
-      html += `<img src="${img}" alt="Diary Image">
-               <p class="caption">${entry.captions[i]||''}</p>`;
+    html+=`<img src="${img}" alt="Diary Image"><p class="caption">${entry.captions[i]||''}</p>`;
   });
   entry.videos.forEach((vid,i)=>{
-      html += `<video controls>
-                 <source src="${vid}" type="video/mp4">
-                 Your browser does not support the video tag.
-               </video>
-               <p class="caption">${entry.captions[i]||''}</p>`;
+    html+=`<video controls><source src="${vid}" type="video/mp4">Your browser does not support the video tag.</video><p class="caption">${entry.captions[i]||''}</p>`;
   });
-  html += `</div>`;
-  allDiv.innerHTML += html;
+  html+='</div>';
+  allDiv.innerHTML+=html;
 });
 
 // Visitor counter
-let count = localStorage.getItem('hitCount') || 0;
-count = parseInt(count) + 1;
-localStorage.setItem('hitCount', count);
-
+let count = localStorage.getItem('hitCount')||0;
+count = parseInt(count)+1;
+localStorage.setItem('hitCount',count);
 const counterWrapper = document.createElement('div');
-counterWrapper.id = 'hit-counter-wrapper';
-counterWrapper.innerHTML = `Visitors: <span id="counter-display">${count}</span>`;
+counterWrapper.id='hit-counter-wrapper';
+counterWrapper.innerHTML=`Visitors: <span id="counter-display">${count}</span>`;
 document.body.appendChild(counterWrapper);
 </script>
 
