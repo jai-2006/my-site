@@ -13,78 +13,73 @@
   <aside id="sidebar">
     <img src="images/avatar.png" alt="Avatar" class="avatar">
 
-    <h2>Music</h2>
-    <iframe class="spotify" src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
-            frameborder="0" allow="encrypted-media" allowtransparency="true"></iframe>
-
     <h2>Recent Films</h2>
     <div id="films-container"></div>
 
     <h2>Links</h2>
     <ul>
-      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
       <li><a href="diary.html">Diary</a></li>
-      <li><a href="#guestbook">Guestbook</a></li>
     </ul>
   </aside>
 
   <!-- MAIN CONTENT -->
   <main id="content">
     <h1>Diary</h1>
-
-    <!-- Diary entry -->
-    <div class="entry">
-      <h2 class="subtitle">2025-12-30</h2>
-      <p>Today I watched an amazing film and took some notes. Felt really inspired by the visuals.</p>
-      <img src="images/diary-photo1.jpg" alt="Diary Image">
-      <p class="caption">A snapshot from the day</p>
-      <video controls>
-        <source src="video/diary-video1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p class="caption">A clip I recorded</p>
-    </div>
-
-    <div class="entry">
-      <h2 class="subtitle">2025-12-28</h2>
-      <p>Went for a walk and captured some cool moments. Feeling reflective.</p>
-      <img src="images/diary-photo2.jpg" alt="Diary Image">
-      <p class="caption">Evening street scene</p>
-    </div>
-
+    <div id="all-entries"></div>
   </main>
 
 </div>
 
 <script>
-// Films data
+// Diary data (same as homepage)
+const diaryData = [
+  {
+    "date":"2025-12-30",
+    "text":"Most recent diary entry goes here...",
+    "images":["images/blog-photo1.jpg"],
+    "videos":["video/diary-video1.mp4"],
+    "captions":["Snapshot from the day","Clip I recorded"]
+  },
+  {
+    "date":"2025-12-28",
+    "text":"Earlier diary entry content...",
+    "images":["images/blog-photo2.jpg"],
+    "videos":[],
+    "captions":["Evening street scene"]
+  }
+];
+
+const allDiv = document.getElementById('all-entries');
+diaryData.forEach(entry=>{
+  let html=`<div class="entry"><h3 class="subtitle">${entry.date}</h3><p>${entry.text}</p>`;
+  entry.images.forEach((img,i)=>html+=`<img src="${img}" alt="Diary Image"><p class="caption">${entry.captions[i]||''}</p>`);
+  entry.videos.forEach((vid,i)=>html+=`<video controls><source src="${vid}" type="video/mp4">Your browser does not support the video tag.</video><p class="caption">${entry.captions[i]||''}</p>`);
+  html+='</div>';
+  allDiv.innerHTML+=html;
+});
+
+// Films sidebar
 const filmsData = [
   {"title":"Marty Supreme","link":"https://letterboxd.com/jai_movies/film/marty-supreme/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/1/1/9/7/4/9/9/1197499-marty-supreme-0-600-0-900-crop.jpg?v=b14a26bb43","pubDate":"2025-12-26"},
   {"title":"One to One: John & Yoko","link":"https://letterboxd.com/jai_movies/film/one-to-one-john-yoko/1/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/1/2/0/0/8/7/4/1200874-one-to-one-john-yoko-0-600-0-900-crop.jpg?v=9b9613f3af","pubDate":"2025-12-25"},
   {"title":"The Place Beyond the Pines","link":"https://letterboxd.com/jai_movies/film/the-place-beyond-the-pines/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/8/0/2/0/0/80200-the-place-beyond-the-pines-0-600-0-900-crop.jpg?v=e30d64f591","pubDate":"2025-12-19"}
 ];
-
 const container = document.getElementById('films-container');
 filmsData.forEach(film => {
   const div = document.createElement('div');
-  div.className = 'film-item';
-  div.innerHTML = `
-    <a href="${film.link}" target="_blank">
-      <img src="${film.thumbnail}" alt="${film.title}">
-    </a>
-    <p><strong>${film.title}</strong></p>
-    <p>${film.pubDate}</p>
-  `;
+  div.className='film-item';
+  div.innerHTML=`<a href="${film.link}" target="_blank"><img src="${film.thumbnail}" alt="${film.title}"></a><p><strong>${film.title}</strong></p><p>${film.pubDate}</p>`;
   container.appendChild(div);
 });
 
 // Hit counter
-let count = localStorage.getItem('hitCount') || 0;
-count = parseInt(count) + 1;
-localStorage.setItem('hitCount', count);
+let count = localStorage.getItem('hitCount')||0;
+count = parseInt(count)+1;
+localStorage.setItem('hitCount',count);
 const counterWrapper = document.createElement('div');
-counterWrapper.id = 'hit-counter-wrapper';
-counterWrapper.innerHTML = `Visitors: <span id="counter-display">${count}</span>`;
+counterWrapper.id='hit-counter-wrapper';
+counterWrapper.innerHTML=`Visitors: <span id="counter-display">${count}</span>`;
 document.body.appendChild(counterWrapper);
 </script>
 
