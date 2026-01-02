@@ -2,7 +2,7 @@
    BODY
 ------------------------------- */
 body {
-    background: #fdf6e3; /* soft cream background */
+    background: #fdf6e3;
     font-family: 'Inter', Arial, sans-serif;
     color: #222;
     margin: 0;
@@ -133,7 +133,7 @@ body {
     line-height: 1.6;
 }
 
-/* Diary / blog entries */
+/* Diary entries */
 .entry {
     margin-bottom: 25px;
     border-bottom: 1px dotted #ff8c42;
