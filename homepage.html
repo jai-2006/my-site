@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Me</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="page">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar">
+    <img src="images/avatar.png" alt="Avatar" class="avatar">
+
+    <h2>Recent Films</h2>
+    <div id="films-container"></div>
+
+    <h2>Links</h2>
+    <ul>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="diary.html">Diary</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main id="content">
+    <!-- Music Banner -->
+    <iframe id="music-banner" src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
+            frameborder="0" allow="encrypted-media" allowtransparency="true"></iframe>
+
+    <h1>title</h1>
+    <h2 class="subtitle">subtitle</h2>
+    <p>Brief intro text here. Early-2000s vibes, MySpace style.</p>
+
+    <h2 class="subtitle">Latest Diary Entry</h2>
+    <div class="entry" id="latest-entry">
+      <!-- Populated by JS -->
+    </div>
+
+    <p><a href="diary.html">View all diary entries</a></p>
+  </main>
+
+</div>
+
+<script>
+// Diary data
+const diaryData = [
+  {
+    "date":"2025-12-30",
+    "text":"Most recent diary entry goes here...",
+    "images":["images/blog-photo1.jpg"],
+    "videos":["video/diary-video1.mp4"],
+    "captions":["Snapshot from the day","Clip I recorded"]
+  },
+  {
+    "date":"2025-12-28",
+    "text":"Earlier diary entry content...",
+    "images":["images/blog-photo2.jpg"],
+    "videos":[],
+    "captions":["Evening street scene"]
+  }
+];
+
+// Show only latest entry on homepage
+const latest = diaryData[0];
+const latestDiv = document.getElementById('latest-entry');
+let html = `<h3 class="subtitle">${latest.date}</h3><p>${latest.text}</p>`;
+latest.images.forEach((img,i)=>html+=`<img src="${img}" alt="Diary Image"><p class="caption">${latest.captions[i]||''}</p>`);
+latest.videos.forEach((vid,i)=>html+=`<video controls><source src="${vid}" type="video/mp4">Your browser does not support the video tag.</video><p class="caption">${latest.captions[i]||''}</p>`);
+latestDiv.innerHTML = html;
+
+// Films sidebar
+const filmsData = [
+  {"title":"Marty Supreme","link":"https://letterboxd.com/jai_movies/film/marty-supreme/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/1/1/9/7/4/9/9/1197499-marty-supreme-0-600-0-900-crop.jpg?v=b14a26bb43","pubDate":"2025-12-26"},
+  {"title":"One to One: John & Yoko","link":"https://letterboxd.com/jai_movies/film/one-to-one-john-yoko/1/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/1/2/0/0/8/7/4/1200874-one-to-one-john-yoko-0-600-0-900-crop.jpg?v=9b9613f3af","pubDate":"2025-12-25"},
+  {"title":"The Place Beyond the Pines","link":"https://letterboxd.com/jai_movies/film/the-place-beyond-the-pines/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/8/0/2/0/0/80200-the-place-beyond-the-pines-0-600-0-900-crop.jpg?v=e30d64f591","pubDate":"2025-12-19"}
+];
+const container = document.getElementById('films-container');
+filmsData.forEach(film => {
+  const div = document.createElement('div');
+  div.className='film-item';
+  div.innerHTML=`<a href="${film.link}" target="_blank"><img src="${film.thumbnail}" alt="${film.title}"></a><p><strong>${film.title}</strong></p><p>${film.pubDate}</p>`;
+  container.appendChild(div);
+});
+
+// Hit counter
+let count = localStorage.getItem('hitCount')||0;
+count = parseInt(count)+1;
+localStorage.setItem('hitCount',count);
+const counterWrapper = document.createElement('div');
+counterWrapper.id='hit-counter-wrapper';
+counterWrapper.innerHTML=`Visitors: <span id="counter-display">${count}</span>`;
+document.body.appendChild(counterWrapper);
+</script>
+
+<footer>
+  <p>© 2026 My Site</p>
+</footer>
+
+</body>
+</html>
