@@ -167,6 +167,8 @@ p {
 
 .film-item img {
     width: 80px;
+    border: none; /* remove this */
+    border-radius: 3px;
     margin-bottom: 3px;
 }
 
