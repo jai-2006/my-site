@@ -9,24 +9,26 @@
 
 <!-- HEADER / TOP BANNER -->
 <div id="header">
+  <div class="top-row">
     <div class="left">
-        <img src="images/avatar.png" alt="Avatar">
-        <span>title</span>
+      <img src="images/avatar.png" alt="Avatar">
+      <span>title</span>
     </div>
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="diary.html">Diary</a></li>
-        </ul>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="diary.html">Diary</a></li>
+        <li><a href="football.html">Watford FC</a></li>
+      </ul>
     </nav>
+  </div>
 </div>
 
 <!-- MAIN CONTENT -->
 <div id="content">
-    <h1>Diary</h1>
+  <h1 class="subtitle">Diary</h1>
 
-    <!-- All diary entries in boxes -->
-    <div id="all-entries"></div>
+  <div id="all-entries"></div>
 </div>
 
 <script>
@@ -45,25 +47,45 @@ const diaryData = [
     "images":["images/blog-photo2.jpg"],
     "videos":[],
     "captions":["Evening street scene"]
+  },
+  {
+    "date":"2025-12-26",
+    "text":"Another earlier diary entry...",
+    "images":[],
+    "videos":[],
+    "captions":[]
   }
 ];
 
+// Render all diary entries
 const allDiv = document.getElementById('all-entries');
 diaryData.forEach(entry=>{
-  let html=`<div class="box entry"><h3 class="subtitle">${entry.date}</h3><p>${entry.text}</p>`;
-  entry.images.forEach((img,i)=>html+=`<img src="${img}" alt="Diary Image"><p class="caption">${entry.captions[i]||''}</p>`);
-  entry.videos.forEach((vid,i)=>html+=`<video controls><source src="${vid}" type="video/mp4">Your browser does not support the video tag.</video><p class="caption">${entry.captions[i]||''}</p>`);
-  html+='</div>';
-  allDiv.innerHTML+=html;
+  let html = `<div class="box entry">
+                <h3 class="subtitle">${entry.date}</h3>
+                <p>${entry.text}</p>`;
+  entry.images.forEach((img,i)=>{
+      html += `<img src="${img}" alt="Diary Image">
+               <p class="caption">${entry.captions[i]||''}</p>`;
+  });
+  entry.videos.forEach((vid,i)=>{
+      html += `<video controls>
+                 <source src="${vid}" type="video/mp4">
+                 Your browser does not support the video tag.
+               </video>
+               <p class="caption">${entry.captions[i]||''}</p>`;
+  });
+  html += `</div>`;
+  allDiv.innerHTML += html;
 });
 
-// Hit counter
-let count = localStorage.getItem('hitCount')||0;
-count = parseInt(count)+1;
-localStorage.setItem('hitCount',count);
+// Visitor counter
+let count = localStorage.getItem('hitCount') || 0;
+count = parseInt(count) + 1;
+localStorage.setItem('hitCount', count);
+
 const counterWrapper = document.createElement('div');
-counterWrapper.id='hit-counter-wrapper';
-counterWrapper.innerHTML=`Visitors: <span id="counter-display">${count}</span>`;
+counterWrapper.id = 'hit-counter-wrapper';
+counterWrapper.innerHTML = `Visitors: <span id="counter-display">${count}</span>`;
 document.body.appendChild(counterWrapper);
 </script>
 
