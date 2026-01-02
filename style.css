@@ -152,6 +152,17 @@ p {
     line-height: 1.5;
 }
 
+#header .music-row iframe {
+    width: 500px;
+    max-width: 100%;
+    height: 80px;
+    border: 4px double black;   /* add the retro double border */
+    border-radius: 3px;          /* optional, soft corners */
+    background: #fffef9;         /* matches your MySpace box background */
+    display: block;
+    margin: 0 auto;              /* centers horizontally */
+}
+
 
 /* ---------------------------------
    FILMS ROW
@@ -322,15 +333,3 @@ footer {
     }
 }
 
-
-
-#header .music-row iframe {
-    width: 500px;
-    max-width: 100%;
-    height: 80px;
-    border: 4px double black;   /* add the retro double border */
-    border-radius: 3px;          /* optional, soft corners */
-    background: #fffef9;         /* matches your MySpace box background */
-    display: block;
-    margin: 0 auto;              /* centers horizontally */
-}
