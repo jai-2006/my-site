@@ -2,9 +2,9 @@
    GLOBAL RESET & BODY
 ---------------------------------- */
 html, body {
-    overflow-x: hidden;   /* prevents horizontal scrolling */
-    width: 100vw;         /* ensures body matches viewport width */
-    position: relative;   /* keeps elements contained */
+    overflow-x: hidden;   
+    width: 100vw;         
+    position: relative;   
     margin: 0;
     padding: 0;
     font-family: 'Inter', Arial, sans-serif;
@@ -21,7 +21,7 @@ html, body {
 ---------------------------------- */
 #header {
     width: 100%;
-    background: #ccc; /* gray banner */
+    background: #ccc; 
     border-bottom: 4px double black;
     display: flex;
     flex-direction: column;
@@ -74,18 +74,18 @@ html, body {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 15px; /* moves Spotify down from top, away from bottom */
+    margin-top: 15px;
 }
 
 #header .music-row iframe {
     width: 500px;
     max-width: 100%;
     height: 80px;
-    border: 4px double black;   /* retro double border */
+    border: 4px double black;   
     border-radius: 3px;
     background: #fffef9;
     display: block;
-    margin: 0 auto;              /* centers horizontally */
+    margin: 0 auto;              
 }
 
 /* ---------------------------------
@@ -109,10 +109,9 @@ html, body {
     border: 4px double black;
     padding: 15px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
-    box-sizing: border-box;
 }
 
-/* First box (profile) centered text */
+/* First box (profile) text formatting */
 #content .box:first-child {
     text-align: left;
 }
@@ -160,7 +159,7 @@ p {
     width: 80px;
     margin-bottom: 3px;
     border-radius: 3px;
-    /* NO border for films */
+    /* no border */
 }
 
 .film-item p {
@@ -199,12 +198,6 @@ p {
     font-size: 12px;
     color: #666;
     margin-top: 3px;
-}
-
-/* Make all diary entries full-width */
-#all-entries .box.entry {
-    flex: 1 1 100% !important;
-    max-width: 100% !important;
 }
 
 /* ---------------------------------
@@ -326,25 +319,31 @@ footer {
     display: flex;
     gap: 15px;
     align-items: flex-start;
+    flex-direction: row; /* side by side */
 }
 
 .profile-image img {
-    width: 200px;
+    width: 200px;             
     height: auto;
-    border: 2px solid #222; /* simple single line border */
+    border: 2px solid #222;  
     background: #fffef9;
 }
 
 .profile-text {
     flex: 1;
+    text-align: left; /* force left alignment */
 }
 
 /* Stack on small screens */
 @media (max-width: 600px) {
     .profile-inner {
-        flex-direction: 1;
-        align-items: center;
-        text-align: left;
+        flex-direction: column; 
+        align-items: center;    
+    }
+
+    .profile-text {
+        text-align: left;       
+        width: 100%;            
     }
 
     .profile-image img {
@@ -354,10 +353,10 @@ footer {
 
 /* Homepage profile image */
 #content .box img[src="images/profile.jpg"] {
-    width: 200px;       /* increase this number to make bigger */
-    height: auto;       /* keep proportions */
-    border: 4px solid black;  /* single-line border */
-    border-radius: 3px; /* optional soft corners */
+    width: 200px;       
+    height: auto;       
+    border: 2px solid black;  
+    border-radius: 3px; 
     display: block;
     margin-bottom: 10px;
 }
