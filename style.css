@@ -208,7 +208,7 @@ p {
 
 .entry video {
     width: 100%;
-    max-width: 720px;   /* controls how big they can get */
+    max-width: 1000px;   /* controls how big they can get */
     height: auto;
     display: block;
     margin: 15px auto;
