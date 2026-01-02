@@ -7,35 +7,43 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav id="navbar">
-    <div class="logo">
+<!-- HEADER / TOP BANNER -->
+<div id="header">
+    <div class="left">
         <img src="images/avatar.png" alt="Avatar">
         <span>title</span>
     </div>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="diary.html">Diary</a></li>
-    </ul>
-</nav>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="diary.html">Diary</a></li>
+        </ul>
+    </nav>
+    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" width="180" height="80" allow="encrypted-media" allowtransparency="true"></iframe>
+</div>
 
 <!-- MAIN CONTENT -->
 <div id="content">
 
-    <!-- Music Banner -->
-    <iframe id="music-banner" src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
-            frameborder="0" allow="encrypted-media" allowtransparency="true"></iframe>
+    <!-- Intro Box -->
+    <div class="box">
+        <h1>title</h1>
+        <h2 class="subtitle">subtitle</h2>
+        <p>Brief intro text here. MySpace-style retro vibe.</p>
+    </div>
 
-    <h2 class="subtitle">subtitle</h2>
-    <p>Brief intro text goes here. MySpace-style, retro vibes.</p>
+    <!-- Films Box -->
+    <div class="box">
+        <h2 class="subtitle">Recent Films</h2>
+        <div id="films-container"></div>
+    </div>
 
-    <h2 class="subtitle">Recent Films</h2>
-    <div id="films-container"></div>
-
-    <h2 class="subtitle">Latest Diary Entry</h2>
-    <div class="entry" id="latest-entry"></div>
-
-    <p><a href="diary.html">View full diary</a></p>
+    <!-- Latest Diary Entry Box -->
+    <div class="box">
+        <h2 class="subtitle">Latest Diary Entry</h2>
+        <div class="entry" id="latest-entry"></div>
+        <p><a href="diary.html">View full diary</a></p>
+    </div>
 
 </div>
 
@@ -58,7 +66,7 @@ const diaryData = [
   }
 ];
 
-// Show only latest entry
+// Latest diary entry
 const latest = diaryData[0];
 const latestDiv = document.getElementById('latest-entry');
 let html = `<h3 class="subtitle">${latest.date}</h3><p>${latest.text}</p>`;
@@ -97,4 +105,3 @@ document.body.appendChild(counterWrapper);
 
 </body>
 </html>
-
