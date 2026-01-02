@@ -3,7 +3,7 @@
 ------------------------------- */
 body {
     background: #e5e5e5; /* neutral light grey */
-    font-family: 'Inter', Arial, sans-serif; /* modern clean font */
+    font-family: 'Inter', Arial, sans-serif;
     color: #222;
     margin: 0;
     padding: 0;
@@ -17,7 +17,7 @@ body {
     min-height: 100vh;
     max-width: 1000px;
     margin: 20px auto;
-    border: 2px dashed #444; /* retro border but neutral */
+    border: 2px dashed #444;
     background: #fdfdfd;
     box-shadow: 4px 4px 10px rgba(0,0,0,0.15);
 }
@@ -34,7 +34,7 @@ body {
 }
 
 #sidebar h2 {
-    font-family: 'Inter', Arial, sans-serif; /* modern font */
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 16px;
     color: #222;
     margin-bottom: 10px;
@@ -51,8 +51,8 @@ body {
 }
 
 /* Compact Spotify embed */
-#sidebar iframe {
-    width: 50px; 
+#sidebar iframe.spotify {
+    width: 50px;
     height: 50px;
     margin-bottom: 15px;
     border-radius: 5px;
@@ -61,7 +61,7 @@ body {
 /* Films horizontal */
 #films-container {
     display: flex;
-    flex-direction: row; /* horizontal */
+    flex-direction: row;
     gap: 10px;
     overflow-x: auto;
     padding-bottom: 5px;
@@ -69,7 +69,7 @@ body {
 
 .film-item {
     text-align: center;
-    flex: 0 0 auto; /* do not shrink */
+    flex: 0 0 auto;
 }
 
 .film-item img {
