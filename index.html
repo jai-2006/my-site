@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>My Homepage</title>
+<title>Homepage</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,7 +14,8 @@
     <img src="images/avatar.png" alt="Avatar" class="avatar">
 
     <h2>Music</h2>
-    <iframe class="spotify" src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" allow="encrypted-media" allowtransparency="true"></iframe>
+    <iframe class="spotify" src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
+            frameborder="0" allow="encrypted-media" allowtransparency="true"></iframe>
 
     <h2>Recent Films</h2>
     <div id="films-container"></div>
@@ -31,13 +32,13 @@
   <main id="content">
     <h1>title</h1>
     <h2 class="subtitle">subtitle</h2>
-    <p>description about yourself goes here. Make it personal, playful early 2000s vibe.</p>
+    <p>Write a personal, playful introduction here. Early-2000s vibes, slightly retro but grown-up.</p>
   </main>
 
 </div>
 
-<!-- FILMS SCRIPT -->
 <script>
+// Films data
 const filmsData = [
   {"title":"Marty Supreme","link":"https://letterboxd.com/jai_movies/film/marty-supreme/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/1/1/9/7/4/9/9/1197499-marty-supreme-0-600-0-900-crop.jpg?v=b14a26bb43","pubDate":"2025-12-26"},
   {"title":"One to One: John & Yoko","link":"https://letterboxd.com/jai_movies/film/one-to-one-john-yoko/1/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/1/2/0/0/8/7/4/1200874-one-to-one-john-yoko-0-600-0-900-crop.jpg?v=9b9613f3af","pubDate":"2025-12-25"},
@@ -58,11 +59,10 @@ filmsData.forEach(film => {
   container.appendChild(div);
 });
 
-// HIT COUNTER
+// Hit counter
 let count = localStorage.getItem('hitCount') || 0;
 count = parseInt(count) + 1;
 localStorage.setItem('hitCount', count);
-
 const counterWrapper = document.createElement('div');
 counterWrapper.id = 'hit-counter-wrapper';
 counterWrapper.innerHTML = `Visitors: <span id="counter-display">${count}</span>`;
@@ -70,7 +70,7 @@ document.body.appendChild(counterWrapper);
 </script>
 
 <footer>
-    <p>© 2026 My Site</p>
+  <p>© 2026 My Site</p>
 </footer>
 
 </body>
