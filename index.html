@@ -9,41 +9,49 @@
 
 <!-- HEADER / TOP BANNER -->
 <div id="header">
+  <!-- Top row: avatar + title + nav -->
+  <div class="top-row">
     <div class="left">
-        <img src="images/avatar.png" alt="Avatar">
-        <span>title</span>
+      <img src="images/avatar.png" alt="Avatar">
+      <span>title</span>
     </div>
     <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="diary.html">Diary</a></li>
-        </ul>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="diary.html">Diary</a></li>
+      </ul>
     </nav>
-    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" width="180" height="80" allow="encrypted-media" allowtransparency="true"></iframe>
+  </div>
+
+  <!-- Bottom row: Spotify -->
+  <div class="music-row">
+    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
+            allow="encrypted-media" allowtransparency="true"></iframe>
+  </div>
 </div>
 
 <!-- MAIN CONTENT -->
 <div id="content">
 
-    <!-- Intro Box -->
-    <div class="box">
-        <h1>title</h1>
-        <h2 class="subtitle">subtitle</h2>
-        <p>Brief intro text here. MySpace-style retro vibe.</p>
-    </div>
+  <!-- Intro Box -->
+  <div class="box">
+    <h1>title</h1>
+    <h2 class="subtitle">subtitle</h2>
+    <p>Brief intro text here. MySpace-style retro vibe.</p>
+  </div>
 
-    <!-- Films Box -->
-    <div class="box">
-        <h2 class="subtitle">Recent Films</h2>
-        <div id="films-container"></div>
-    </div>
+  <!-- Films Box -->
+  <div class="box">
+    <h2 class="subtitle">Recent Films</h2>
+    <div id="films-container"></div>
+  </div>
 
-    <!-- Latest Diary Entry Box -->
-    <div class="box">
-        <h2 class="subtitle">Latest Diary Entry</h2>
-        <div class="entry" id="latest-entry"></div>
-        <p><a href="diary.html">View full diary</a></p>
-    </div>
+  <!-- Latest Diary Entry Box -->
+  <div class="box">
+    <h2 class="subtitle">Latest Diary Entry</h2>
+    <div class="entry" id="latest-entry"></div>
+    <p><a href="diary.html">View full diary</a></p>
+  </div>
 
 </div>
 
