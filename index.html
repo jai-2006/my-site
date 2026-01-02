@@ -2,84 +2,115 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>(Site Name) - Welcome</title>
+<title>title</title>
 <link rel="stylesheet" href="style.css">
 <style>
+/* Body & background */
 body {
     background: url('media/background1.png') repeat;
     background-color: #fdf8f0;
     font-family: Verdana, Tahoma, Arial, sans-serif;
-    font-size: 13px;
     color: #333;
     margin: 0;
     padding: 0;
 }
+
+/* Container for homepage content */
 #container {
     width: 880px;
-    margin: 30px auto;
+    margin: 20px auto;
     padding: 20px;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.85);
     border: 2px dashed #ffb07c;
-    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.15);
+    position: relative;
 }
+
+/* Header */
 h1 {
-    font-size: 36px;
+    font-family: "Courier New", monospace;
+    font-size: 40px;
+    color: #ff6f61;
     margin-top: 0;
-    color: #ff6f61;
+    text-shadow: 1px 1px #ffe4d6;
 }
-p {
-    line-height: 1.4;
+
+/* Subtitle style */
+h2.subtitle {
+    font-family: "Courier New", monospace;
+    font-size: 20px;
+    color: #ff8b75;
+    margin: 5px 0 15px 0;
+    text-shadow: 1px 1px #ffe4d6;
 }
-a {
-    color: #ff6f61;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
+
+/* Avatar image */
 .avatar {
     width: 200px;
     display: block;
-    margin: 15px 0;
+    margin: 10px 0;
+    border: 2px solid #ffb07c;
+}
+
+/* Links */
+.links ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 10px 0;
+}
+.links ul li {
+    margin-bottom: 4px;
+}
+.links a {
+    color: #ff6f61;
+    text-decoration: none;
+}
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* Films section */
+#films-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
 }
 #films-container div {
-    display: inline-block;
-    margin: 5px;
     text-align: center;
 }
 #films-container img {
     width: 100px;
     border: 2px solid #ffb07c;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 #films-container p {
     font-size: 11px;
     margin: 3px 0 0 0;
 }
-.links ul {
-    list-style-type: disc;
-    padding-left: 20px;
+
+/* Decorative / playful style */
+h2.subtitle:before {
+    content: "★ ";
+    color: #ffb07c;
 }
-.links hr {
-    border: none;
-    border-top: 1px dotted #aaa;
-    margin: 10px 0;
-}
-footer {
-    text-align:center;
-    font-size:11px;
-    color:#555;
-    margin-top:30px;
+a:hover:before {
+    content: "♥ ";
+    color: #ff6f61;
+    margin-right: 3px;
 }
 </style>
 </head>
 <body>
+
 <div id="container">
-    <h1>Welcome to My Cozy Corner</h1>
+    <h1>title</h1>
+    <h2 class="subtitle">subtitle</h2>
     <img src="images/avatar.png" alt="Avatar" class="avatar">
-    <p>hi! i’m Jai. this is my little corner of the internet where i share diary entries, what i’m watching, music i like, and links i find interesting. feel free to wander around!</p>
+
+    <p>description</p>
 
     <div class="links">
-        <hr>
         <p><strong>pages:</strong></p>
         <ul>
             <li><a href="index.html">home</a></li>
@@ -87,51 +118,47 @@ footer {
             <li><a href="#links">links</a></li>
             <li><a href="#guestbook">guestbook</a></li>
         </ul>
-        <hr>
     </div>
 
-    <p><strong>recent films i watched:</strong></p>
+    <h2 class="subtitle">recent films</h2>
     <div id="films-container"></div>
-
-    <p style="font-size:11px; color:#777;">last updated: jan 2026</p>
 </div>
 
-<!-- RECENT FILMS SCRIPT -->
+<!-- Films script -->
 <script>
 const jsonData = {
   "status": "ok",
   "items": [
     {
-      "title": "Marty Supreme, 2025",
+      "title": "title1",
       "link": "https://letterboxd.com/jai_movies/film/marty-supreme/",
       "thumbnail": "https://a.ltrbxd.com/resized/film-poster/1/1/9/7/4/9/9/1197499-marty-supreme-0-600-0-900-crop.jpg?v=b14a26bb43",
-      "pubDate": "2025-12-26"
+      "pubDate": "date1"
     },
     {
-      "title": "One to One: John & Yoko, 2024",
+      "title": "title2",
       "link": "https://letterboxd.com/jai_movies/film/one-to-one-john-yoko/1/",
       "thumbnail": "https://a.ltrbxd.com/resized/film-poster/1/2/0/0/8/7/4/1200874-one-to-one-john-yoko-0-600-0-900-crop.jpg?v=9b9613f3af",
-      "pubDate": "2025-12-25"
+      "pubDate": "date2"
     },
     {
-      "title": "The Place Beyond the Pines, 2012",
+      "title": "title3",
       "link": "https://letterboxd.com/jai_movies/film/the-place-beyond-the-pines/",
       "thumbnail": "https://a.ltrbxd.com/resized/film-poster/8/0/2/0/0/80200-the-place-beyond-the-pines-0-600-0-900-crop.jpg?v=e30d64f591",
-      "pubDate": "2025-12-19"
+      "pubDate": "date3"
     }
   ]
 };
 
-const recentFilms = jsonData.items.slice(0, 3);
 const container = document.getElementById('films-container');
-recentFilms.forEach(film => {
+jsonData.items.forEach(film => {
   const filmHTML = `
     <div>
       <a href="${film.link}" target="_blank">
         <img src="${film.thumbnail}" alt="${film.title}">
       </a>
       <p><strong>${film.title}</strong></p>
-      <p>Watched: ${film.pubDate}</p>
+      <p>${film.pubDate}</p>
     </div>
   `;
   container.innerHTML += filmHTML;
@@ -139,8 +166,8 @@ recentFilms.forEach(film => {
 </script>
 
 <footer>
-    <p>© 2026 (Site Name)</p>
+    <p>© 2026 title</p>
 </footer>
+
 </body>
 </html>
-
