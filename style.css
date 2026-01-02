@@ -1,10 +1,12 @@
+/* -----------------------------
+   GLOBAL
+------------------------------- */
 html, body {
-    overflow-x: hidden;   /* prevents horizontal scrolling */
-    width: 100vw;         /* ensures body matches viewport width */
-    position: relative;   /* keeps elements contained */
+    overflow-x: hidden;   
+    width: 100vw;         
+    position: relative;   
 }
 
-/* Global box-sizing and body setup */
 * {
     box-sizing: border-box;
 }
@@ -15,7 +17,6 @@ body {
     font-family: 'Inter', Arial, sans-serif;
     background: #f0e6d2 url('images/pattern.png') repeat;
     color: #222;
-    overflow-x: hidden; /* prevent side scroll */
 }
 
 /* -----------------------------
@@ -81,7 +82,7 @@ body {
 
 #header .music-row iframe {
     width: 500px;
-    max-width: 100%; /* responsive */
+    max-width: 100%; 
     height: 80px;
     border: none;
     display: block;
@@ -96,17 +97,26 @@ body {
     margin: 20px auto;
     padding: 0 20px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;          /* allow two-column layout */
     gap: 20px;
+    justify-content: center;
 }
 
 /* Boxes for MySpace vibe */
-.box {
+#content .box {
+    flex: 0 1 48%;             /* roughly half-width for two columns */
     background: #fffef9;
     border: 3px dashed black;
-    border-style: double;
     padding: 15px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* Profile/intro box stays prominent */
+#content .box:first-child {
+    flex: 0 1 48%;
+    text-align: center;
 }
 
 /* Titles inside boxes */
@@ -136,31 +146,21 @@ p {
 ------------------------------- */
 #films-container {
     display: flex;
-    flex-wrap: wrap;  /* wrap to next line if needed */
     gap: 10px;
+    flex-wrap: wrap;
     justify-content: flex-start;
 }
 
-.film-item {
-    flex: 0 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.film-item img {
-    width: 80px;
-    border: 2px solid #222;
-    border-radius: 3px;
-    margin-bottom: 3px;
-}
-
-.film-item p {
-    margin: 0;
-    font-size: 10px;
-    color: #222;
+#films-container .film-item {
+    width: 120px;       
     text-align: center;
-    width: 80px;
+    margin-bottom: 10px;
+}
+
+#films-container .film-item img {
+    width: 100%;        
+    border: 2px solid black;
+    border-radius: 3px;
 }
 
 /* -----------------------------
@@ -221,7 +221,9 @@ footer {
     display: inline-block;
 }
 
-/* Football Diary Specific */
+/* -----------------------------
+   FOOTBALL DIARY SPECIFIC
+------------------------------- */
 .football-games .game-entry {
     max-width: 600px;
     margin: 0 auto 15px auto; /* narrow columns, centered */
@@ -242,10 +244,12 @@ footer {
     color: #222;
 }
 
-/* Match page videos */
+/* -----------------------------
+   MATCH PAGE VIDEOS
+------------------------------- */
 .box iframe {
     width: 100%;
-    max-width: 560px; /* keep reasonable width */
+    max-width: 560px; 
     height: 315px;
     display: block;
     margin: 5px 0;
@@ -258,7 +262,7 @@ footer {
 }
 
 .video-thumbnails img {
-    width: 100px;      /* small thumbnail size */
+    width: 100px;      
     cursor: pointer;
     border: 2px solid black;
     border-radius: 3px;
