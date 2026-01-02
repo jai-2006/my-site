@@ -1,194 +1,213 @@
-/* =================================
-   BASIC RESET
-   ================================= */
-
-body, h1, h2, h3, p, ul, li, section, nav, footer {
-  margin: 0;
-  padding: 0;
-}
-
-/* =================================
-   GLOBAL STYLES
-   ================================= */
-
-html {
-  scroll-behavior: auto;
-
-  /* Firefox scrollbar fallback */
-  scrollbar-width: auto;
-  scrollbar-color: #e0e0e0 #c0c0c0;
-}
-
+/* -----------------------------
+   GENERAL BODY & PAGE
+------------------------------- */
 body {
-  font-family: Tahoma, Verdana, Arial, sans-serif;
-  background-color: #fff8f0; /* warm cream */
-  color: #333333; /* readable dark grey */
-  line-height: 1.5;
+    background: url('media/background1.png') repeat;
+    background-color: #fdf8f0;
+    font-family: Verdana, Tahoma, Arial, sans-serif;
+    font-size: 13px;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
-/* Remove all rounded corners (retro look) */
-* {
-  border-radius: 0 !important;
+#page {
+    width: 880px;
+    margin: 30px auto;
+    display: flex;
+    min-height: 100vh;
 }
 
-/* =================================
-   NAVIGATION
-   ================================= */
-
-nav {
-  background-color: #ffecd1;
-  border-bottom: 2px solid #ffb07c;
-  padding: 10px 0;
+/* -----------------------------
+   SIDEBAR
+------------------------------- */
+#sidebar {
+    width: 220px;
+    padding: 10px;
+    background: #f6f2ea;
+    border: 2px dashed #ffb07c;
+    margin-right: 20px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
+#sidebar h2 {
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    color: #ff6f61;
+    margin: 0 0 10px 0;
+    text-shadow: 1px 1px #ffe4d6;
 }
 
-nav ul li {
-  margin: 0 15px;
+#sidebar p {
+    font-size: 12px;
+    margin: 5px 0;
 }
 
-nav ul li a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #e76f51;
+#sidebar ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 5px 0;
 }
 
-nav ul li a:hover {
-  color: #d45d3c;
+#sidebar ul li {
+    margin-bottom: 4px;
 }
 
-/* =================================
-   SECTIONS
-   ================================= */
-
-.section {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 15px;
-  border: 2px dotted #ffb07c;
-  background-color: #ffecd1;
+#sidebar a {
+    color: #ff6f61;
+    text-decoration: none;
+    transition: all 0.2s ease;
 }
 
-/* =================================
-   DIARY / BLOG / MUSIC ENTRIES
-   ================================= */
-
-.entry,
-.music-entry,
-.blog-entry {
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #ffd8b3;
-  border: 1px solid #ffb07c;
+#sidebar a:hover {
+    text-decoration: underline;
+    color: #ff3b2f;
 }
 
-.blog-entry {
-  border-style: dashed;
+#sidebar img.avatar {
+    width: 180px;
+    display: block;
+    margin-bottom: 10px;
 }
 
-/* Media inside entries */
-.entry img,
-.entry video {
-  display: block;
-  margin: 10px 0;
-  max-width: 100%;
+/* Spotify embed smaller for sidebar */
+#sidebar iframe {
+    margin-top: 10px;
+    width: 180px;
+    height: 50px;
 }
 
-/* =================================
-   LINKS
-   ================================= */
-
-#links ul {
-  list-style-type: square;
-  margin-left: 20px;
+/* Films in sidebar */
+#films-container div {
+    margin-bottom: 10px;
+    text-align: center;
 }
 
-#links ul li a {
-  text-decoration: none;
-  color: #e76f51;
+#films-container img {
+    width: 100px;
+    border: 2px solid #ffb07c;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-#links ul li a:hover {
-  color: #d45d3c;
+#films-container p {
+    font-size: 11px;
+    margin: 3px 0 0 0;
 }
 
-/* =================================
-   AVATAR
-   ================================= */
-
-.avatar {
-  width: 150px;
-  border: 2px solid #ffb07c;
+/* -----------------------------
+   MAIN CONTENT / DIARY
+------------------------------- */
+#content {
+    flex: 1;
+    padding: 15px;
+    background: rgba(255,255,255,0.9);
+    border: 2px dashed #ffb07c;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
-/* =================================
+.entry {
+    margin-bottom: 30px;
+}
+
+.entry-header {
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.entry img {
+    max-width: 100%;
+    border: 2px solid #ffb07c;
+    margin-top: 5px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+}
+
+.caption {
+    font-size: 11px;
+    color: #777;
+    font-style: italic;
+    margin: 4px 0 10px;
+}
+
+.meta {
+    font-size: 11px;
+    color: #444;
+}
+
+/* Dividers */
+.divider {
+    border: none;
+    border-top: 1px dotted #aaa;
+    margin: 15px 0;
+}
+
+/* -----------------------------
+   HIT COUNTER
+------------------------------- */
+#hit-counter-wrapper {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(254,246,240,0.9);
+    border: 2px dashed #ffb07c;
+    padding: 5px 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    color: #ff6f61;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+#counter-display {
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* -----------------------------
    FOOTER
-   ================================= */
-
+------------------------------- */
 footer {
-  text-align: center;
-  margin: 20px 0;
-  padding: 10px;
-  background-color: #ffecd1;
-  border-top: 2px solid #ffb07c;
+    text-align:center;
+    font-size:11px;
+    color:#555;
+    margin-top:30px;
 }
 
-/* =================================
-   CLASSIC WINDOWS SCROLLBAR
-   Chrome / Edge / Safari
-   ================================= */
-
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  width: 16px;
+/* -----------------------------
+   OPTIONAL DECORATIONS
+------------------------------- */
+/* Tiny star before h2 */
+h2:before {
+    content: "★ ";
+    color: #ffb07c;
 }
 
-html::-webkit-scrollbar-track,
-body::-webkit-scrollbar-track {
-  background: #c0c0c0;
-  border-left: 1px solid #808080;
+/* Links hover icon effect */
+a:hover:before {
+    content: "♥ ";
+    color: #ff6f61;
+    margin-right: 3px;
+    transition: all 0.2s ease;
 }
 
-html::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar-thumb {
-  background: #e0e0e0;
-  border: 2px solid #808080;
-  box-shadow:
-    inset -1px -1px 0 #ffffff,
-    inset 1px 1px 0 #404040;
+/* Main headings retro style */
+h1 {
+    font-family: "Courier New", monospace;
+    font-size: 36px;
+    color: #ff6f61;
+    text-shadow: 1px 1px #ffe4d6;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
-html::-webkit-scrollbar-thumb:hover,
-body::-webkit-scrollbar-thumb:hover {
-  background: #d6d6d6;
+/* Optional hover on diary images */
+.entry img:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
 }
-
-html::-webkit-scrollbar-button,
-body::-webkit-scrollbar-button {
-  height: 16px;
-  background: #c0c0c0;
-  border: 1px solid #808080;
-  box-shadow:
-    inset -1px -1px 0 #ffffff,
-    inset 1px 1px 0 #404040;
-}
-
-html::-webkit-scrollbar-corner,
-body::-webkit-scrollbar-corner {
-  background: #c0c0c0;
-}
-
-/* =================================
-   DEBUG (REMOVE LATER IF YOU WANT)
-   Forces scroll so you can see scrollbar
-   ================================= */
-
-/*
-body {
-  min-height: 200vh;
-}
-*/
