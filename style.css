@@ -2,8 +2,8 @@
    GENERAL BODY
 ------------------------------- */
 body {
-    background-color: #fdf8f0;
-    font-family: Verdana, Tahoma, Arial, sans-serif;
+    background-color: #f4f4f4;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     color: #333;
     margin: 0;
     padding: 0;
@@ -23,75 +23,77 @@ body {
    SIDEBAR
 ------------------------------- */
 #sidebar {
-    width: 220px;
-    padding: 15px;
-    background: #f6f2ea;
-    border: 2px dashed #aaa;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    width: 240px;
+    padding: 20px;
+    background: #fff;
+    border-right: 2px solid #ccc;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
 }
 
 #sidebar h2 {
-    font-family: "Courier New", monospace;
+    font-family: 'Courier New', monospace;
     font-size: 18px;
-    color: #444;
-    margin: 0 0 10px 0;
-}
-
-#sidebar p {
-    font-size: 12px;
-    margin: 5px 0;
-}
-
-#sidebar ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin: 5px 0;
-}
-
-#sidebar ul li {
-    margin-bottom: 4px;
-}
-
-#sidebar a {
-    color: #333;
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-
-#sidebar a:hover {
-    text-decoration: underline;
-    color: #555;
+    color: #222;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
 }
 
 #sidebar img.avatar {
     width: 180px;
     display: block;
-    margin-bottom: 10px;
-    border: 2px solid #aaa;
+    margin-bottom: 15px;
+    border-radius: 3px;
 }
 
-/* -----------------------------
-   SIDEBAR MEDIA
-------------------------------- */
 #sidebar iframe {
-    margin-top: 10px;
-    width: 180px;
-    height: 50px; /* smaller music embed */
+    width: 100%;
+    height: 60px;
+    margin-bottom: 15px;
+    border: none;
 }
 
-#films-container div {
-    margin-bottom: 10px;
+#films-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.film-item {
     text-align: center;
 }
 
-#films-container img {
-    width: 100px;
-    border: 2px solid #aaa;
+.film-item img {
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-#films-container p {
-    font-size: 11px;
-    margin: 3px 0 0 0;
+.film-item p {
+    margin: 0;
+    font-size: 12px;
+    color: #333;
+}
+
+/* Sidebar links */
+#sidebar ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#sidebar ul li {
+    margin-bottom: 8px;
+}
+
+#sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#sidebar ul li a:hover {
+    color: #000;
 }
 
 /* -----------------------------
@@ -99,44 +101,46 @@ body {
 ------------------------------- */
 #content {
     flex: 1;
-    padding: 20px;
-    background: rgba(255,255,255,0.95);
-    border: 2px dashed #aaa;
-    margin-left: 15px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    padding: 25px;
+    background: #fff;
 }
 
 #content h1 {
-    font-family: "Courier New", monospace;
+    font-family: 'Courier New', monospace;
     font-size: 36px;
-    color: #444;
+    color: #222;
     margin-top: 0;
 }
 
 #content h2.subtitle {
-    font-family: "Courier New", monospace;
+    font-family: 'Courier New', monospace;
     font-size: 20px;
-    color: #555;
-    margin: 5px 0 15px 0;
+    color: #444;
+    margin: 10px 0 15px 0;
 }
 
 #content p {
-    line-height: 1.4;
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
-/* -----------------------------
-   DECORATIVE TOUCHES
-------------------------------- */
-h2.subtitle:before {
-    content: "★ ";
-    color: #aaa;
+/* Diary entries */
+.entry {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
 }
 
-a:hover:before {
-    content: "♥ ";
-    color: #555;
-    margin-right: 3px;
+.entry img, .entry video {
+    max-width: 100%;
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+.caption {
+    font-size: 12px;
+    color: #666;
+    margin-top: 3px;
 }
 
 /* -----------------------------
@@ -147,32 +151,4 @@ footer {
     font-size:11px;
     color:#555;
     margin-top:30px;
-}
-
-/* -----------------------------
-   HIT COUNTER
-------------------------------- */
-#hit-counter-wrapper {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(255,255,255,0.9);
-    border: 2px dashed #aaa;
-    padding: 5px 10px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9rem;
-    color: #333;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-    z-index: 999;
-}
-
-#counter-display {
-    font-weight: bold;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    display: inline-block;
-    transition: transform 0.2s ease, color 0.2s ease;
 }
