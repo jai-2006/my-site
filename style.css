@@ -1,9 +1,9 @@
 /* -----------------------------
-   GENERAL BODY
+   BODY
 ------------------------------- */
 body {
-    background-color: #f4f4f4;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(to bottom, #fdf6ec, #f0e6dc);
+    font-family: Arial, sans-serif;
     color: #333;
     margin: 0;
     padding: 0;
@@ -16,47 +16,52 @@ body {
     display: flex;
     min-height: 100vh;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 20px auto;
+    border: 3px dashed #ff9900;
+    background: #fffdf7;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.15);
 }
 
 /* -----------------------------
    SIDEBAR
 ------------------------------- */
 #sidebar {
-    width: 240px;
+    width: 220px;
     padding: 20px;
-    background: #fff;
-    border-right: 2px solid #ccc;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    background: #fff8f0;
+    border-right: 2px dashed #ff9900;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
 #sidebar h2 {
     font-family: 'Courier New', monospace;
-    font-size: 18px;
-    color: #222;
+    font-size: 16px;
+    color: #cc3300;
     margin-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
+    border-bottom: 1px dotted #cc3300;
+    padding-bottom: 3px;
 }
 
 #sidebar img.avatar {
     width: 180px;
     display: block;
     margin-bottom: 15px;
+    border: 2px solid #ff9900;
     border-radius: 3px;
 }
 
 #sidebar iframe {
-    width: 100%;
-    height: 60px;
+    width: 180px;
+    height: 40px;
     margin-bottom: 15px;
-    border: none;
+    border: 1px solid #ff9900;
 }
 
+/* Films */
 #films-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
 .film-item {
@@ -64,22 +69,25 @@ body {
 }
 
 .film-item img {
-    width: 100%;
+    width: 100px;
+    height: auto;
+    border: 2px solid #cc3300;
     border-radius: 3px;
-    margin-bottom: 5px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    display: block;
+    margin: 0 auto 5px auto;
 }
 
 .film-item p {
     margin: 0;
-    font-size: 12px;
-    color: #333;
+    font-size: 11px;
+    color: #444;
 }
 
-/* Sidebar links */
+/* Links */
 #sidebar ul {
     list-style-type: none;
     padding-left: 0;
+    margin-top: 15px;
 }
 
 #sidebar ul li {
@@ -88,12 +96,13 @@ body {
 
 #sidebar ul li a {
     text-decoration: none;
-    color: #333;
+    color: #cc3300;
     font-weight: bold;
 }
 
 #sidebar ul li a:hover {
-    color: #000;
+    text-decoration: underline;
+    color: #ff6600;
 }
 
 /* -----------------------------
@@ -102,21 +111,21 @@ body {
 #content {
     flex: 1;
     padding: 25px;
-    background: #fff;
 }
 
 #content h1 {
     font-family: 'Courier New', monospace;
-    font-size: 36px;
-    color: #222;
+    font-size: 34px;
+    color: #cc3300;
     margin-top: 0;
+    text-shadow: 1px 1px #ffd699;
 }
 
 #content h2.subtitle {
     font-family: 'Courier New', monospace;
     font-size: 20px;
-    color: #444;
-    margin: 10px 0 15px 0;
+    color: #993300;
+    margin: 5px 0 15px 0;
 }
 
 #content p {
@@ -126,9 +135,9 @@ body {
 
 /* Diary entries */
 .entry {
-    margin-bottom: 30px;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 15px;
+    margin-bottom: 25px;
+    border-bottom: 1px dotted #cc3300;
+    padding-bottom: 10px;
 }
 
 .entry img, .entry video {
@@ -150,5 +159,32 @@ footer {
     text-align:center;
     font-size:11px;
     color:#555;
-    margin-top:30px;
+    margin-top:20px;
+}
+
+/* -----------------------------
+   HIT COUNTER
+------------------------------- */
+#hit-counter-wrapper {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: #fff8f0;
+    border: 2px dashed #cc3300;
+    padding: 5px 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: #cc3300;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+#counter-display {
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    display: inline-block;
 }
