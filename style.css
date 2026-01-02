@@ -12,52 +12,35 @@ body {
 /* -----------------------------
    HEADER / TOP BANNER
 ------------------------------- */
+
 #header {
     width: 100%;
-    background: #1db954; /* unified Spotify-like green */
+    background: #1db954; /* unified green for header + Spotify */
     border-bottom: 2px dashed #ff8c42;
     display: flex;
     flex-direction: column;
-    padding: 3px 20px;      /* slimmer padding */
+    padding: 2px 20px;      /* very slim */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Top row: avatar + title + nav */
 #header .top-row {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
     flex-wrap: wrap;
-    margin-bottom: 3px;
-}
-
-#header .left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    margin-bottom: 0; /* remove margin below top row */
 }
 
 #header .left img {
-    width: 35px; /* smaller avatar */
+    width: 30px; /* smaller avatar */
     border: 2px solid #222;
 }
 
-/* Nav links */
-#header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-}
-
 #header nav ul li a {
-    text-decoration: none;
-    color: #fff;          /* white links on green */
-    font-weight: bold;
     padding: 2px 5px;
     font-size: 13px;
+    color: #fff;
 }
 
 #header nav ul li a:hover {
@@ -66,14 +49,17 @@ body {
 }
 
 /* Bottom row: Spotify banner */
-#header .music-row iframe {
+#header .music-row {
     width: 100%;
-    max-width: 500px;
-    height: 80px;
-    border-radius: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#header .music-row iframe {
+    width: 500px;    /* fixed width */
+    height: 80px;    /* same as before */
     border: none;
     display: block;
-    margin: 0 auto;
     background: #1db954;
 }
 
@@ -119,6 +105,7 @@ p {
     line-height: 1.5;
 }
 
+
 /* -----------------------------
    FILMS ROW
 ------------------------------- */
@@ -129,16 +116,16 @@ p {
 }
 
 .film-item {
-    text-align: center;
     flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centers image and text */
 }
 
 .film-item img {
     width: 80px;
-    height: auto;
     border: 2px solid #222;
     border-radius: 3px;
-    display: block;
     margin-bottom: 3px;
 }
 
@@ -146,9 +133,9 @@ p {
     margin: 0;
     font-size: 10px;
     color: #222;
-    white-space: nowrap;
+    text-align: center;
     width: 80px; /* match image width */
-    display: inline-block;
+    display: block;
 }
 
 /* -----------------------------
