@@ -16,6 +16,22 @@ html, body {
     box-sizing: border-box;
 }
 
+/* Diary page - stack all entries in one column */
+body.diary-page #content {
+    display: block;        /* normal block layout */
+    max-width: 800px;      /* narrow column like a diary */
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+body.diary-page #content .box {
+    width: 100%;           /* full width of content area */
+    max-width: 100%;
+    flex: none;            /* disable flex sizing */
+    margin-bottom: 20px;   /* space between diary entries */
+}
+
+
 /* ---------------------------------
    HEADER / TOP BANNER
 ---------------------------------- */
