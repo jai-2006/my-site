@@ -18,7 +18,7 @@ body {
 #header {
     width: 100%;
     background: #ccc; /* gray banner */
-    border-bottom: 2px dashed #ff8c42;
+    border-bottom: 3px dashed black;
     display: flex;
     flex-direction: column;
     padding: 2px 20px;
@@ -96,7 +96,7 @@ body {
 /* Boxes for MySpace vibe */
 .box {
     background: #fffef9;
-    border: 2px dashed #ff8c42;
+    border: 3px dashed black;
     padding: 15px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
 }
