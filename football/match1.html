@@ -66,5 +66,18 @@
   <p>© 2026 My Site</p>
 </footer>
 
+<script>
+const thumbnails = document.querySelectorAll('.video-thumbnails img');
+const playerDiv = document.getElementById('video-player');
+
+thumbnails.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+        const iframeURL = thumb.dataset.iframe;
+        playerDiv.innerHTML = `<iframe src="${iframeURL}" width="560" height="315" frameborder="0" allowfullscreen></iframe>`;
+    });
+});
+</script>
+
+  
 </body>
 </html>
