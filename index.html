@@ -2,44 +2,40 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>About Me</title>
+<title>Homepage</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="page">
-
-  <!-- SIDEBAR -->
-  <aside id="sidebar">
-    <img src="images/avatar.png" alt="Avatar" class="avatar">
-
-    <h2>Recent Films</h2>
-    <div id="films-container"></div>
-
-    <h2>Links</h2>
+<!-- NAVBAR -->
+<nav id="navbar">
+    <div class="logo">
+        <img src="images/avatar.png" alt="Avatar">
+        <span>title</span>
+    </div>
     <ul>
-      <li><a href="about.html">About Me</a></li>
-      <li><a href="diary.html">Diary</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="diary.html">Diary</a></li>
     </ul>
-  </aside>
+</nav>
 
-  <!-- MAIN CONTENT -->
-  <main id="content">
+<!-- MAIN CONTENT -->
+<div id="content">
+
     <!-- Music Banner -->
     <iframe id="music-banner" src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
             frameborder="0" allow="encrypted-media" allowtransparency="true"></iframe>
 
-    <h1>title</h1>
     <h2 class="subtitle">subtitle</h2>
-    <p>Brief intro text here. Early-2000s vibes, MySpace style.</p>
+    <p>Brief intro text goes here. MySpace-style, retro vibes.</p>
+
+    <h2 class="subtitle">Recent Films</h2>
+    <div id="films-container"></div>
 
     <h2 class="subtitle">Latest Diary Entry</h2>
-    <div class="entry" id="latest-entry">
-      <!-- Populated by JS -->
-    </div>
+    <div class="entry" id="latest-entry"></div>
 
-    <p><a href="diary.html">View all diary entries</a></p>
-  </main>
+    <p><a href="diary.html">View full diary</a></p>
 
 </div>
 
@@ -62,7 +58,7 @@ const diaryData = [
   }
 ];
 
-// Show only latest entry on homepage
+// Show only latest entry
 const latest = diaryData[0];
 const latestDiv = document.getElementById('latest-entry');
 let html = `<h3 class="subtitle">${latest.date}</h3><p>${latest.text}</p>`;
@@ -70,14 +66,15 @@ latest.images.forEach((img,i)=>html+=`<img src="${img}" alt="Diary Image"><p cla
 latest.videos.forEach((vid,i)=>html+=`<video controls><source src="${vid}" type="video/mp4">Your browser does not support the video tag.</video><p class="caption">${latest.captions[i]||''}</p>`);
 latestDiv.innerHTML = html;
 
-// Films sidebar
+// Films data
 const filmsData = [
   {"title":"Marty Supreme","link":"https://letterboxd.com/jai_movies/film/marty-supreme/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/1/1/9/7/4/9/9/1197499-marty-supreme-0-600-0-900-crop.jpg?v=b14a26bb43","pubDate":"2025-12-26"},
   {"title":"One to One: John & Yoko","link":"https://letterboxd.com/jai_movies/film/one-to-one-john-yoko/1/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/1/2/0/0/8/7/4/1200874-one-to-one-john-yoko-0-600-0-900-crop.jpg?v=9b9613f3af","pubDate":"2025-12-25"},
   {"title":"The Place Beyond the Pines","link":"https://letterboxd.com/jai_movies/film/the-place-beyond-the-pines/","thumbnail":"https://a.ltrbxd.com/resized/film-poster/8/0/2/0/0/80200-the-place-beyond-the-pines-0-600-0-900-crop.jpg?v=e30d64f591","pubDate":"2025-12-19"}
 ];
+
 const container = document.getElementById('films-container');
-filmsData.forEach(film => {
+filmsData.forEach(film=>{
   const div = document.createElement('div');
   div.className='film-item';
   div.innerHTML=`<a href="${film.link}" target="_blank"><img src="${film.thumbnail}" alt="${film.title}"></a><p><strong>${film.title}</strong></p><p>${film.pubDate}</p>`;
@@ -100,3 +97,4 @@ document.body.appendChild(counterWrapper);
 
 </body>
 </html>
+
