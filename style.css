@@ -2,7 +2,7 @@
    BODY
 ------------------------------- */
 body {
-    background: #e5e5e5; /* neutral light grey */
+    background: #fdf6e3; /* soft cream background */
     font-family: 'Inter', Arial, sans-serif;
     color: #222;
     margin: 0;
@@ -17,8 +17,8 @@ body {
     min-height: 100vh;
     max-width: 1000px;
     margin: 20px auto;
-    border: 2px dashed #444;
-    background: #fdfdfd;
+    border: 2px dashed #ff8c42; /* playful retro accent */
+    background: #fffef9;
     box-shadow: 4px 4px 10px rgba(0,0,0,0.15);
 }
 
@@ -28,8 +28,8 @@ body {
 #sidebar {
     width: 220px;
     padding: 20px;
-    background: #f7f7f7;
-    border-right: 2px dashed #444;
+    background: #ffe5b4; /* muted orange */
+    border-right: 2px dashed #ff8c42;
     box-shadow: 2px 0 5px rgba(0,0,0,0.05);
 }
 
@@ -46,14 +46,14 @@ body {
     width: 180px;
     display: block;
     margin-bottom: 15px;
-    border: 2px solid #444;
+    border: 2px solid #222;
     border-radius: 3px;
 }
 
-/* Compact Spotify embed */
+/* Spotify full embed */
 #sidebar iframe.spotify {
-    width: 50px;
-    height: 50px;
+    width: 180px;
+    height: 80px;
     margin-bottom: 15px;
     border-radius: 5px;
 }
@@ -63,8 +63,9 @@ body {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    overflow-x: auto;
+    overflow-x: auto; 
     padding-bottom: 5px;
+    flex-wrap: nowrap;
 }
 
 .film-item {
@@ -75,7 +76,7 @@ body {
 .film-item img {
     width: 80px;
     height: auto;
-    border: 2px solid #444;
+    border: 2px solid #222;
     border-radius: 3px;
     display: block;
     margin-bottom: 3px;
@@ -143,7 +144,7 @@ body {
 /* Diary entries */
 .entry {
     margin-bottom: 25px;
-    border-bottom: 1px dotted #444;
+    border-bottom: 1px dotted #ff8c42;
     padding-bottom: 10px;
 }
 
@@ -176,8 +177,8 @@ footer {
     position: fixed;
     bottom: 10px;
     right: 10px;
-    background: #f7f7f7;
-    border: 2px dashed #444;
+    background: #ffe5b4;
+    border: 2px dashed #ff8c42;
     padding: 5px 10px;
     font-family: 'Inter', Arial, sans-serif;
     font-size: 0.9rem;
