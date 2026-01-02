@@ -10,54 +10,102 @@ body {
 }
 
 /* -----------------------------
-   PAGE LAYOUT
+   NAVBAR
 ------------------------------- */
-#page {
-    display: flex;
-    min-height: 100vh;
-    max-width: 1000px;
-    margin: 20px auto;
-    border: 2px dashed #ff8c42;
-    background: #fffef9;
-    box-shadow: 4px 4px 10px rgba(0,0,0,0.15);
-}
-
-/* -----------------------------
-   SIDEBAR
-------------------------------- */
-#sidebar {
-    width: 220px;
-    padding: 20px;
+#navbar {
+    width: 100%;
     background: #ffe5b4;
-    border-right: 2px dashed #ff8c42;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    border-bottom: 2px dashed #ff8c42;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-#sidebar h2 {
-    font-family: 'Inter', Arial, sans-serif;
-    font-size: 16px;
-    color: #222;
-    margin-bottom: 10px;
-    border-bottom: 1px dotted #222;
-    padding-bottom: 3px;
+#navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-#sidebar img.avatar {
-    width: 180px;
-    display: block;
-    margin-bottom: 15px;
+#navbar .logo img {
+    width: 40px;
     border: 2px solid #222;
     border-radius: 3px;
 }
 
-/* Films horizontal */
+#navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+    padding: 5px 8px;
+}
+
+#navbar ul li a:hover {
+    text-decoration: underline;
+    color: #555;
+}
+
+/* -----------------------------
+   PAGE CONTENT
+------------------------------- */
+#content {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Titles */
+h1, h2.subtitle {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    color: #222;
+    margin: 10px 0;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2.subtitle {
+    font-size: 20px;
+}
+
+/* Paragraphs */
+p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* -----------------------------
+   MUSIC BANNER
+------------------------------- */
+#music-banner {
+    width: 100%;
+    height: 90px;
+    margin-bottom: 15px;
+}
+
+/* -----------------------------
+   FILMS ROW
+------------------------------- */
 #films-container {
     display: flex;
     flex-direction: row;
     gap: 10px;
     overflow-x: auto; 
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     flex-wrap: nowrap;
+    margin-bottom: 20px;
 }
 
 .film-item {
@@ -81,59 +129,9 @@ body {
     white-space: nowrap;
 }
 
-/* Sidebar links */
-#sidebar ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-top: 15px;
-}
-
-#sidebar ul li {
-    margin-bottom: 8px;
-}
-
-#sidebar ul li a {
-    text-decoration: none;
-    color: #222;
-    font-weight: bold;
-}
-
-#sidebar ul li a:hover {
-    text-decoration: underline;
-    color: #555;
-}
-
 /* -----------------------------
-   MAIN CONTENT
+   DIARY ENTRIES
 ------------------------------- */
-#content {
-    flex: 1;
-    padding: 25px;
-}
-
-#content h1, #content h2.subtitle {
-    font-family: 'Inter', Arial, sans-serif;
-    font-weight: 700;
-}
-
-#content h1 {
-    font-size: 32px;
-    color: #222;
-    margin-top: 0;
-}
-
-#content h2.subtitle {
-    font-size: 20px;
-    color: #333;
-    margin: 5px 0 15px 0;
-}
-
-#content p {
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-/* Diary entries */
 .entry {
     margin-bottom: 25px;
     border-bottom: 1px dotted #ff8c42;
@@ -159,7 +157,7 @@ footer {
     text-align:center;
     font-size:11px;
     color:#555;
-    margin-top:20px;
+    margin:20px 0;
 }
 
 /* -----------------------------
@@ -187,13 +185,4 @@ footer {
     font-size: 1rem;
     letter-spacing: 1px;
     display: inline-block;
-}
-
-/* -----------------------------
-   MUSIC BANNER
-------------------------------- */
-#music-banner {
-    width: 100%;
-    height: 90px;
-    margin-bottom: 15px;
 }
