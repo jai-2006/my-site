@@ -16,22 +16,6 @@ html, body {
     box-sizing: border-box;
 }
 
-/* Diary page - stack all entries in one column */
-body.diary-page #content {
-    display: block;        /* normal block layout */
-    max-width: 800px;      /* narrow column like a diary */
-    margin: 20px auto;
-    padding: 0 20px;
-}
-
-body.diary-page #content .box {
-    width: 100%;           /* full width of content area */
-    max-width: 100%;
-    flex: none;            /* disable flex sizing */
-    margin-bottom: 20px;   /* space between diary entries */
-}
-
-
 /* ---------------------------------
    HEADER / TOP BANNER
 ---------------------------------- */
@@ -90,15 +74,18 @@ body.diary-page #content .box {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 5px;
+    margin-top: 15px; /* moves Spotify down from top, away from bottom */
 }
 
 #header .music-row iframe {
     width: 500px;
     max-width: 100%;
     height: 80px;
-    border: none;
-    background: transparent;
+    border: 4px double black;   /* retro double border */
+    border-radius: 3px;
+    background: #fffef9;
+    display: block;
+    margin: 0 auto;              /* centers horizontally */
 }
 
 /* ---------------------------------
@@ -125,7 +112,7 @@ body.diary-page #content .box {
     box-sizing: border-box;
 }
 
-/* First box (profile) centered */
+/* First box (profile) centered text */
 #content .box:first-child {
     text-align: center;
 }
@@ -152,18 +139,6 @@ p {
     line-height: 1.5;
 }
 
-#header .music-row iframe {
-    width: 500px;
-    max-width: 100%;
-    height: 80px;
-    border: 4px double black;   /* add the retro double border */
-    border-radius: 3px;          /* optional, soft corners */
-    background: #fffef9;         /* matches your MySpace box background */
-    display: block;
-    margin: 0 auto;              /* centers horizontally */
-}
-
-
 /* ---------------------------------
    FILMS ROW
 ---------------------------------- */
@@ -185,7 +160,7 @@ p {
     width: 80px;
     margin-bottom: 3px;
     border-radius: 3px;
-    /* No border */
+    /* NO border for films */
 }
 
 .film-item p {
@@ -201,14 +176,14 @@ p {
 ---------------------------------- */
 #latest-entry,
 #all-entries .box {
-    flex: 1 1 100%;       /* full width */
+    flex: 1 1 100%;
     max-width: 100%;
     margin-bottom: 20px;
 }
 
 .entry video {
     width: 100%;
-    max-width: 1000px;   /* controls how big they can get */
+    max-width: 1000px;
     height: auto;
     display: block;
     margin: 15px auto;
@@ -219,7 +194,6 @@ p {
     margin-top: 10px;
     border-radius: 3px;
 }
-
 
 #all-entries .box .caption {
     font-size: 12px;
@@ -355,9 +329,9 @@ footer {
 }
 
 .profile-image img {
-    width: 120px;              /* classic MySpace size */
+    width: 120px;
     height: auto;
-    border: 4px double black;  /* matches site borders */
+    border: 2px solid #222; /* simple single line border */
     background: #fffef9;
 }
 
