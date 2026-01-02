@@ -138,14 +138,6 @@ p {
     line-height: 1.5;
 }
 
-/* Make diary entry boxes full width so they’re not squished */
-.entry,
-#latest-entry {
-    flex: 1 1 100%;
-    max-width: 100%;
-}
-
-
 /* ---------------------------------
    FILMS ROW
 ---------------------------------- */
@@ -310,7 +302,3 @@ footer {
     }
 }
 
-#diary .box {
-    flex: 1 1 100% !important;
-    max-width: 100% !important;
-}
