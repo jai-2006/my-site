@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>(Site Name) - Diary</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+    background: url('media/background1.png') repeat;
+    background-color: #fdf8f0;
+    font-family: Verdana, Tahoma, Arial, sans-serif;
+    font-size: 13px;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+#page {
+    width: 880px;
+    margin: 30px auto;
+    display: flex;
+    min-height: 100vh;
+}
+#sidebar {
+    width: 220px;
+    padding: 10px;
+    background: #f6f2ea;
+    border: 2px dashed #ffb07c;
+    margin-right: 20px;
+}
+#sidebar h2 {
+    font-size: 18px;
+    margin: 0 0 5px 0;
+    color: #ff6f61;
+}
+#sidebar img.avatar {
+    width: 180px;
+    display: block;
+    margin-bottom: 10px;
+}
+#sidebar p { font-size: 12px; margin: 5px 0; }
+#sidebar ul { list-style-type: disc; padding-left: 20px; }
+#sidebar iframe { margin-top: 10px; width:180px; height:50px; } /* smaller music embed */
+#content {
+    flex: 1;
+    padding: 15px;
+    background: rgba(255,255,255,0.9);
+    border: 2px dashed #ffb07c;
+}
+.entry { margin-bottom: 30px; }
+.entry-header { font-size: 11px; color: #555; margin-bottom: 10px; }
+.entry img { max-width: 100%; border: 2px solid #ffb07c; margin-top: 5px; }
+.caption { font-size: 11px; color: #777; font-style: italic; margin: 4px 0 10px; }
+.meta { font-size: 11px; color: #444; }
+.divider { border: none; border-top: 1px dotted #aaa; }
+#hit-counter-wrapper {
+    position: fixed; bottom: 10px; right: 10px;
+    background: rgba(254,246,240,0.9);
+    border: 2px dashed #ffb07c; padding:5px 10px;
+    font-family: 'Courier New', monospace; font-size:0.9rem; color:#ff6f61;
+    display:flex; align-items:center; gap:5px; box-shadow:2px 2px 6px rgba(0,0,0,0.1); z-index:999;
+}
+#counter-display { font-weight:bold; font-size:1.1rem; letter-spacing:1px; display:inline-block; transition: transform 0.2s ease, color 0.2s ease; }
+#films-container div { margin-bottom:10px; }
+#films-container img { width:100px; border:2px solid #ffb07c; }
+#films-container p { font-size:11px; margin:3px 0 0 0; }
+footer { text-align:center; font-size:11px; color:#555; margin-top:30px; }
+</style>
+</head>
+<body>
+<div id="page">
+
+<!-- Sidebar -->
+<div id="sidebar">
+    <h2>Jai</h2>
+    <p>i’m tired</p>
+    <img src="images/avatar.png" alt="Avatar" class="avatar">
+
+    <hr>
+
+    <p><strong>currently listening to</strong></p>
+    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" frameborder="0" allow="encrypted-media" allowtransparency="true"></iframe>
+
+    <hr>
+
+    <p><strong>recent films</strong></p>
+    <div id="films-container"></div>
+
+    <hr>
+
+    <p><strong>pages</strong></p>
+    <ul>
+        <li><a href="index.html">home</a></li>
+        <li><a href="diary.html">diary</a></li>
+        <li><a href="#links">links</a></li>
+        <li><a href="#guestbook">guestbook</a></li>
+    </ul>
+
+    <p class="updated">last updated: jan 2026</p>
+</div>
+
+<!-- Main content -->
+<div id="content">
+    <!-- Diary Entry Example -->
+    <div class="entry">
+        <div class="entry-header">
+            <span class="date">02 jan 2006</span> | <span class="time">01:43 am</span>
+        </div>
+
+        <p>couldn’t sleep again. uploaded these even though they’re bad quality.</p>
+
+        <img src="media/photos/bedroom.jpg" alt="bedroom">
+        <p class="caption">taken in my room</p>
+
+        <iframe src="https://archive.org/embed/YOUR_VIDEO_ID" width="480" height="360" frameborder="0" allowfullscreen></iframe>
+        <p class="caption">don’t remember why i filmed this</p>
+
+        <p class="meta">mood: restless<br>listening to: radiohead</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- COPY .entry BLOCKS FOR NEW DIARY ENTRIES -->
+
+</div>
+
+</div>
+
+<!-- Hit Counter -->
+<div id="hit-counter-wrapper">
+  <span id="counter-text">Hello! You are visitor #</span>
+  <span id="counter-display">0000</span>
+</div>
+
+<script>
+  // Hit counter
+  let count = localStorage.getItem('hitCount') || 0;
+  count = parseInt(count) + 1;
+  localStorage.setItem('hitCount', count);
+
+  const counterEl = document.getElementById('counter-display');
+  const formattedCount = count.toString().padStart(4, '0');
+  counterEl.textContent = formattedCount;
+
+  counterEl.animate([
+    { transform: 'scale(1.5)', color: '#ffb07c' },
+    { transform: 'scale(1)', color: '#ff6f61' }
+  ], { duration: 300, easing: 'ease-out' });
+</script>
+
+<!-- Recent Films Script -->
+<script>
+const jsonData = {
+  "status": "ok",
+  "items": [
+    {
+      "title": "Marty Supreme, 2025",
+      "link": "https://letterboxd.com/jai_movies/film/marty-supreme/",
+      "thumbnail": "https://a.ltrbxd.com/resized/film-poster/1/1/9/7/4/9/9/1197499-marty-supreme-0-600-0-900-crop.jpg?v=b14a26bb43",
+      "pubDate": "2025-12-26"
+    },
+    {
+      "title": "One to One: John & Yoko, 2024",
+      "link": "https://letterboxd.com/jai_movies/film/one-to-one-john-yoko/1/",
+      "thumbnail": "https://a.ltrbxd.com/resized/film-poster/1/2/0/0/8/7/4/1200874-one-to-one-john-yoko-0-600-0-900-crop.jpg?v=9b9613f3af",
+      "pubDate": "2025-12-25"
+    },
+    {
+      "title": "The Place Beyond the Pines, 2012",
+      "link": "https://letterboxd.com/jai_movies/film/the-place-beyond-the-pines/",
+      "thumbnail": "https://a.ltrbxd.com/resized/film-poster/8/0/2/0/0/80200-the-place-beyond-the-pines-0-600-0-900-crop.jpg?v=e30d64f591",
+      "pubDate": "2025-12-19"
+    }
+  ]
+};
+
+const recentFilms = jsonData.items.slice(0, 3);
+const container = document.getElementById('films-container');
+recentFilms.forEach(film => {
+  const filmHTML = `
+    <div>
+      <a href="${film.link}" target="_blank">
+        <img src="${film.thumbnail}" alt="${film.title}">
+      </a>
+      <p><strong>${film.title}</strong></p>
+      <p>Watched: ${film.pubDate}</p>
+    </div>
+  `;
+  container.innerHTML += filmHTML;
+});
+</script>
+
+<footer>
+    <p>© 2026 (Site Name)</p>
+</footer>
+
+</body>
+</html>
