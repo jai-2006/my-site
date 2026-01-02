@@ -1,3 +1,9 @@
+html, body {
+    overflow-x: hidden;   /* prevents horizontal scrolling */
+    width: 100vw;         /* ensures body matches viewport width */
+    position: relative;   /* keeps elements contained */
+}
+
 /* Global box-sizing and body setup */
 * {
     box-sizing: border-box;
@@ -19,6 +25,7 @@ body {
     width: 100%;
     background: #ccc; /* gray banner */
     border-bottom: 3px dashed black;
+    border-style: double;
     display: flex;
     flex-direction: column;
     padding: 2px 20px;
@@ -97,6 +104,7 @@ body {
 .box {
     background: #fffef9;
     border: 3px dashed black;
+    border-style: double;
     padding: 15px;
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
 }
