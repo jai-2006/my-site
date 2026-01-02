@@ -354,7 +354,7 @@ footer {
 
 /* Homepage profile image */
 #content .box img[src="images/profile.jpg"] {
-    width: 180px;       /* increase this number to make bigger */
+    width: 200px;       /* increase this number to make bigger */
     height: auto;       /* keep proportions */
     border: 4px solid black;  /* single-line border */
     border-radius: 3px; /* optional soft corners */
