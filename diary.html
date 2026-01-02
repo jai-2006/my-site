@@ -7,21 +7,25 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav id="navbar">
-    <div class="logo">
+<!-- HEADER / TOP BANNER -->
+<div id="header">
+    <div class="left">
         <img src="images/avatar.png" alt="Avatar">
         <span>title</span>
     </div>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="diary.html">Diary</a></li>
-    </ul>
-</nav>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="diary.html">Diary</a></li>
+        </ul>
+    </nav>
+</div>
 
 <!-- MAIN CONTENT -->
 <div id="content">
     <h1>Diary</h1>
+
+    <!-- All diary entries in boxes -->
     <div id="all-entries"></div>
 </div>
 
@@ -46,7 +50,7 @@ const diaryData = [
 
 const allDiv = document.getElementById('all-entries');
 diaryData.forEach(entry=>{
-  let html=`<div class="entry"><h3 class="subtitle">${entry.date}</h3><p>${entry.text}</p>`;
+  let html=`<div class="box entry"><h3 class="subtitle">${entry.date}</h3><p>${entry.text}</p>`;
   entry.images.forEach((img,i)=>html+=`<img src="${img}" alt="Diary Image"><p class="caption">${entry.captions[i]||''}</p>`);
   entry.videos.forEach((vid,i)=>html+=`<video controls><source src="${vid}" type="video/mp4">Your browser does not support the video tag.</video><p class="caption">${entry.captions[i]||''}</p>`);
   html+='</div>';
