@@ -114,7 +114,7 @@ html, body {
 
 /* First box (profile) centered text */
 #content .box:first-child {
-    text-align: center;
+    text-align: left;
 }
 
 /* Headings */
@@ -343,7 +343,7 @@ footer {
 @media (max-width: 600px) {
     .profile-inner {
         flex-direction: 1;
-        align-items: flex-start;
+        align-items: center;
         text-align: left;
     }
 
