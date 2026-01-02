@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Team A vs Team B</title>
+<title>Team A vs Team B - Football Diary</title>
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
-<!-- Top navigation -->
+<!-- HEADER / TOP NAV -->
 <div id="header">
   <div class="top-row">
     <nav>
@@ -19,45 +19,44 @@
   </div>
 </div>
 
+<!-- MAIN CONTENT -->
 <div id="content">
-  <h1 class="subtitle">2025-12-20: Team A vs Team B</h1>
-  <p>Stadium: Awesome Arena | Attended</p>
-  <hr>
 
+  <!-- Match Info Box -->
+  <div class="box">
+    <h1 class="subtitle">2025-12-20: Team A vs Team B</h1>
+    <p>Stadium: Awesome Arena | Attended</p>
+    <hr>
+  </div>
+
+  <!-- Commentary Box -->
   <div class="box">
     <h2 class="subtitle">Commentary</h2>
     <p>Here’s a brief summary of the game, your impressions, etc. This is manually entered text.</p>
   </div>
 
-  
+  <!-- Videos Box -->
   <div class="box">
     <h2 class="subtitle">Videos</h2>
 
-   <div class="box">
-  <h2 class="subtitle">Videos</h2>
+    <!-- Thumbnails row -->
+    <div class="video-thumbnails">
+      <img src="https://archive.org/services/img/example-video-1"
+           data-iframe="https://archive.org/embed/example-video-1"
+           alt="Video 1">
+      <img src="https://archive.org/services/img/example-video-2"
+           data-iframe="https://archive.org/embed/example-video-2"
+           alt="Video 2">
+      <img src="https://archive.org/services/img/example-video-3"
+           data-iframe="https://archive.org/embed/example-video-3"
+           alt="Video 3">
+    </div>
 
-  <!-- Thumbnail row -->
-  <div class="video-thumbnails">
-    <img src="https://archive.org/services/img/example-video-1" 
-         data-iframe="https://archive.org/embed/example-video-1" 
-         alt="Video 1">
-    <img src="https://archive.org/services/img/example-video-2" 
-         data-iframe="https://archive.org/embed/example-video-2" 
-         alt="Video 2">
-  </div>
+    <!-- Main video player -->
+    <div id="video-player">
+      <iframe src="https://archive.org/embed/example-video-1" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+    </div>
 
-  <!-- Main video player -->
-  <div class="box" id="video-player">
-    <iframe src="https://archive.org/embed/example-video-1" width="560" height="315" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
-
-
-    <!-- Optional clickable list for multiple videos -->
-    <ul>
-      <li><a href="https://archive.org/details/example-video-1" target="_blank">Video 1</a></li>
-      <li><a href="https://archive.org/details/example-video-2" target="_blank">Video 2</a></li>
-    </ul>
   </div>
 
 </div>
@@ -66,6 +65,7 @@
   <p>© 2026 My Site</p>
 </footer>
 
+<!-- JS for thumbnail click -->
 <script>
 const thumbnails = document.querySelectorAll('.video-thumbnails img');
 const playerDiv = document.getElementById('video-player');
@@ -78,6 +78,5 @@ thumbnails.forEach(thumb => {
 });
 </script>
 
-  
 </body>
 </html>
