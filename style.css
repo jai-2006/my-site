@@ -151,7 +151,7 @@ p {
 }
 
 .film-item {
-    margin: 1px; /* creates visible breathing room */
+    margin: 0.5px; /* creates visible breathing room */
 }
 
 .film-item {
