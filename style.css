@@ -146,24 +146,19 @@ p {
 #films-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* less space around posters */
+    gap: 6px;                 /* small, even gap BETWEEN films */
     justify-content: flex-start;
 }
 
 .film-item {
-    margin: 0.5px; /* creates visible breathing room */
-}
-
-.film-item {
-    flex: 0 0 auto;
+    width: 120px;             /* lock item width */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .film-item img {
-    width: auto;
-    max-width: 120px; /* fit better to poster size */
+    width: 120px;             /* image matches item */
     height: auto;
     margin-bottom: 3px;
     border-radius: 3px;
@@ -174,8 +169,8 @@ p {
     font-size: 10px;
     color: #222;
     text-align: center;
-    width: auto;
 }
+
 
 /* ---------------------------------
    DIARY ENTRIES
