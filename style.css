@@ -146,8 +146,12 @@ p {
 #films-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 100px; /* less space around posters */
+    gap: 10px; /* less space around posters */
     justify-content: flex-start;
+}
+
+.film-item {
+    margin: 4px; /* creates visible breathing room */
 }
 
 .film-item {
