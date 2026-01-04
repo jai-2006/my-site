@@ -38,20 +38,25 @@
 const container = document.getElementById("all-entries");
 
 diaryData.forEach((entry, entryIndex) => {
-  let html = `
-    <div class="box entry">
+  entry.currentVideo = 0; // track which video is showing
+
+  let html = `<div class="box entry">
       <h3 class="subtitle">${entry.date}</h3>
       <p>${entry.text}</p>
   `;
 
-  if (entry.videos.length) {
-    html += `
-      <iframe id="player-${entryIndex}"
-              src="${entry.videos[0].embed}"
-              allowfullscreen></iframe>
+  // Images
+  entry.images.forEach((img,i)=>{
+    html += `<img src="${img}" alt="Diary Image"><p class="caption"></p>`;
+  });
 
+  // Videos
+  if(entry.videos.length){
+    html += `
+      <iframe id="player-${entryIndex}" src="${entry.videos[0].embed}" allowfullscreen></iframe>
       <div class="video-controls">
         <button onclick="prevVideo(${entryIndex})">← Prev</button>
+        <span id="counter-${entryIndex}">1 / ${entry.videos.length}</span>
         <button onclick="nextVideo(${entryIndex})">Next →</button>
       </div>
     `;
@@ -59,24 +64,27 @@ diaryData.forEach((entry, entryIndex) => {
 
   html += `</div>`;
   container.innerHTML += html;
-
-  entry.currentVideo = 0;
 });
 
-function prevVideo(i) {
+// FUNCTIONS
+function updateVideo(i){
   const entry = diaryData[i];
-  entry.currentVideo =
-    (entry.currentVideo - 1 + entry.videos.length) % entry.videos.length;
-  document.getElementById(`player-${i}`).src =
-    entry.videos[entry.currentVideo].embed;
+  const iframe = document.getElementById(`player-${i}`);
+  iframe.src = ""; // force reload
+  setTimeout(()=>{ iframe.src = entry.videos[entry.currentVideo].embed }, 50);
+  document.getElementById(`counter-${i}`).textContent = `${entry.currentVideo+1} / ${entry.videos.length}`;
 }
 
-function nextVideo(i) {
+function prevVideo(i){
   const entry = diaryData[i];
-  entry.currentVideo =
-    (entry.currentVideo + 1) % entry.videos.length;
-  document.getElementById(`player-${i}`).src =
-    entry.videos[entry.currentVideo].embed;
+  entry.currentVideo = (entry.currentVideo - 1 + entry.videos.length) % entry.videos.length;
+  updateVideo(i);
+}
+
+function nextVideo(i){
+  const entry = diaryData[i];
+  entry.currentVideo = (entry.currentVideo + 1) % entry.videos.length;
+  updateVideo(i);
 }
 </script>
 
