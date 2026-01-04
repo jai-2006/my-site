@@ -1,3 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Diary</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="diary-page">
+
+<!-- HEADER / TOP BANNER -->
+<div id="header">
+  <div class="top-row">
+    <div class="left">
+      <img src="images/avatar.png" alt="Avatar">
+      <span>title</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="diary.html">Diary</a></li>
+        <li><a href="football.html">Watford FC</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="music-row">
+    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
+            allow="encrypted-media" allowtransparency="true"></iframe>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="content">
+  <h1 class="subtitle">Diary</h1>
+
+  <!-- All diary entries -->
+  <div id="all-entries"></div>
+</div>
+
 <script>
 // -----------------------------
 // Diary data
@@ -27,9 +66,10 @@ I end up staying a lot later than I thought I’d make it till. Feeling ready to
   },
   {
     date: "2025-12-30",
-    text: `Another diary entry, no video.`,
+    text: "Another diary entry, no video.",
     images: ["images/blog-photo2.jpg"],
-    videos: []
+    videos: [],
+    captions: []
   }
 ];
 
@@ -52,26 +92,24 @@ diaryData.forEach((entry, i) => {
     html += `<img src="${img}" alt="Diary Image">`;
   });
 
-  // Video player if videos exist
+  // Videos with optional captions
   if (entry.videos.length) {
-    html += `
-      <video id="video-${i}" controls preload="metadata">
-        <source src="${entry.videos[0]}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <div class="video-controls">
-        <button onclick="prevVideo(${i})">← Prev</button>
-        <span id="video-counter-${i}" style="font-size:13px;">1 / ${entry.videos.length}</span>
-        <button onclick="nextVideo(${i})">Next →</button>
-      </div>
-      <p id="video-caption-${i}" class="caption">${entry.captions ? entry.captions[0] : ""}</p>
-    `;
+    html += `<video id="video-${i}" controls preload="metadata" style="width:100%; max-width:1000px;">
+               <source src="${entry.videos[0]}" type="video/mp4">
+               Your browser does not support the video tag.
+             </video>
+             <div class="video-controls" style="margin-bottom:5px;">
+               <button onclick="prevVideo(${i})">← Prev</button>
+               <span id="video-counter-${i}" style="font-size:13px;">1 / ${entry.videos.length}</span>
+               <button onclick="nextVideo(${i})">Next →</button>
+             </div>
+             <p id="video-caption-${i}" class="caption">${entry.captions[0] || ""}</p>`;
   }
 
   html += `</div>`;
   container.innerHTML += html;
 
-  entry.currentVideo = 0;
+  entry.currentVideo = 0; // track current video
 });
 
 // -----------------------------
@@ -92,16 +130,17 @@ function nextVideo(index) {
 function updateVideoPlayer(index) {
   const entry = diaryData[index];
   const videoEl = document.getElementById(`video-${index}`);
-  const counterEl = document.getElementById(`video-counter-${index}`);
-  const captionEl = document.getElementById(`video-caption-${index}`);
-
-  if (!videoEl) return;
-
   videoEl.src = entry.videos[entry.currentVideo];
-  if (counterEl) counterEl.textContent = `${entry.currentVideo + 1} / ${entry.videos.length}`;
-  if (captionEl) captionEl.textContent = entry.captions ? entry.captions[entry.currentVideo] : "";
+  document.getElementById(`video-counter-${index}`).textContent = 
+      `${entry.currentVideo + 1} / ${entry.videos.length}`;
 
-  videoEl.load();
+  // Update optional caption
+  const captionEl = document.getElementById(`video-caption-${index}`);
+  if (captionEl) {
+    captionEl.textContent = entry.captions[entry.currentVideo] || "";
+  }
+
+  videoEl.load(); // ensure it updates immediately
 }
 
 // -----------------------------
@@ -115,3 +154,10 @@ counterWrapper.id = "hit-counter-wrapper";
 counterWrapper.innerHTML = `Visitors: <span id="counter-display">${count}</span>`;
 document.body.appendChild(counterWrapper);
 </script>
+
+<footer>
+  <p>© 2026 My Site</p>
+</footer>
+
+</body>
+</html>
