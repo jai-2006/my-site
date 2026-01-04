@@ -24,7 +24,7 @@
   </div>
 
   <div class="music-row">
-    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
+    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv"
             allow="encrypted-media" allowtransparency="true"></iframe>
   </div>
 </div>
@@ -32,51 +32,87 @@
 <!-- MAIN CONTENT -->
 <div id="content">
   <h1 class="subtitle">Diary</h1>
-
-  <!-- All diary entries in boxes -->
   <div id="all-entries"></div>
 </div>
 
 <script>
-// Diary data
+// --------------------
+// DIARY DATA
+// --------------------
 const diaryData = [
   {
-    "date":"2025-12-30",
-    "text":"Most recent diary entry goes here...",
-    "images":["images/blog-photo1.jpg"],
-    "videos":["video/diary-video1.mp4"],
-    "captions":["Snapshot from the day","Clip I recorded"]
+    date: "2025-12-30",
+    text: "Most recent diary entry goes here...",
+    images: ["images/blog-photo1.jpg"],
+    videos: [
+      {
+        embed: "https://archive.org/embed/img-8145_202601",
+        thumb: "images/thumb1.jpg"
+      }
+    ],
+    captions: ["Snapshot from the day"]
   },
   {
-    "date":"2025-12-28",
-    "text":"Earlier diary entry content...",
-    "images":["images/blog-photo2.jpg"],
-    "videos":[],
-    "captions":["Evening street scene"]
+    date: "2025-12-28",
+    text: "Earlier diary entry content...",
+    images: ["images/blog-photo2.jpg"],
+    videos: [],
+    captions: ["Evening street scene"]
   }
 ];
 
-// Render all diary entries
-const allDiv = document.getElementById('all-entries');
-diaryData.forEach(entry=>{
-  let html=`<div class="box entry"><h3 class="subtitle">${entry.date}</h3><p>${entry.text}</p>`;
-  entry.images.forEach((img,i)=>{
-    html+=`<img src="${img}" alt="Diary Image"><p class="caption">${entry.captions[i]||''}</p>`;
+// --------------------
+// RENDER ENTRIES
+// --------------------
+const allDiv = document.getElementById("all-entries");
+
+diaryData.forEach(entry => {
+  let html = `
+    <div class="box entry">
+      <h3 class="subtitle">${entry.date}</h3>
+      <p>${entry.text}</p>
+  `;
+
+  entry.images.forEach((img, i) => {
+    html += `
+      <img src="${img}" alt="">
+      <p class="caption">${entry.captions[i] || ""}</p>
+    `;
   });
-  entry.videos.forEach((vid,i)=>{
-    html+=`<video controls><source src="${vid}" type="video/mp4">Your browser does not support the video tag.</video><p class="caption">${entry.captions[i]||''}</p>`;
-  });
-  html+='</div>';
-  allDiv.innerHTML+=html;
+
+  if (entry.videos.length) {
+    html += `
+      <div class="video-player">
+        <iframe src="${entry.videos[0].embed}" allowfullscreen></iframe>
+      </div>
+      <div class="video-thumbnails">
+    `;
+
+    entry.videos.forEach(video => {
+      html += `
+        <img src="${video.thumb}" alt=""
+          onclick="this.closest('.entry')
+          .querySelector('iframe').src='${video.embed}'">
+      `;
+    });
+
+    html += `</div>`;
+  }
+
+  html += `</div>`;
+  allDiv.innerHTML += html;
 });
 
-// Visitor counter
-let count = localStorage.getItem('hitCount')||0;
-count = parseInt(count)+1;
-localStorage.setItem('hitCount',count);
+// --------------------
+// VISITOR COUNTER
+// --------------------
+let count = localStorage.getItem('hitCount') || 0;
+count = parseInt(count) + 1;
+localStorage.setItem('hitCount', count);
+
 const counterWrapper = document.createElement('div');
-counterWrapper.id='hit-counter-wrapper';
-counterWrapper.innerHTML=`Visitors: <span id="counter-display">${count}</span>`;
+counterWrapper.id = 'hit-counter-wrapper';
+counterWrapper.innerHTML = `Visitors: <span id="counter-display">${count}</span>`;
 document.body.appendChild(counterWrapper);
 </script>
 
@@ -86,3 +122,4 @@ document.body.appendChild(counterWrapper);
 
 </body>
 </html>
+
