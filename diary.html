@@ -5,9 +5,8 @@
 <title>Diary</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body class="diary-page">
+<body>
 
-<!-- HEADER / TOP BANNER -->
 <div id="header">
   <div class="top-row">
     <div class="left">
@@ -24,96 +23,61 @@
   </div>
 
   <div class="music-row">
-    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv"
-            allow="encrypted-media" allowtransparency="true"></iframe>
+    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv"></iframe>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
 <div id="content">
   <h1 class="subtitle">Diary</h1>
   <div id="all-entries"></div>
 </div>
 
+<script src="diary-data.js"></script>
+
 <script>
-// --------------------
-// DIARY DATA
-// --------------------
-const diaryData = [
-  {
-    date: "2025-12-30",
-    text: "Most recent diary entry goes here...",
-    images: ["images/blog-photo1.jpg"],
-    videos: [
-      {
-        embed: "https://archive.org/embed/img-8145_202601",
-        thumb: "images/thumb1.jpg"
-      }
-    ],
-    captions: ["Snapshot from the day"]
-  },
-  {
-    date: "2025-12-28",
-    text: "Earlier diary entry content...",
-    images: ["images/blog-photo2.jpg"],
-    videos: [],
-    captions: ["Evening street scene"]
-  }
-];
+const container = document.getElementById("all-entries");
 
-// --------------------
-// RENDER ENTRIES
-// --------------------
-const allDiv = document.getElementById("all-entries");
-
-diaryData.forEach(entry => {
+diaryData.forEach((entry, entryIndex) => {
   let html = `
     <div class="box entry">
       <h3 class="subtitle">${entry.date}</h3>
       <p>${entry.text}</p>
   `;
 
-  entry.images.forEach((img, i) => {
-    html += `
-      <img src="${img}" alt="">
-      <p class="caption">${entry.captions[i] || ""}</p>
-    `;
-  });
-
   if (entry.videos.length) {
     html += `
-      <div class="video-player">
-        <iframe src="${entry.videos[0].embed}" allowfullscreen></iframe>
+      <iframe id="player-${entryIndex}"
+              src="${entry.videos[0].embed}"
+              allowfullscreen></iframe>
+
+      <div class="video-controls">
+        <button onclick="prevVideo(${entryIndex})">← Prev</button>
+        <button onclick="nextVideo(${entryIndex})">Next →</button>
       </div>
-      <div class="video-thumbnails">
     `;
-
-    entry.videos.forEach(video => {
-      html += `
-        <img src="${video.thumb}" alt=""
-          onclick="this.closest('.entry')
-          .querySelector('iframe').src='${video.embed}'">
-      `;
-    });
-
-    html += `</div>`;
   }
 
   html += `</div>`;
-  allDiv.innerHTML += html;
+  container.innerHTML += html;
+
+  entry.currentVideo = 0;
 });
 
-// --------------------
-// VISITOR COUNTER
-// --------------------
-let count = localStorage.getItem('hitCount') || 0;
-count = parseInt(count) + 1;
-localStorage.setItem('hitCount', count);
+function prevVideo(i) {
+  const entry = diaryData[i];
+  entry.currentVideo =
+    (entry.currentVideo - 1 + entry.videos.length) % entry.videos.length;
+  document.getElementById(`player-${i}`).src =
+    entry.videos[entry.currentVideo].embed;
+}
 
-const counterWrapper = document.createElement('div');
-counterWrapper.id = 'hit-counter-wrapper';
-counterWrapper.innerHTML = `Visitors: <span id="counter-display">${count}</span>`;
-document.body.appendChild(counterWrapper);
+function nextVideo(i) {
+  const entry = diaryData[i];
+  entry.currentVideo =
+    (entry.currentVideo + 1) % entry.videos.length;
+  document.getElementById(`player-${i}`).src =
+    entry.videos[entry.currentVideo].embed;
+}
 </script>
 
 <footer>
@@ -122,4 +86,3 @@ document.body.appendChild(counterWrapper);
 
 </body>
 </html>
-
