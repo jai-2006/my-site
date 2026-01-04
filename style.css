@@ -177,34 +177,26 @@ p {
    DIARY ENTRIES
 ---------------------------------- */
 /* ---------------------------------
-   DIARY ENTRIES
+   FULL DIARY ENTRIES
 ---------------------------------- */
-
-/* Latest entry & all entries */
-#latest-entry,
-#all-entries .box {
-    flex: 1 1 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
-}
 
 /* Force all diary entries to span full width */
 #all-entries .box.entry {
-    width: 100%;          /* full width of container */
-    max-width: 100%;      /* remove any max-width restrictions */
-    flex: 1 1 100%;       /* for flex layouts */
+    width: 100%;          /* full width of the page/content container */
+    max-width: 100%;      
+    flex: 1 1 100%;
     box-sizing: border-box;
-    min-height: 300px;    /* reserve vertical space even if empty */
-    padding: 15px;        /* spacing inside box */
-    margin-bottom: 20px;  /* spacing between entries */
-    background: #fffef9;  /* matching homepage box */
+    margin-bottom: 20px;  
+    min-height: 320px;    /* reserve vertical space even if no content yet */
+    padding: 15px;
+    background: #fffef9;
     border: 4px double black;
 }
 
-/* Video & iframe styling */
+/* Videos & iframes */
 .entry video,
 .entry iframe {
-    width: 100%;           /* fill entry width */
+    width: 100%;           
     height: auto;
     aspect-ratio: 16 / 9;  /* reserve space before loading */
     display: block;
@@ -220,83 +212,56 @@ p {
     border-radius: 3px;
 }
 
-/* Captions under images/videos */
-#all-entries .box .caption {
+/* Captions */
+.entry .caption {
     font-size: 12px;
     color: #666;
     margin-top: 3px;
 }
 
-/* Video controls */
+/* Video controls (next/prev buttons + current index) */
 .video-controls {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    gap: 10px;         /* space between buttons and counter */
-    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.video-controls button {
+    padding: 4px 8px;
+    font-size: 13px;  /* smaller button font */
+    cursor: pointer;
 }
 
 .video-controls span {
-    font-size: 13px;   /* smaller font for "Video X / Y" */
+    font-size: 12px;  /* smaller text for "Video X / Y" */
 }
 
-/* Optional: buttons styling */
-.video-controls button {
-    padding: 4px 8px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    border: 2px solid #222;
-    background: #fffef9;
-    border-radius: 3px;
-}
-
-.video-controls button:hover {
-    background: #f0e6d2;
-}
-
-/* Diary container */
+/* Container for the diary page */
 #content {
     width: 100%;
-    max-width: 1000px;  /* optional: overall page width limit */
-    margin: 0 auto;     /* center content */
+    max-width: 1000px;  /* optional, page width limit */
+    margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Optional: ensure entry headings are left-aligned */
-.entry h3.subtitle {
-    text-align: left;
-    margin: 5px 0;
+/* Images, videos, and boxes remain responsive on small screens */
+@media (max-width: 700px) {
+    #all-entries .box.entry {
+        width: 100%;
+        padding: 10px;
+        min-height: 250px;
+    }
+    
+    .video-controls {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .video-controls button {
+        width: 100%;
+    }
 }
-
-/* ---------------------------------
-   MULTI-VIDEO BUTTONS
----------------------------------- */
-.video-controls {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.video-controls button {
-    font-size: 12px;
-    padding: 4px 8px;
-    border: 1px solid #000;
-    background: #fffef9;
-    cursor: pointer;
-}
-
-.video-controls button:hover {
-    background: #eee;
-}
-
-/* Video counter number */
-.video-controls span {
-    font-size: 10px; /* adjust size of "Video X / Y" */
-    margin-left: 5px;
-}
-
 
 /* ---------------------------------
    FOOTER
