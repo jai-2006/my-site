@@ -52,7 +52,8 @@ const diaryData = [
       "https://archive.org/download/img-8145_202601/IMG_8145.mov",
       "https://archive.org/download/img-8145_202601/IMG_8155.mov"
     ],
-  
+    captions: ["Morning clip", "Afternoon clip", "Evening clip", "Night clip"]
+  },
   {
     date: "2025-12-30",
     text: "Another diary entry, no video.",
@@ -69,15 +70,17 @@ const container = document.getElementById("all-entries");
 
 diaryData.forEach((entry, i) => {
   let html = `
-    <div class="box entry">
+    <div class="box entry" style="width:100%; min-height:300px;">
       <h3 class="subtitle">${entry.date}</h3>
       <p>${entry.text}</p>
   `;
 
-  // Images
+  // Images with optional captions
   entry.images.forEach((img, j) => {
-    html += `<img src="${img}" alt="Diary Image">
-             <p class="caption">${entry.captions[j] || ""}</p>`;
+    html += `<img src="${img}" alt="Diary Image">`;
+    if (entry.captions[j] && entry.captions[j].trim() !== "") {
+      html += `<p class="caption">${entry.captions[j]}</p>`;
+    }
   });
 
   // Video player if videos exist
@@ -89,10 +92,12 @@ diaryData.forEach((entry, i) => {
       </video>
       <div class="video-controls">
         <button onclick="prevVideo(${i})">← Prev</button>
-        <span id="video-counter-${i}">1 / ${entry.videos.length}</span>
+        <span id="video-counter-${i}" style="font-size:13px;">1 / ${entry.videos.length}</span>
         <button onclick="nextVideo(${i})">Next →</button>
       </div>
     `;
+    // Optional captions under videos
+    html += `<p id="video-caption-${i}" class="caption">${entry.captions[0] || ""}</p>`;
   }
 
   html += `</div>`;
@@ -122,6 +127,13 @@ function updateVideoPlayer(index) {
   videoEl.src = entry.videos[entry.currentVideo];
   document.getElementById(`video-counter-${index}`).textContent = 
       `${entry.currentVideo + 1} / ${entry.videos.length}`;
+
+  // Update optional video caption
+  const captionEl = document.getElementById(`video-caption-${index}`);
+  if (captionEl) {
+    captionEl.textContent = entry.captions[entry.currentVideo] || "";
+  }
+
   videoEl.load(); // ensure it updates immediately
 }
 
