@@ -176,9 +176,6 @@ p {
 /* ---------------------------------
    DIARY ENTRIES
 ---------------------------------- */
-/* ---------------------------------
-   FULL DIARY ENTRIES
----------------------------------- */
 
 /* Force all diary entries to span full width */
 #all-entries .box.entry {
@@ -262,6 +259,12 @@ p {
         width: 100%;
     }
 }
+
+.entry p {
+    margin-bottom: 15px;  /* adjust as you like */
+    line-height: 1.5;
+}
+
 
 /* ---------------------------------
    FOOTER
