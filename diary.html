@@ -92,7 +92,9 @@ entry.text.split("\n\n").forEach(paragraph => {
   entry.images.forEach((img, j) => {
     html += `<img src="${img}" alt="Diary Image">`;
     if (entry.captions[j] && entry.captions[j].trim() !== "") {
-      html += `<p class="caption">${entry.captions[j]}</p>`;
+html += `<p id="video-caption-${i}" class="caption">${
+  entry.captions && entry.captions[0] ? entry.captions[0] : ""
+}</p>`;
     }
   });
 
