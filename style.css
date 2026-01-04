@@ -201,12 +201,20 @@ p {
     color: #666;
     margin-top: 3px;
 }
+/* Force all diary entries to span full width */
+#content #all-entries .box.entry {
+    width: 100%;          /* full width of the content container */
+    max-width: none;      /* remove any previous max-width */
+    flex: 1 1 100%;       /* in case flexbox is used */
+    box-sizing: border-box;
+    margin-bottom: 20px;  /* spacing between entries */
+}
 
+/* Ensure video still respects width */
 .entry video {
-    width: 100%;              /* fill the container width */
-    max-width: 560px;         /* match your current max video size */
-    height: auto;             /* preserve aspect ratio */
-    aspect-ratio: 16 / 9;     /* reserve space before loading */
+    width: 100%;           /* fill entry width */
+    height: auto;
+    aspect-ratio: 16 / 9;  /* reserve space before loading */
     display: block;
     margin: 10px 0;
     border: 2px solid #000;
