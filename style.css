@@ -3,8 +3,7 @@
 ---------------------------------- */
 html, body {
     overflow-x: hidden;
-    width: 100vw;
-    position: relative;
+    width: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Inter', Arial, sans-serif;
@@ -29,7 +28,7 @@ html, body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Title + nav on ONE line */
+/* Title + nav on one line */
 #header .top-row {
     display: flex;
     align-items: center;
@@ -71,7 +70,7 @@ html, body {
     color: #555;
 }
 
-/* Spotify fits INSIDE its box */
+/* -------- SPOTIFY FIX (THIS WAS BROKEN BEFORE) -------- */
 #header .music-row {
     width: 100%;
     display: flex;
@@ -82,7 +81,9 @@ html, body {
 #header .music-row iframe {
     width: 100%;
     max-width: 520px;
-    height: 80px;
+    aspect-ratio: 5 / 1;   /* KEY FIX */
+    height: auto;          /* REMOVE fixed height */
+    max-height: 80px;
     border: 4px double black;
     border-radius: 3px;
     background: #fffef9;
@@ -100,6 +101,7 @@ html, body {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: flex-start;
+    align-items: flex-start; /* 🔥 IMPORTANT FIX */
 }
 
 /* Boxes (homepage layout) */
@@ -138,10 +140,10 @@ p {
 }
 
 /* ---------------------------------
-   PROFILE BOX
+   PROFILE BOX (EMPTY SPACE FIXED)
 ---------------------------------- */
 .profile-box {
-    height: auto;
+    align-self: flex-start; /* 🔥 STOPS STRETCHING */
 }
 
 .profile-inner {
@@ -160,8 +162,12 @@ p {
     text-align: left;
 }
 
+.profile-text p {
+    margin: 4px 0;
+}
+
 /* ---------------------------------
-   FILMS GRID (CENTERED PROPERLY)
+   FILMS GRID
 ---------------------------------- */
 #films-container {
     display: flex;
@@ -192,7 +198,7 @@ p {
 }
 
 /* ---------------------------------
-   DIARY ENTRIES (FULL WIDTH ALWAYS)
+   DIARY ENTRIES
 ---------------------------------- */
 #all-entries {
     width: 100%;
@@ -214,7 +220,6 @@ p {
     margin-bottom: 16px;
 }
 
-/* Videos */
 .entry video {
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -223,7 +228,6 @@ p {
     border: 2px solid #000;
 }
 
-/* Video controls */
 .video-controls {
     display: flex;
     justify-content: space-between;
@@ -286,4 +290,3 @@ footer {
         flex-direction: column;
     }
 }
-
