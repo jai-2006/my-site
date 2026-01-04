@@ -202,6 +202,17 @@ p {
     margin-top: 3px;
 }
 
+.entry video {
+    width: 100%;              /* fill the container width */
+    max-width: 560px;         /* match your current max video size */
+    height: auto;             /* preserve aspect ratio */
+    aspect-ratio: 16 / 9;     /* reserve space before loading */
+    display: block;
+    margin: 10px 0;
+    border: 2px solid #000;
+}
+
+
 /* ---------------------------------
    FOOTER
 ---------------------------------- */
