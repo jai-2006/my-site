@@ -2,9 +2,9 @@
    GLOBAL RESET & BODY
 ---------------------------------- */
 html, body {
-    overflow-x: hidden;   
-    width: 100vw;         
-    position: relative;   
+    overflow-x: hidden;
+    width: 100vw;
+    position: relative;
     margin: 0;
     padding: 0;
     font-family: 'Inter', Arial, sans-serif;
@@ -21,21 +21,22 @@ html, body {
 ---------------------------------- */
 #header {
     width: 100%;
-    background: #ccc; 
+    background: #ccc;
     border-bottom: 4px double black;
     display: flex;
     flex-direction: column;
-    padding: 2px 20px;
+    padding: 6px 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* Title + nav on ONE line */
 #header .top-row {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 0;
+    gap: 25px;
+    flex-wrap: nowrap;
+    margin-bottom: 6px;
 }
 
 #header .left {
@@ -62,7 +63,7 @@ html, body {
     color: #222;
     font-weight: bold;
     padding: 2px 5px;
-    font-size: 14px; /* increased by +1 */
+    font-size: 14px;
 }
 
 #header nav ul li a:hover {
@@ -70,22 +71,22 @@ html, body {
     color: #555;
 }
 
-/* Center Spotify nicely */
+/* Spotify fits INSIDE its box */
 #header .music-row {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 10px 0; /* space above & below for vertical centering */
+    padding: 6px 0;
 }
 
 #header .music-row iframe {
-    width: 500px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 520px;
     height: 80px;
-    border: 4px double black;   
+    border: 4px double black;
     border-radius: 3px;
     background: #fffef9;
-    display: block;             
+    display: block;
 }
 
 /* ---------------------------------
@@ -101,7 +102,7 @@ html, body {
     justify-content: flex-start;
 }
 
-/* Boxes for MySpace vibe - homepage two-column */
+/* Boxes (homepage layout) */
 #content .box {
     flex: 1 1 calc(50% - 20px);
     max-width: calc(50% - 20px);
@@ -111,12 +112,9 @@ html, body {
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
 }
 
-/* First box (profile) text formatting */
-#content .box:first-child {
-    text-align: left;
-}
-
-/* Headings */
+/* ---------------------------------
+   HEADINGS & TEXT
+---------------------------------- */
 h1, h2.subtitle {
     font-family: 'Inter', Arial, sans-serif;
     font-weight: 700;
@@ -126,36 +124,59 @@ h1, h2.subtitle {
 
 h1 {
     font-size: 28px;
-    white-space: nowrap; /* keep on one line */
+    white-space: nowrap;
 }
 
 h2.subtitle {
     font-size: 18px;
-    text-align: left; /* left align subtitles under profile heading */
+    text-align: left;
 }
 
-/* Paragraphs */
 p {
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 /* ---------------------------------
-   FILMS ROW
+   PROFILE BOX
+---------------------------------- */
+.profile-box {
+    height: auto;
+}
+
+.profile-inner {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.profile-image img {
+    width: 200px;
+    border: 2px solid #222;
+}
+
+.profile-text {
+    flex: 1;
+    text-align: left;
+}
+
+/* ---------------------------------
+   FILMS GRID (CENTERED PROPERLY)
 ---------------------------------- */
 #films-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;           /* small gap between posters */
-    justify-content: flex-start;
+    gap: 10px;
+    justify-content: center;
+    padding: 5px;
 }
 
 .film-item {
-    width: 120px;       /* fix width to match poster size */
+    width: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 10px; /* spacing under each item */
+    margin-bottom: 8px;
 }
 
 .film-item img {
@@ -167,113 +188,66 @@ p {
 .film-item p {
     margin: 0;
     font-size: 10px;
-    color: #222;
     text-align: center;
 }
 
-
-
 /* ---------------------------------
-   DIARY ENTRIES
+   DIARY ENTRIES (FULL WIDTH ALWAYS)
 ---------------------------------- */
+#all-entries {
+    width: 100%;
+}
 
-/* Force all diary entries to span full width */
 #all-entries .box.entry {
-    width: 100%;          /* full width of the page/content container */
-    max-width: 100%;      
+    width: 100%;
+    max-width: 100%;
     flex: 1 1 100%;
-    box-sizing: border-box;
-    margin-bottom: 20px;  
-    min-height: 320px;    /* reserve vertical space even if no content yet */
+    display: block;
+    min-height: 320px;
     padding: 15px;
     background: #fffef9;
     border: 4px double black;
+    margin-bottom: 20px;
 }
 
-/* Videos & iframes */
-.entry video,
-.entry iframe {
-    width: 100%;           
-    height: auto;
-    aspect-ratio: 16 / 9;  /* reserve space before loading */
+.entry p {
+    margin-bottom: 16px;
+}
+
+/* Videos */
+.entry video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
     display: block;
-    margin: 10px 0;
+    margin: 12px 0;
     border: 2px solid #000;
 }
 
-/* Images in diary entries */
-.entry img {
-    width: 100%;
-    display: block;
-    margin-top: 10px;
-    border-radius: 3px;
-}
-
-/* Captions */
-.entry .caption {
-    font-size: 12px;
-    color: #666;
-    margin-top: 3px;
-}
-
-/* Video controls (next/prev buttons + current index) */
+/* Video controls */
 .video-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 5px;
 }
 
 .video-controls button {
     padding: 4px 8px;
-    font-size: 13px;  /* smaller button font */
+    font-size: 13px;
     cursor: pointer;
 }
 
 .video-controls span {
-    font-size: 12px;  /* smaller text for "Video X / Y" */
+    font-size: 12px;
 }
-
-/* Container for the diary page */
-#content {
-    width: 100%;
-    max-width: 1000px;  /* optional, page width limit */
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Images, videos, and boxes remain responsive on small screens */
-@media (max-width: 700px) {
-    #all-entries .box.entry {
-        width: 100%;
-        padding: 10px;
-        min-height: 250px;
-    }
-    
-    .video-controls {
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    .video-controls button {
-        width: 100%;
-    }
-}
-
-.entry p {
-    margin-bottom: 15px;  /* adjust as you like */
-    line-height: 1.5;
-}
-
 
 /* ---------------------------------
    FOOTER
 ---------------------------------- */
 footer {
-    text-align:center;
-    font-size:11px;
-    color:#555;
-    margin:20px 0;
+    text-align: center;
+    font-size: 11px;
+    color: #555;
+    margin: 20px 0;
 }
 
 /* ---------------------------------
@@ -286,77 +260,21 @@ footer {
     background: #ffe5b4;
     border: 2px dashed #000;
     padding: 5px 10px;
-    font-family: 'Inter', Arial, sans-serif;
     font-size: 0.9rem;
-    color: #222;
-    display: flex;
-    align-items: center;
-    gap: 5px;
     box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
     z-index: 999;
 }
 
 #counter-display {
     font-weight: bold;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    display: inline-block;
 }
 
 /* ---------------------------------
-   FOOTBALL DIARY SPECIFIC
----------------------------------- */
-.football-games .game-entry {
-    max-width: 600px;
-    margin: 0 auto 15px auto;
-    padding: 10px;
-    background: #fffef9;
-    border: 2px double black;
-}
-
-.football-games .game-entry hr {
-    border: none;
-    border-top: 1px solid #222;
-    margin: 5px 0;
-}
-
-.game-entry a {
-    font-size: 12px;
-    text-decoration: underline;
-    color: #222;
-}
-
-/* Video thumbnails row */
-.video-thumbnails {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.video-thumbnails img {
-    width: 100px;
-    cursor: pointer;
-    border: 2px solid black;
-    border-radius: 3px;
-}
-
-/* Match page videos */
-#video-player iframe {
-    width: 100%;
-    max-width: 560px;
-    height: 315px;
-    display: block;
-    margin: 5px 0;
-}
-
-/* ---------------------------------
-   RESPONSIVE LAYOUT
+   RESPONSIVE
 ---------------------------------- */
 @media (max-width: 700px) {
     #content {
         flex-direction: column;
-        gap: 15px;
     }
 
     #content .box {
@@ -364,65 +282,8 @@ footer {
         max-width: 100%;
     }
 
-    .video-thumbnails {
-        justify-content: flex-start;
-    }
-
-    #all-entries .box {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-}
-
-/* ---------------------------------
-   PROFILE BOX (MySpace-style)
----------------------------------- */
-.profile-box {
-    padding: 15px;
-}
-
-.profile-inner {
-    display: flex;
-    gap: 15px;
-    align-items: flex-start;
-    flex-direction: row; /* side by side */
-}
-
-.profile-image img {
-    width: 200px;             
-    height: auto;
-    border: 2px solid #222;  
-    background: #fffef9;
-}
-
-.profile-text {
-    flex: 1;
-    text-align: left; /* force left alignment */
-}
-
-/* Stack on small screens */
-@media (max-width: 600px) {
     .profile-inner {
-        flex-direction: column; 
-        align-items: center;    
-    }
-
-    .profile-text {
-        text-align: left;       
-        width: 100%;            
-    }
-
-    .profile-image img {
-        margin-bottom: 10px;
+        flex-direction: column;
     }
 }
 
-/* Homepage profile image */
-#content .box img[src="images/profile.jpg"] {
-    width: 200px;       
-    height: auto;       
-    border: 2px solid black;  
-    border-radius: 3px; 
-    display: block;
-    margin-bottom: 10px;
-}
