@@ -146,21 +146,21 @@ p {
 #films-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;                 /* small, even gap BETWEEN films */
+    gap: 6px;           /* small gap between posters */
     justify-content: flex-start;
 }
 
 .film-item {
-    width: 120px;             /* lock item width */
+    width: 120px;       /* fix width to match poster size */
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 10px; /* spacing under each item */
 }
 
 .film-item img {
-    width: 120px;             /* image matches item */
+    width: 120px;
     height: auto;
-    margin-bottom: 3px;
     border-radius: 3px;
 }
 
@@ -170,6 +170,7 @@ p {
     color: #222;
     text-align: center;
 }
+
 
 
 /* ---------------------------------
