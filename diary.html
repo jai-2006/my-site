@@ -77,10 +77,12 @@ const diaryData = [
 const container = document.getElementById("all-entries");
 
 diaryData.forEach((entry, i) => {
-  let html = `
-    <div class="box entry" style="width:100%; min-height:300px;">
-      <h3 class="subtitle">${entry.date}</h3>
-     entry.text.split("\n\n").forEach(paragraph => {
+let html = `
+  <div class="box entry" style="width:100%; min-height:300px;">
+    <h3 class="subtitle">${entry.date}</h3>
+`;
+
+entry.text.split("\n\n").forEach(paragraph => {
   html += `<p>${paragraph}</p>`;
 });
 
