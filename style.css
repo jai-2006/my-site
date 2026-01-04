@@ -182,36 +182,22 @@ p {
     margin-bottom: 20px;
 }
 
-.entry video {
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
-    display: block;
-    margin: 15px auto;
-}
-
-.entry img {
-    max-width: 100%;
-    margin-top: 10px;
-    border-radius: 3px;
-}
-
-#all-entries .box .caption {
-    font-size: 12px;
-    color: #666;
-    margin-top: 3px;
-}
 /* Force all diary entries to span full width */
-#content #all-entries .box.entry {
-    width: 100%;          /* full width of the content container */
-    max-width: none;      /* remove any previous max-width */
-    flex: 1 1 100%;       /* in case flexbox is used */
+#all-entries .box.entry {
+    width: 100%;          /* full width of container */
+    max-width: 100%;      /* remove any max-width restrictions */
+    flex: 1 1 100%;       /* for flex layouts */
     box-sizing: border-box;
     margin-bottom: 20px;  /* spacing between entries */
+    min-height: 300px;    /* reserve vertical space even if empty */
+    padding: 15px;        /* optional: spacing inside box */
+    background: #fffef9;  /* optional: background like homepage boxes */
+    border: 4px double black;
 }
 
-/* Ensure video still respects width */
-.entry video {
+/* Videos & iframes */
+.entry video,
+.entry iframe {
     width: 100%;           /* fill entry width */
     height: auto;
     aspect-ratio: 16 / 9;  /* reserve space before loading */
@@ -220,12 +206,57 @@ p {
     border: 2px solid #000;
 }
 
+/* Images in entries */
+.entry img {
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+    border-radius: 3px;
+}
+
+/* Captions */
+#all-entries .box .caption {
+    font-size: 12px;
+    color: #666;
+    margin-top: 3px;
+}
+
+/* Container */
 #content {
     width: 100%;
     max-width: 1000px; /* optional, limits overall page width */
     margin: 0 auto;    /* center page content */
     padding: 0 20px;
 }
+
+/* ---------------------------------
+   MULTI-VIDEO BUTTONS
+---------------------------------- */
+.video-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.video-controls button {
+    font-size: 12px;
+    padding: 4px 8px;
+    border: 1px solid #000;
+    background: #fffef9;
+    cursor: pointer;
+}
+
+.video-controls button:hover {
+    background: #eee;
+}
+
+/* Video counter number */
+.video-controls span {
+    font-size: 10px; /* adjust size of "Video X / Y" */
+    margin-left: 5px;
+}
+
 
 /* ---------------------------------
    FOOTER
