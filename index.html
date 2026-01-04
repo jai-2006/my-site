@@ -52,31 +52,51 @@
 
 
   <!-- Films Box -->
-  <div class="box">
-    <h2 class="subtitle">Recently Watched</h2>
-    <div id="films-container"></div>
-  </div>
-
-  <!-- Latest Diary Entry Box -->
-  <div class="box">
-    <h2 class="subtitle">Latest Diary Entry</h2>
-    <div class="entry" id="latest-entry"></div>
-    <p><a href="diary.html">View full diary</a></p>
-  </div>
-
+<!-- FILMS BOX -->
+<div class="box">
+  <h2 class="subtitle">Recently Watched</h2>
+  <div id="films-container"></div>
 </div>
 
 <script>
-// Diary data
-const diaryData = [
-  {
-    "date":"2025-12-30",
-    "text":"Most recent diary entry goes here...",
-    "images":["images/blog-photo1.jpg"],
-    "videos":["video/diary-video1.mp4"],
-    "captions":["Snapshot from the day","Clip I recorded"]
-  }
-];
+// Letterboxd RSS feed
+const feedURL = 'https://letterboxd.com/jai_movies/rss/';
+
+// Container to hold film items
+const container = document.getElementById('films-container');
+
+// Fetch feed via rss2json
+fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedURL)}`)
+  .then(res => res.json())
+  .then(data => {
+    if (data.items && data.items.length > 0) {
+      data.items.forEach(item => {
+        const title = item.title;
+        const link = item.link;
+        const pubDate = new Date(item.pubDate).toLocaleDateString();
+
+        // Extract first image from content
+        let thumbnail = '';
+        const imgMatch = item.content.match(/<img[^>]+src="([^">]+)"/);
+        if (imgMatch) thumbnail = imgMatch[1];
+
+        // Create film box
+        const div = document.createElement('div');
+        div.className = 'film-item';
+        div.innerHTML = `
+          <a href="${link}" target="_blank">
+            ${thumbnail ? `<img src="${thumbnail}" alt="${title}">` : ''}
+          </a>
+          <p><strong>${title}</strong></p>
+          <p>${pubDate}</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+  })
+  .catch(err => console.error('Error fetching RSS:', err));
+</script>
+
 
 // Latest diary entry
 const latest = diaryData[0];
