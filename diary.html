@@ -5,8 +5,9 @@
 <title>Diary</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="diary-page">
 
+<!-- HEADER / TOP BANNER -->
 <div id="header">
   <div class="top-row">
     <div class="left">
@@ -23,72 +24,111 @@
   </div>
 
   <div class="music-row">
-    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv"></iframe>
+    <iframe src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv" 
+            allow="encrypted-media" allowtransparency="true"></iframe>
   </div>
 </div>
 
+<!-- MAIN CONTENT -->
 <div id="content">
   <h1 class="subtitle">Diary</h1>
   <div id="all-entries"></div>
 </div>
 
-<script src="diary-data.js"></script>
-
 <script>
-const container = document.getElementById("all-entries");
+// ===== Diary Data =====
+const diaryData = [
+  {
+    "date":"2026-01-01",
+    "text":"New Year's diary entry with multiple videos.",
+    "images":["images/blog-photo1.jpg"],
+    "videos":[
+      { "embed": "https://archive.org/embed/IMG_8142" },
+      { "embed": "https://archive.org/embed/IMG_8143" },
+      { "embed": "https://archive.org/embed/IMG_8145" },
+      { "embed": "https://archive.org/embed/IMG_8155" }
+    ],
+    "captions":["Photo from morning","Clip 1","Clip 2","Clip 3"]
+  },
+  {
+    "date":"2025-12-30",
+    "text":"Earlier diary entry with images only.",
+    "images":["images/blog-photo2.jpg"],
+    "videos":[],
+    "captions":["Evening street scene"]
+  }
+];
+
+// ===== Render All Entries =====
+const allDiv = document.getElementById('all-entries');
 
 diaryData.forEach((entry, entryIndex) => {
-  entry.currentVideo = 0; // track which video is showing
-
   let html = `<div class="box entry">
-      <h3 class="subtitle">${entry.date}</h3>
-      <p>${entry.text}</p>
-  `;
+                <h3 class="subtitle">${entry.date}</h3>
+                <p>${entry.text}</p>`;
 
   // Images
-  entry.images.forEach((img)=>{
-    html += `<img src="${img}" alt="Diary Image"><p class="caption"></p>`;
+  entry.images.forEach((img,i) => {
+    html += `<img src="${img}" alt="Diary Image">
+             <p class="caption">${entry.captions[i] || ''}</p>`;
   });
 
   // Videos
-  if(entry.videos.length){
+  if(entry.videos.length > 0){
     html += `
-      <video id="player-${entryIndex}" controls>
-        <source src="${entry.videos[0].src}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <iframe id="player-${entryIndex}" src="${entry.videos[0].embed}" allowfullscreen></iframe>
       <div class="video-controls">
         <button onclick="prevVideo(${entryIndex})">← Prev</button>
-        <span id="counter-${entryIndex}" style="font-size: 13px;">1 / ${entry.videos.length}</span>
+        <span id="video-count-${entryIndex}">1 / ${entry.videos.length}</span>
         <button onclick="nextVideo(${entryIndex})">Next →</button>
       </div>
     `;
+    entry.currentVideo = 0; // track which video is showing
   }
 
   html += `</div>`;
-  container.innerHTML += html;
+  allDiv.innerHTML += html;
 });
 
-// FUNCTIONS
-function updateVideo(i){
-  const entry = diaryData[i];
-  const video = document.getElementById(`player-${i}`);
-  video.src = entry.videos[entry.currentVideo].src; // set new video
-  video.load(); // reload immediately
-  document.getElementById(`counter-${i}`).textContent = `${entry.currentVideo+1} / ${entry.videos.length}`;
+// ===== Video Controls =====
+function updateVideoCount(index){
+  document.getElementById(`video-count-${index}`).innerText = `${diaryData[index].currentVideo+1} / ${diaryData[index].videos.length}`;
 }
 
-function prevVideo(i){
-  const entry = diaryData[i];
+function prevVideo(index){
+  const entry = diaryData[index];
   entry.currentVideo = (entry.currentVideo - 1 + entry.videos.length) % entry.videos.length;
-  updateVideo(i);
+  document.getElementById(`player-${index}`).src = entry.videos[entry.currentVideo].embed;
+  updateVideoCount(index);
 }
 
-function nextVideo(i){
-  const entry = diaryData[i];
+function nextVideo(index){
+  const entry = diaryData[index];
   entry.currentVideo = (entry.currentVideo + 1) % entry.videos.length;
-  updateVideo(i);
+  document.getElementById(`player-${index}`).src = entry.videos[entry.currentVideo].embed;
+  updateVideoCount(index);
 }
+
+// ===== Arrow Key Support =====
+document.addEventListener('keydown', e => {
+  diaryData.forEach((entry, index) => {
+    const player = document.getElementById(`player-${index}`);
+    if(player){
+      if(e.key === "ArrowRight") nextVideo(index);
+      if(e.key === "ArrowLeft") prevVideo(index);
+    }
+  });
+});
+
+// ===== Visitor Counter =====
+let count = localStorage.getItem('hitCount')||0;
+count = parseInt(count)+1;
+localStorage.setItem('hitCount',count);
+const counterWrapper = document.createElement('div');
+counterWrapper.id='hit-counter-wrapper';
+counterWrapper.innerHTML=`Visitors: <span id="counter-display">${count}</span>`;
+document.body.appendChild(counterWrapper);
+
 </script>
 
 <footer>
