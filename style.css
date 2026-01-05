@@ -28,13 +28,11 @@ html, body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Title + nav on one line */
+/* Title + nav */
 #header .top-row {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 25px;
-    flex-wrap: nowrap;
+    position: relative;
     margin-bottom: 6px;
 }
 
@@ -47,6 +45,12 @@ html, body {
 #header .left img {
     width: 30px;
     border: 2px solid #222;
+}
+
+#header nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #header nav ul {
@@ -70,7 +74,9 @@ html, body {
     color: #555;
 }
 
-/* -------- SPOTIFY FIX (THIS WAS BROKEN BEFORE) -------- */
+/* ---------------------------------
+   SPOTIFY
+---------------------------------- */
 #header .music-row {
     width: 100%;
     display: flex;
@@ -81,33 +87,29 @@ html, body {
 #header .music-row iframe {
     width: 100%;
     max-width: 520px;
-    aspect-ratio: 5 / 1;   /* KEY FIX */
-    height: auto;          /* REMOVE fixed height */
-    max-height: 80px;
+    height: 80px;
     border: 4px double black;
     border-radius: 3px;
     background: #fffef9;
     display: block;
+    overflow: hidden;
 }
 
 /* ---------------------------------
-   MAIN CONTENT
+   MAIN CONTENT (HOMEPAGE GRID)
 ---------------------------------- */
 #content {
     max-width: 1000px;
     margin: 20px auto;
     padding: 0 20px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
-    justify-content: flex-start;
-    align-items: flex-start; /* 🔥 IMPORTANT FIX */
+    align-items: start;
 }
 
-/* Boxes (homepage layout) */
+/* Boxes */
 #content .box {
-    flex: 1 1 calc(50% - 20px);
-    max-width: calc(50% - 20px);
     background: #fffef9;
     border: 4px double black;
     padding: 15px;
@@ -132,6 +134,7 @@ h1 {
 h2.subtitle {
     font-size: 18px;
     text-align: left;
+    margin-bottom: 8px;
 }
 
 p {
@@ -140,10 +143,10 @@ p {
 }
 
 /* ---------------------------------
-   PROFILE BOX (EMPTY SPACE FIXED)
+   PROFILE BOX
 ---------------------------------- */
 .profile-box {
-    align-self: flex-start; /* 🔥 STOPS STRETCHING */
+    height: fit-content;
 }
 
 .profile-inner {
@@ -155,11 +158,6 @@ p {
 .profile-image img {
     width: 200px;
     border: 2px solid #222;
-}
-
-.profile-text {
-    flex: 1;
-    text-align: left;
 }
 
 .profile-text p {
@@ -182,12 +180,10 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 8px;
 }
 
 .film-item img {
     width: 120px;
-    height: auto;
     border-radius: 3px;
 }
 
@@ -201,18 +197,12 @@ p {
    DIARY ENTRIES
 ---------------------------------- */
 #all-entries {
-    width: 100%;
+    grid-column: 1 / -1;
 }
 
 #all-entries .box.entry {
     width: 100%;
-    max-width: 100%;
-    flex: 1 1 100%;
-    display: block;
     min-height: 320px;
-    padding: 15px;
-    background: #fffef9;
-    border: 4px double black;
     margin-bottom: 20px;
 }
 
@@ -226,22 +216,6 @@ p {
     display: block;
     margin: 12px 0;
     border: 2px solid #000;
-}
-
-.video-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.video-controls button {
-    padding: 4px 8px;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-.video-controls span {
-    font-size: 12px;
 }
 
 /* ---------------------------------
@@ -269,24 +243,21 @@ footer {
     z-index: 999;
 }
 
-#counter-display {
-    font-weight: bold;
-}
-
 /* ---------------------------------
    RESPONSIVE
 ---------------------------------- */
 @media (max-width: 700px) {
     #content {
-        flex-direction: column;
-    }
-
-    #content .box {
-        flex: 1 1 100%;
-        max-width: 100%;
+        grid-template-columns: 1fr;
     }
 
     .profile-inner {
         flex-direction: column;
+    }
+
+    #header nav {
+        position: static;
+        transform: none;
+        margin-left: 20px;
     }
 }
