@@ -69,9 +69,15 @@ html, body {
     font-size: 14px;
 }
 
+#header nav ul li a:hover {
+    text-decoration: underline;
+    color: #555;
+}
+
 /* ---------------------------------
-   SPOTIFY (FINAL, NO SCROLL, NO GAP)
+   SPOTIFY
 ---------------------------------- */
+
 #header .music-row {
     width: 100%;
     display: flex;
@@ -82,16 +88,24 @@ html, body {
 #header .music-row iframe {
     width: 100%;
     max-width: 520px;
-    height: 88px;
+
+    height: 88px;     
+    min-height: 88px;
+    max-height: 88px;
+
     border: 4px double black;
-    border-radius: 6px;
+    border-radius: 3px;
+    background: #fffef9;
     display: block;
-    overflow: hidden;
+
+    overflow: hidden;  /* safety */
 }
 
+
 /* ---------------------------------
-   MAIN CONTENT (GRID)
+   MAIN CONTENT (HOMEPAGE GRID)
 ---------------------------------- */
+
 #content {
     max-width: 1000px;
     margin: 20px auto;
@@ -113,11 +127,38 @@ html, body {
     box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
 }
 
+
+/* ---------------------------------
+   HEADINGS & TEXT
+---------------------------------- */
+h1, h2.subtitle {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    color: #222;
+    margin: 5px 0;
+}
+
+h1 {
+    font-size: 28px;
+    white-space: nowrap;
+}
+
+h2.subtitle {
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
 /* ---------------------------------
    PROFILE BOX
 ---------------------------------- */
 .profile-box {
-    align-self: start;
+    height: fit-content;
 }
 
 .profile-inner {
@@ -143,32 +184,66 @@ html, body {
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
+    padding: 5px;
+}
+
+.film-item {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.film-item img {
+    width: 120px;
+    border-radius: 3px;
+}
+
+.film-item p {
+    margin: 0;
+    font-size: 10px;
+    text-align: center;
 }
 
 /* ---------------------------------
-   LATEST DIARY ENTRY (🔥 FIX)
----------------------------------- */
-#latest-entry {
-    grid-column: 1;              /* LEFT COLUMN */
-    align-self: start;
-
-    background: #fffef9;
-    border: 4px double black;
-    padding: 15px;
-    box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
-}
-
-/* ---------------------------------
-   DIARY PAGE ENTRIES
+   DIARY ENTRIES
 ---------------------------------- */
 #all-entries {
     grid-column: 1 / -1;
 }
 
+#all-entries .box.entry {
+    width: 100%;
+    min-height: 320px;
+    margin-bottom: 20px;
+}
+
+.entry p {
+    margin-bottom: 16px;
+}
+
 .entry video {
     width: 100%;
     aspect-ratio: 16 / 9;
+    display: block;
+    margin: 12px 0;
     border: 2px solid #000;
+}
+
+/* Force latest diary entry under profile */
+.box.latest-diary {
+    grid-column: 1;
+}
+
+
+/* ---------------------------------
+   FOOTER
+---------------------------------- */
+footer {
+    text-align: center;
+    font-size: 11px;
+    color: #555;
+    margin: 20px 0;
 }
 
 /* ---------------------------------
@@ -182,6 +257,7 @@ html, body {
     border: 2px dashed #000;
     padding: 5px 10px;
     font-size: 0.9rem;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
     z-index: 999;
 }
 
@@ -191,6 +267,10 @@ html, body {
 @media (max-width: 700px) {
     #content {
         grid-template-columns: 1fr;
+    }
+
+    .profile-inner {
+        flex-direction: column;
     }
 
     #header nav {
