@@ -113,7 +113,7 @@ const latest = diaryData[0];
 const latestDiv = document.getElementById('latest-entry');
 latestDiv.className = 'box entry';
 
-// Start HTML with title, date, text
+// START HTML with title, date, text
 let html = `<h2 class="subtitle">Latest Diary Entry</h2>
             <h3 class="subtitle">${latest.date}</h3>
             <p>${latest.text}</p>`;
@@ -123,7 +123,7 @@ latest.images.forEach((img,i) => {
   html += `<img src="${img}" alt="Diary Image"><p class="caption">${latest.captions[i]||''}</p>`;
 });
 
-// Add video carousel
+// Add videos
 if (latest.videos.length) {
   html += `
     <iframe id="player-0" src="${latest.videos[0].embed}" allowfullscreen></iframe>
@@ -138,26 +138,6 @@ if (latest.videos.length) {
 
 // Render it
 latestDiv.innerHTML = html;
-
-// Video navigation
-function prevVideo(i) {
-  const entry = diaryData[i];
-  entry.currentVideo = (entry.currentVideo - 1 + entry.videos.length) % entry.videos.length;
-  document.getElementById(`player-${i}`).src = entry.videos[entry.currentVideo].embed;
-  document.getElementById(`video-counter-${i}`).textContent = `${entry.currentVideo + 1} / ${entry.videos.length}`;
-}
-
-function nextVideo(i) {
-  const entry = diaryData[i];
-  entry.currentVideo = (entry.currentVideo + 1) % entry.videos.length;
-  document.getElementById(`player-${i}`).src = entry.videos[entry.currentVideo].embed;
-  document.getElementById(`video-counter-${i}`).textContent = `${entry.currentVideo + 1} / ${entry.videos.length}`;
-}
-
-// Render content
-let html = `<h2 class="subtitle">Latest Diary Entry</h2>
-            <h3 class="subtitle">${latest.date}</h3>
-            <p>${latest.text}</p>`;
 
   
 // -------------------------
