@@ -21,7 +21,6 @@ html, body {
 #header {
     width: 100%;
     background: #ccc;
-    border-bottom: 4px double black;
     display: flex;
     flex-direction: column;
     padding: 6px 20px;
@@ -82,9 +81,11 @@ html, body {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 6px 0;
+    padding: 6px 20px;
     background: #ccc;
+    border-bottom: 4px double black;
 }
+
 
 #header .music-row iframe {
     width: 100%;
