@@ -236,6 +236,15 @@ p {
 #latest-entry.box {
     grid-column: 1 / -1;  /* spans from column 1 to the last */
 }
+/* Homepage latest entry tweaks */
+#latest-entry h3.subtitle {
+    font-size: 16px;    /* smaller than default h3 */
+    margin: 4px 0;      /* optional spacing tweak */
+}
+
+#latest-entry p {
+    font-size: 13px;    /* smaller paragraph for homepage */
+}
 
 
 /* ---------------------------------
