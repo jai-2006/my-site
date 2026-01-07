@@ -281,4 +281,21 @@ footer {
     }
 }
 
+/* Homepage latest entry tweaks */
+#latest-entry {
+    display: block;   /* ensures it shows */
+}
 
+#latest-entry h2.subtitle {
+    font-size: 24px;  /* Latest Diary Entry heading */
+    margin-bottom: 8px;
+}
+
+#latest-entry h3.subtitle {
+    font-size: 16px;  /* date smaller */
+    margin: 4px 0;
+}
+
+#latest-entry p {
+    font-size: 13px;  /* entry text smaller */
+}
