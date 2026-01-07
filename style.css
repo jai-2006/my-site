@@ -77,27 +77,32 @@ html, body {
 /* ---------------------------------
    SPOTIFY
 ---------------------------------- */
+/* ---------------------------------
+   SPOTIFY
+---------------------------------- */
 #header .music-row {
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 6px 0;
+    overflow: hidden; /* 🔥 clamp container */
 }
 
 #header .music-row iframe {
     width: 100%;
     max-width: 520px;
 
-    /* 🔥 THIS IS THE KEY */
-    height: 80px;
-    min-height: 80px;
+    height: 80px;        /* ONLY height */
     max-height: 80px;
 
     border: 4px double black;
     border-radius: 3px;
     background: #fffef9;
     display: block;
+
+    overflow: hidden;   /* 🔥 clamp iframe */
 }
+
 
 
 /* ---------------------------------
