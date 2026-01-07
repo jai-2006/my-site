@@ -232,9 +232,9 @@ p {
     border: 2px solid #000;
 }
 
-/* Force latest diary entry under profile */
-.box.latest-diary {
-    grid-column: 1;
+/* Make latest diary entry span both columns */
+#latest-entry.box {
+    grid-column: 1 / -1;  /* spans from column 1 to the last */
 }
 
 
