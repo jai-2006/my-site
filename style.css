@@ -116,7 +116,7 @@ html, body {
     align-items: flex-start;
 }
 
-/* Each column */
+/* Columns */
 .left-column,
 .right-column {
     flex: 1;
@@ -125,16 +125,7 @@ html, body {
     gap: 20px;
 }
 
-/* Safety: boxes never stretch */
-#content .box {
-    height: fit-content;
-}
-
-
-    align-items: start;
-}
-
-/* Default box styling */
+/* Boxes */
 #content .box {
     background: #fffef9;
     border: 4px double black;
@@ -224,14 +215,14 @@ p {
    DIARY ENTRIES
 ---------------------------------- */
 #all-entries {
-    grid-column: 1 / -1;
+    width: 100%;
 }
 
-#all-entries .box.entry {
+#all-entries .entry {
     width: 100%;
-    min-height: 320px;
     margin-bottom: 20px;
 }
+
 
 .entry p {
     margin-bottom: 16px;
@@ -275,7 +266,7 @@ footer {
 ---------------------------------- */
 @media (max-width: 700px) {
     #content {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
 
     .profile-inner {
@@ -285,6 +276,6 @@ footer {
     #header nav {
         position: static;
         transform: none;
-        margin-left: 20px;
+        margin-top: 10px;
     }
 }
