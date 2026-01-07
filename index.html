@@ -23,53 +23,51 @@
     </nav>
   </div>
 
-  
-<div class="music-row">
-  <iframe
-    src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv"
-    width="100%"
-    height="88"
-    frameborder="0"
-    scrolling="no"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-  </iframe>
-</div>
+  <div class="music-row">
+    <iframe
+      src="https://open.spotify.com/embed/track/1uLOYD6T0wdpOD8FcgsPuv"
+      width="100%"
+      height="88"
+      frameborder="0"
+      scrolling="no"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
   </div>
-
+</div>
 
 <!-- MAIN CONTENT -->
 <div id="content">
 
-<!-- Profile Box -->
-<div class="box profile-box">
-  <div class="profile-inner">
-    <div class="profile-image">
-      <img src="images/profile.jpg" alt="Profile Image">
-    </div>
-    <div class="profile-text">
-      <h1>Jai_Green</h1>
-      <h2 class="subtitle">He/Him</h2>
-      <h2 class="subtitle">19 Years Old</h2>
-      <h2 class="subtitle">London</h2>
-      <h2 class="subtitle">England</h2>
-      <p>Currently studying at Central Saint Martins.</p>
+  <!-- Profile Box -->
+  <div class="box profile-box">
+    <div class="profile-inner">
+      <div class="profile-image">
+        <img src="images/profile.jpg" alt="Profile Image">
+      </div>
+      <div class="profile-text">
+        <h1>Jai_Green</h1>
+        <h2 class="subtitle">He/Him</h2>
+        <h2 class="subtitle">19 Years Old</h2>
+        <h2 class="subtitle">London</h2>
+        <h2 class="subtitle">England</h2>
+        <p>Currently studying at Central Saint Martins.</p>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Films Box -->
-<div class="box">
-  <h2 class="subtitle">Recently Watched</h2>
-  <div id="films-container"></div>
-</div>
+  <!-- Films Box -->
+  <div class="box">
+    <h2 class="subtitle">Recently Watched</h2>
+    <div id="films-container"></div>
+  </div>
 
-<!-- Latest Diary Entry -->
-<div id="latest-entry"></div>
+  <!-- Latest Diary Entry -->
+  <div id="latest-entry"></div>
 
 </div> <!-- /#content -->
 
-  <script src="diaryData.js"></script>
-
+<!-- Load diary data first -->
+<script src="diaryData.js"></script>
 
 <script>
 // -------------------------
@@ -82,7 +80,7 @@ fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedURL
   .then(res => res.json())
   .then(data => {
     if (data.items && data.items.length > 0) {
-      data.items.slice(0,6).forEach(item => { // limit to 6 films
+      data.items.slice(0,6).forEach(item => {
         const title = item.title;
         const link = item.link;
         const pubDate = new Date(item.pubDate).toLocaleDateString();
@@ -104,16 +102,14 @@ fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedURL
   })
   .catch(err => console.error('Error fetching RSS:', err));
 
-
 // -------------------------
 // LATEST DIARY ENTRY
 // -------------------------
-
 const latest = diaryData[0];
 const latestDiv = document.getElementById('latest-entry');
 latestDiv.className = 'box entry';
 
-// START HTML with title, date, text
+// Start HTML
 let html = `<h2 class="subtitle">Latest Diary Entry</h2>
             <h3 class="subtitle">${latest.date}</h3>
             <p>${latest.text}</p>`;
@@ -136,10 +132,24 @@ if (latest.videos.length) {
   latest.currentVideo = 0;
 }
 
-// Render it
+// Render everything
 latestDiv.innerHTML = html;
 
-  
+// Video navigation
+function prevVideo(i) {
+  const entry = diaryData[i];
+  entry.currentVideo = (entry.currentVideo - 1 + entry.videos.length) % entry.videos.length;
+  document.getElementById(`player-${i}`).src = entry.videos[entry.currentVideo].embed;
+  document.getElementById(`video-counter-${i}`).textContent = `${entry.currentVideo + 1} / ${entry.videos.length}`;
+}
+
+function nextVideo(i) {
+  const entry = diaryData[i];
+  entry.currentVideo = (entry.currentVideo + 1) % entry.videos.length;
+  document.getElementById(`player-${i}`).src = entry.videos[entry.currentVideo].embed;
+  document.getElementById(`video-counter-${i}`).textContent = `${entry.currentVideo + 1} / ${entry.videos.length}`;
+}
+
 // -------------------------
 // VISITOR COUNTER
 // -------------------------
@@ -159,4 +169,3 @@ document.body.appendChild(counterWrapper);
 
 </body>
 </html>
-
