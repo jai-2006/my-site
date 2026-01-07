@@ -114,7 +114,9 @@ const latestDiv = document.getElementById('latest-entry');
 latestDiv.className = 'box entry';
 
 // Render content
-let html = `<h3 class="subtitle">${latest.date}</h3><p>${latest.text}</p>`;
+let html = `<h2 class="subtitle">Latest Diary Entry</h2>
+            <h3 class="subtitle">${latest.date}</h3>
+            <p>${latest.text}</p>`;
 
 // Images
 latest.images.forEach((img,i) => {
