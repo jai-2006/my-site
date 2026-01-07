@@ -87,13 +87,18 @@ html, body {
 #header .music-row iframe {
     width: 100%;
     max-width: 520px;
+
+    /* 🔥 THIS IS THE KEY */
     height: 80px;
+    min-height: 80px;
+    max-height: 80px;
+
     border: 4px double black;
     border-radius: 3px;
     background: #fffef9;
     display: block;
-    overflow: hidden;
 }
+
 
 /* ---------------------------------
    MAIN CONTENT (HOMEPAGE GRID)
