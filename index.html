@@ -113,11 +113,6 @@ const latest = diaryData[0];
 const latestDiv = document.getElementById('latest-entry');
 latestDiv.className = 'box entry';
 
-// Render content
-let html = `<h2 class="subtitle">Latest Diary Entry</h2>
-            <h3 class="subtitle">${latest.date}</h3>
-            <p>${latest.text}</p>`;
-
 // Images
 latest.images.forEach((img,i) => {
   html += `<img src="${img}" alt="Diary Image"><p class="caption">${latest.captions[i]||''}</p>`;
@@ -152,7 +147,12 @@ function nextVideo(i) {
   document.getElementById(`player-${i}`).src = entry.videos[entry.currentVideo].embed;
   document.getElementById(`video-counter-${i}`).textContent = `${entry.currentVideo + 1} / ${entry.videos.length}`;
 }
+// Render content
+let html = `<h2 class="subtitle">Latest Diary Entry</h2>
+            <h3 class="subtitle">${latest.date}</h3>
+            <p>${latest.text}</p>`;
 
+  
 // -------------------------
 // VISITOR COUNTER
 // -------------------------
