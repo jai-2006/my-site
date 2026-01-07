@@ -108,20 +108,6 @@ fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedURL
 // -------------------------
 // LATEST DIARY ENTRY
 // -------------------------
-const diaryData = [
-  {
-    date: "2026-01-01",
-    text: "My New Year diary entry...",
-    images: ["images/blog-photo1.jpg"],
-    videos: [
-      { embed: "https://archive.org/embed/IMG_8142" },
-      { embed: "https://archive.org/embed/IMG_8143" },
-      { embed: "https://archive.org/embed/IMG_8145" },
-      { embed: "https://archive.org/embed/IMG_8155" }
-    ],
-    captions: ["Photo 1","Video 1","Video 2","Video 3"]
-  }
-];
 
 const latest = diaryData[0];
 const latestDiv = document.getElementById('latest-entry');
