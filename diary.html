@@ -63,7 +63,7 @@ diaryData.forEach((entry, i) => {
   // Videos with optional captions
   if (entry.videos.length) {
     html += `<video id="video-${i}" controls preload="metadata" style="width:100%; max-width:1000px;">
-               <source src="${entry.videos[0]}" type="video/mp4">
+        <source src="${entry.videos[0].src}" type="video/mp4">
                Your browser does not support the video tag.
              </video>
              <div class="video-controls" style="margin-bottom:5px;">
