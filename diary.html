@@ -98,7 +98,7 @@ function nextVideo(index) {
 function updateVideoPlayer(index) {
   const entry = diaryData[index];
   const videoEl = document.getElementById(`video-${index}`);
-  videoEl.src = entry.videos[entry.currentVideo];
+videoEl.src = entry.videos[entry.currentVideo].src;
   document.getElementById(`video-counter-${index}`).textContent = 
       `${entry.currentVideo + 1} / ${entry.videos.length}`;
 
