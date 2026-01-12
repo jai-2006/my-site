@@ -17,10 +17,11 @@ The rest of Raya’s co. arrive just after midnight. I’ve spent too much at th
 I end up staying a lot later than I thought I’d make it till. Feeling ready to go soon, I check my phone to see missed calls and texts from mum and dad. He’s lost his keys on their night out, so they’re locked out the house. A good reason to leave, and a free cab journey home, they come to pick me up. I say bye to everyone, and go. There’s a Watford game tomorrow, so I set my alarm for midday.`,
     images: ["images/blog-photo1.jpg"],
     videos: [
-      "https://archive.org/download/img-8145_202601/IMG_8145.mov",
-      "https://archive.org/download/img-8145_202601/IMG_8143.mov",
-      "https://archive.org/download/img-8145_202601/IMG_8142.mov",
-      "https://archive.org/download/img-8145_202601/IMG_8155.mov"
+videos: [
+  { embed: "https://archive.org/embed/img-8145_202601/IMG_8145.mov" },
+  { embed: "https://archive.org/embed/img-8145_202601/IMG_8143.mov" },
+  { embed: "https://archive.org/embed/img-8145_202601/IMG_8142.mov" },
+  { embed: "https://archive.org/embed/img-8145_202601/IMG_8155.mov" }
     ],
     captions: []
   },
