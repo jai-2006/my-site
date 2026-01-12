@@ -18,11 +18,11 @@ I end up staying a lot later than I thought I’d make it till. Feeling ready to
     images: ["images/blog-photo1.jpg"],
     videos: [
 videos: [
-  { embed: "https://archive.org/embed/img-8145_202601/IMG_8145.mov" },
-  { embed: "https://archive.org/embed/img-8145_202601/IMG_8143.mov" },
-  { embed: "https://archive.org/embed/img-8145_202601/IMG_8142.mov" },
-  { embed: "https://archive.org/embed/img-8145_202601/IMG_8155.mov" }
-    ],
+  { src: "https://archive.org/download/img-8145_202601/IMG_8145.mov" },
+  { src: "https://archive.org/download/img-8145_202601/IMG_8143.mov" },
+  { src: "https://archive.org/download/img-8145_202601/IMG_8142.mov" },
+  { src: "https://archive.org/download/img-8145_202601/IMG_8155.mov" }
+],
     captions: []
   },
   {
