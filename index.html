@@ -89,22 +89,7 @@ window.onload = function() {
     html += `<p>${p}</p>`;
   });
 
-  // Images
-  if (latestEntry.images.length) {
-    html += `<img id="latest-image" src="${latestEntry.images[0]}" alt="Diary Image">`;
-  }
-
-  // Videos
-  if (latestEntry.videos.length) {
-    html += `<video id="latest-video" controls preload="metadata" style="width:100%; max-width:800px;">
-               <source src="${latestEntry.videos[0].src}" type="video/mp4">
-               Your browser does not support the video tag.
-             </video>`;
-
-
-    html += `<p id="latest-video-caption" class="caption">${latestEntry.captions?.[0] || ''}</p>`;
-  }
-
+ 
   latestDiv.innerHTML = html;
 
   // -----------------------------
