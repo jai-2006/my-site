@@ -92,22 +92,6 @@ window.onload = function() {
   // Images
   if (latestEntry.images.length) {
     html += `<img id="latest-image" src="${latestEntry.images[0]}" alt="Diary Image">`;
-
-  if (latestEntry.images.length > 1) {
-  html += `<div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom:12px;">
-             <button onclick="prevLatestImage()">← Prev</button>
-             <span id="latest-image-counter">1 / ${latestEntry.images.length}</span>
-             <button onclick="nextLatestImage()">Next →</button>
-           </div>`;
-}
-  if (latestEntry.images.length > 1) {
-    html += <div style="margin-bottom:12px;">
-      <button onclick="prevLatestImage()">← Prev</button>
-    <span id="latest-image-counter">1 
-      / ${latestEntry.images.length}</span>
-    <button onclick="nextLatestImage()">Next →</button> 
-      </div>;
-    }
   }
 
   // Videos
@@ -117,15 +101,6 @@ window.onload = function() {
                Your browser does not support the video tag.
              </video>`;
 
- if (latestEntry.videos.length > 1) {
-  html += `
-    <div style="display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:12px;">
-      <button onclick="prevLatestVideo()">← Prev</button>
-      <span id="latest-video-counter">1 / ${latestEntry.videos.length}</span>
-      <button onclick="nextLatestVideo()">Next →</button>
-    </div>
-  `;
-}
 
     html += `<p id="latest-video-caption" class="caption">${latestEntry.captions?.[0] || ''}</p>`;
   }
