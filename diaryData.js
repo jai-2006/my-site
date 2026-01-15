@@ -35,7 +35,7 @@ I end up staying a lot later than I thought I’d make it till. Feeling ready to
     date: "Friday, January 2",
     text: "Yes",
     videos: [
-      { src: "https://archive.org/download/img-8165_202601/IMG_8165.MOV" },
+      { src: "https://archive.org/download/img-8165_20260115/IMG_8165.mp4" },
     ],
     captions: []
   }
