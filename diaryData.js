@@ -38,7 +38,7 @@ I end up staying a lot later than I thought I’d make it till. Feeling ready to
       { src: "https://archive.org/download/img-8165_20260115/IMG_8165.mp4" },
     ],
     captions: []
-  }
+  },
 ];
 
 const diary = document.getElementById("diary");
