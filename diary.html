@@ -84,7 +84,7 @@ diaryData.forEach((entry, i) => {
         <span id="video-counter-${i}" style="font-size:13px;">1 / ${entry.videos.length}</span>
         <button onclick="nextVideo(${i})">Next →</button>
       </div>
-      <p id="video-caption-${i}" class="caption">${entry.captions[0] || ""}</p>
+      <p id="video-caption-${i}" class="caption">${entry.captions[0] || "The Dome, Archway"}</p>
     `;
   }
 
