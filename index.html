@@ -71,29 +71,22 @@
 
 <script>
 window.onload = function() {
-  // -----------------------------
-  // LATEST DIARY ENTRY
-  // -----------------------------
-  const latestDiv = document.getElementById('latest-entry');
-  latestDiv.className = 'box entry';
-
-  const latest = diaryData[0]; // assume first entry is latest
+  const latest = diaryData[0]; // first entry is latest
   latest.currentVideo = 0;
   latest.currentImage = 0;
 
+  const latestDiv = document.getElementById('latest-entry');
+  latestDiv.className = 'box entry';
   let html = `<h2 class="subtitle">Latest Diary Entry</h2>
               <h3 class="subtitle">${latest.date}</h3>`;
 
-  // Split text into paragraphs
-  latest.text.split("\n\n").forEach(p => {
-    html += `<p>${p}</p>`;
-  });
+  // Split text
+  latest.text.split("\n\n").forEach(p => html += `<p>${p}</p>`);
 
   // Images
-  if (latest.images.length) {
+  if(latest.images.length) {
     html += `<img id="latest-image" src="${latest.images[0]}" alt="Diary Image">`;
-
-    if (latest.images.length > 1) {
+    if(latest.images.length > 1){
       html += `<div style="margin-bottom:12px;">
                  <button onclick="prevLatestImage()">← Prev</button>
                  <span id="latest-image-counter">1 / ${latest.images.length}</span>
@@ -103,20 +96,18 @@ window.onload = function() {
   }
 
   // Videos
-  if (latest.videos.length) {
+  if(latest.videos.length) {
     html += `<video id="latest-video" controls preload="metadata" style="width:100%; max-width:800px;">
                <source src="${latest.videos[0].src}" type="video/mp4">
                Your browser does not support the video tag.
              </video>`;
-
-    if (latest.videos.length > 1) {
+    if(latest.videos.length > 1){
       html += `<div class="video-controls" style="margin-bottom:5px;">
                  <button onclick="prevLatestVideo()">← Prev</button>
                  <span id="latest-video-counter">1 / ${latest.videos.length}</span>
                  <button onclick="nextLatestVideo()">Next →</button>
                </div>`;
     }
-
     html += `<p id="latest-video-caption" class="caption">${latest.captions?.[0] || ''}</p>`;
   }
 
@@ -125,89 +116,65 @@ window.onload = function() {
   // -----------------------------
   // IMAGE NAVIGATION
   // -----------------------------
-  function updateLatestImage() {
+  function updateLatestImage(){
     const imgEl = document.getElementById('latest-image');
     imgEl.src = latest.images[latest.currentImage];
     const counter = document.getElementById('latest-image-counter');
-    if (counter) counter.textContent = `${latest.currentImage + 1} / ${latest.images.length}`;
+    if(counter) counter.textContent = `${latest.currentImage+1} / ${latest.images.length}`;
   }
-
-  window.prevLatestImage = function() {
-    latest.currentImage = (latest.currentImage - 1 + latest.images.length) % latest.images.length;
-    updateLatestImage();
-  }
-
-  window.nextLatestImage = function() {
-    latest.currentImage = (latest.currentImage + 1) % latest.images.length;
-    updateLatestImage();
-  }
+  window.prevLatestImage = function(){ latest.currentImage = (latest.currentImage-1+latest.images.length)%latest.images.length; updateLatestImage(); }
+  window.nextLatestImage = function(){ latest.currentImage = (latest.currentImage+1)%latest.images.length; updateLatestImage(); }
 
   // -----------------------------
   // VIDEO NAVIGATION
   // -----------------------------
-  function updateLatestVideo() {
+  function updateLatestVideo(){
     const videoEl = document.getElementById('latest-video');
     videoEl.src = latest.videos[latest.currentVideo].src;
-    const counter = document.getElementById('latest-video-counter');
-    if (counter) counter.textContent = `${latest.currentVideo + 1} / ${latest.videos.length}`;
-    const captionEl = document.getElementById('latest-video-caption');
-    if (captionEl) captionEl.textContent = latest.captions?.[latest.currentVideo] || '';
     videoEl.load();
+    const counter = document.getElementById('latest-video-counter');
+    if(counter) counter.textContent = `${latest.currentVideo+1} / ${latest.videos.length}`;
+    const captionEl = document.getElementById('latest-video-caption');
+    if(captionEl) captionEl.textContent = latest.captions?.[latest.currentVideo] || '';
   }
-
-  window.prevLatestVideo = function() {
-    latest.currentVideo = (latest.currentVideo - 1 + latest.videos.length) % latest.videos.length;
-    updateLatestVideo();
-  }
-
-  window.nextLatestVideo = function() {
-    latest.currentVideo = (latest.currentVideo + 1) % latest.videos.length;
-    updateLatestVideo();
-  }
+  window.prevLatestVideo = function(){ latest.currentVideo = (latest.currentVideo-1+latest.videos.length)%latest.videos.length; updateLatestVideo(); }
+  window.nextLatestVideo = function(){ latest.currentVideo = (latest.currentVideo+1)%latest.videos.length; updateLatestVideo(); }
 
   // -----------------------------
   // LETTERBOXD - Recently Watched (6 only)
   // -----------------------------
   const feedURL = 'https://letterboxd.com/jai_movies/rss/';
   const container = document.getElementById('films-container');
-
   fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedURL)}`)
     .then(res => res.json())
     .then(data => {
-      if (data.items && data.items.length > 0) {
-        data.items.slice(0,6).forEach(item => {
+      if(data.items?.length){
+        data.items.slice(0,6).forEach(item=>{
           const title = item.title;
           const link = item.link;
           const pubDate = new Date(item.pubDate).toLocaleDateString();
           let thumbnail = '';
           const imgMatch = item.content.match(/<img[^>]+src="([^">]+)"/);
-          if (imgMatch) thumbnail = imgMatch[1];
+          if(imgMatch) thumbnail = imgMatch[1];
           const div = document.createElement('div');
           div.className = 'film-item';
-          div.innerHTML = `
-            <a href="${link}" target="_blank">
-              ${thumbnail ? `<img src="${thumbnail}" alt="${title}">` : ''}
-            </a>
-            <p><strong>${title}</strong></p>
-            <p>${pubDate}</p>
-          `;
+          div.innerHTML = `<a href="${link}" target="_blank">${thumbnail?`<img src="${thumbnail}" alt="${title}">`:''}</a>
+                           <p><strong>${title}</strong></p>
+                           <p>${pubDate}</p>`;
           container.appendChild(div);
         });
       }
-    })
-    .catch(err => console.error('Error fetching RSS:', err));
+    }).catch(err=>console.error('Error fetching RSS:',err));
 
   // -----------------------------
   // VISITOR COUNTER
   // -----------------------------
-  let count = localStorage.getItem('hitCount')||0;
-  count = parseInt(count)+1;
+  let count = parseInt(localStorage.getItem('hitCount')||0)+1;
   localStorage.setItem('hitCount',count);
   const counterWrapper = document.createElement('div');
   counterWrapper.id='hit-counter-wrapper';
   counterWrapper.innerHTML=`Visitors: <span id="counter-display">${count}</span>`;
   document.body.appendChild(counterWrapper);
-
 };
 </script>
 
