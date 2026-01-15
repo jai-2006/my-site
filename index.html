@@ -66,100 +66,92 @@
 
 </div> <!-- /#content -->
 
-<!-- Load diary data -->
 <script src="diaryData.js"></script>
-
 <script>
   // -----------------------------
   // Latest Diary Entry
   // -----------------------------
   const latestDiv = document.getElementById("latest-entry");
-  const entry = diaryData[0]; // first entry is latest
-  entry.currentVideo = 0;
-  entry.currentImage = 0;
+  const latest = diaryData[0];  // first entry is latest
+  latest.currentVideo = 0;
+  latest.currentImage = 0;
 
-  let html = `<div class="box entry" style="width:100%; min-height:300px;">
+  let html = `<div class="box entry">
                 <h2 class="subtitle">Latest Diary Entry</h2>
-                <h3 class="subtitle">${entry.date}</h3>`;
+                <h3 class="subtitle">${latest.date}</h3>`;
 
-  entry.text.split("\n\n").forEach(p => {
+  latest.text.split("\n\n").forEach(p => {
     html += `<p>${p}</p>`;
   });
 
   // Images
-  if (entry.images.length) {
-    html += `<img id="latest-image" src="${entry.images[0]}" 
-                 style="max-width:600px; width:100%; height:auto; display:block; margin:12px auto;">`;
-    if (entry.images.length > 1) {
+  if (latest.images.length) {
+    html += `<img id="latest-image" src="${latest.images[0]}" style="max-width:600px; width:100%; display:block; margin:12px auto;">`;
+    if (latest.images.length > 1) {
       html += `<div style="margin-bottom:12px; text-align:center;">
                  <button onclick="prevLatestImage()">← Prev</button>
-                 <span id="latest-image-counter">1 / ${entry.images.length}</span>
+                 <span id="latest-image-counter">1 / ${latest.images.length}</span>
                  <button onclick="nextLatestImage()">Next →</button>
                </div>`;
     }
   }
 
   // Videos
-  if (entry.videos.length) {
-    html += `<video id="latest-video" controls preload="metadata" 
-                   style="width:100%; max-width:800px; display:block; margin:12px auto;">
-               <source src="${entry.videos[0].src}" type="video/mp4">
+  if (latest.videos.length) {
+    html += `<video id="latest-video" controls preload="metadata" style="width:100%; max-width:800px; display:block; margin:12px auto;">
+               <source src="${latest.videos[0].src}" type="video/mp4">
                Your browser does not support the video tag.
              </video>`;
-    if (entry.videos.length > 1) {
-      html += `<div class="video-controls" style="margin-bottom:12px; text-align:center;">
+    if (latest.videos.length > 1) {
+      html += `<div style="margin-bottom:12px; text-align:center;">
                  <button onclick="prevLatestVideo()">← Prev</button>
-                 <span id="latest-video-counter">1 / ${entry.videos.length}</span>
+                 <span id="latest-video-counter">1 / ${latest.videos.length}</span>
                  <button onclick="nextLatestVideo()">Next →</button>
                </div>`;
     }
-    html += `<p id="latest-video-caption" class="caption">${entry.captions[0] || ""}</p>`;
+    html += `<p id="latest-video-caption" class="caption">${latest.captions[0]||""}</p>`;
   }
 
   html += `</div>`;
   latestDiv.innerHTML = html;
 
-  // -----------------------------
   // Image navigation
-  // -----------------------------
   function prevLatestImage() {
-    entry.currentImage = (entry.currentImage - 1 + entry.images.length) % entry.images.length;
+    latest.currentImage = (latest.currentImage - 1 + latest.images.length) % latest.images.length;
     updateLatestImage();
   }
   function nextLatestImage() {
-    entry.currentImage = (entry.currentImage + 1) % entry.images.length;
+    latest.currentImage = (latest.currentImage + 1) % latest.images.length;
     updateLatestImage();
   }
   function updateLatestImage() {
-    document.getElementById("latest-image").src = entry.images[entry.currentImage];
+    document.getElementById("latest-image").src = latest.images[latest.currentImage];
     const counter = document.getElementById("latest-image-counter");
-    if (counter) counter.textContent = `${entry.currentImage + 1} / ${entry.images.length}`;
+    if (counter) counter.textContent = `${latest.currentImage + 1} / ${latest.images.length}`;
   }
 
-  // -----------------------------
   // Video navigation
-  // -----------------------------
   function prevLatestVideo() {
-    entry.currentVideo = (entry.currentVideo - 1 + entry.videos.length) % entry.videos.length;
+    latest.currentVideo = (latest.currentVideo - 1 + latest.videos.length) % latest.videos.length;
     updateLatestVideo();
   }
   function nextLatestVideo() {
-    entry.currentVideo = (entry.currentVideo + 1) % entry.videos.length;
+    latest.currentVideo = (latest.currentVideo + 1) % latest.videos.length;
     updateLatestVideo();
   }
   function updateLatestVideo() {
     const videoEl = document.getElementById("latest-video");
-    videoEl.src = entry.videos[entry.currentVideo].src;
+    videoEl.src = latest.videos[latest.currentVideo].src;
     videoEl.load();
     const counter = document.getElementById("latest-video-counter");
-    if (counter) counter.textContent = `${entry.currentVideo + 1} / ${entry.videos.length}`;
+    if (counter) counter.textContent = `${latest.currentVideo + 1} / ${latest.videos.length}`;
     const captionEl = document.getElementById("latest-video-caption");
-    if (captionEl) captionEl.textContent = entry.captions[entry.currentVideo] || "";
+    if (captionEl) captionEl.textContent = latest.captions[latest.currentVideo] || "";
   }
 
-  // -------------------------
-  // LETTERBOXD - Recently Watched (6 only)
-  // -------------------------
+  // -----------------------------
+  // Letterboxd feed
+  // -----------------------------
   const feedURL = 'https://letterboxd.com/jai_movies/rss/';
   const filmsContainer = document.getElementById('films-container');
 
@@ -189,9 +181,9 @@
     })
     .catch(err => console.error('Error fetching RSS:', err));
 
-  // -------------------------
-  // VISITOR COUNTER
-  // -------------------------
+  // -----------------------------
+  // Visitor counter
+  // -----------------------------
   let count = localStorage.getItem('hitCount')||0;
   count = parseInt(count)+1;
   localStorage.setItem('hitCount',count);
@@ -204,6 +196,6 @@
 <footer>
   <p>© 2026 My Site</p>
 </footer>
-
 </body>
 </html>
+
