@@ -58,24 +58,6 @@ diaryData.forEach((entry, i) => {
   });
 
   // -----------------------------
-  // Videos (with navigation)
-  // -----------------------------
-  if (entry.videos.length) {
-    html += `
-      <video id="video-${i}" controls preload="metadata" style="width:100%; max-width:1000px;">
-        <source src="${entry.videos[0].src}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <div class="video-controls" style="margin-bottom:5px;">
-        <button onclick="prevVideo(${i})">← Prev</button>
-        <span id="video-counter-${i}" style="font-size:13px;">1 / ${entry.videos.length}</span>
-        <button onclick="nextVideo(${i})">Next →</button>
-      </div>
-      <p id="video-caption-${i}" class="caption">${entry.captions[0] || ""}</p>
-    `;
-  }
-
-  // -----------------------------
   // Images (scrollable like videos)
   // -----------------------------
   if (entry.images.length) {
@@ -92,6 +74,24 @@ diaryData.forEach((entry, i) => {
   html += `</div>`;
   container.innerHTML += html;
 });
+  
+  // -----------------------------
+  // Videos (with navigation)
+  // -----------------------------
+  if (entry.videos.length) {
+    html += `
+      <video id="video-${i}" controls preload="metadata" style="width:100%; max-width:1000px;">
+        <source src="${entry.videos[0].src}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-controls" style="margin-bottom:5px;">
+        <button onclick="prevVideo(${i})">← Prev</button>
+        <span id="video-counter-${i}" style="font-size:13px;">1 / ${entry.videos.length}</span>
+        <button onclick="nextVideo(${i})">Next →</button>
+      </div>
+      <p id="video-caption-${i}" class="caption">${entry.captions[0] || ""}</p>
+    `;
+  }
 
 // -----------------------------
 // Video navigation
