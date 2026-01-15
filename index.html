@@ -92,48 +92,6 @@ window.onload = function() {
  
   latestDiv.innerHTML = html;
 
-  // -----------------------------
-  // IMAGE NAVIGATION
-  // -----------------------------
-  function updateLatestImage() {
-    const imgEl = document.getElementById('latest-image');
-    imgEl.src = latestEntry.images[latestEntry.currentImage];
-    const counter = document.getElementById('latest-image-counter');
-    if (counter) counter.textContent = `${latestEntry.currentImage + 1} / ${latestEntry.images.length}`;
-  }
-
-  window.prevLatestImage = function() {
-    latestEntry.currentImage = (latestEntry.currentImage - 1 + latestEntry.images.length) % latestEntry.images.length;
-    updateLatestImage();
-  }
-
-  window.nextLatestImage = function() {
-    latestEntry.currentImage = (latestEntry.currentImage + 1) % latestEntry.images.length;
-    updateLatestImage();
-  }
-
-  // -----------------------------
-  // VIDEO NAVIGATION
-  // -----------------------------
-  function updateLatestVideo() {
-    const videoEl = document.getElementById('latest-video');
-    videoEl.src = latestEntry.videos[latestEntry.currentVideo].src;
-    const counter = document.getElementById('latest-video-counter');
-    if (counter) counter.textContent = `${latestEntry.currentVideo + 1} / ${latestEntry.videos.length}`;
-    const captionEl = document.getElementById('latest-video-caption');
-    if (captionEl) captionEl.textContent = latestEntry.captions?.[latestEntry.currentVideo] || '';
-    videoEl.load();
-  }
-
-  window.prevLatestVideo = function() {
-    latestEntry.currentVideo = (latestEntry.currentVideo - 1 + latestEntry.videos.length) % latestEntry.videos.length;
-    updateLatestVideo();
-  }
-
-  window.nextLatestVideo = function() {
-    latestEntry.currentVideo = (latestEntry.currentVideo + 1) % latestEntry.videos.length;
-    updateLatestVideo();
-  }
 
   // -----------------------------
   // LETTERBOXD - Recently Watched (6 only)
