@@ -62,7 +62,7 @@ diaryData.forEach((entry, i) => {
   // -----------------------------
   if (entry.images.length) {
     html += `
-      <img id="image-${i}" src="${entry.images[0]}" alt="Diary Image" style="max-width:600px; width:100%; height:auto; display:block; margin:12px auto;">
+      <img id="image-${i}" src="${entry.images[0]}" alt="Diary Image" style="max-width:500px; width:100%; height:auto; display:block; margin:12px auto;">
       <div style="margin-bottom:12px;">
         <button onclick="prevImage(${i})">← Prev</button>
         <span id="image-counter-${i}">1 / ${entry.images.length}</span>
@@ -76,9 +76,8 @@ diaryData.forEach((entry, i) => {
   // -----------------------------
   if (entry.videos.length) {
     html += `
-      <video id="video-${i}" controls preload="metadata" style="width:100%; max-width:600px;">
+      <video id="video-${i}" controls preload="metadata" style="width:100%; max-width:700px; margin:12px auto;">
         <source src="${entry.videos[0].src}" type="video/mp4">
-        Your browser does not support the video tag.
       </video>
       <div class="video-controls" style="margin-bottom:5px;">
         <button onclick="prevVideo(${i})">← Prev</button>
