@@ -47,6 +47,9 @@
 const container = document.getElementById("all-entries");
 
 diaryData.forEach((entry, i) => {
+
+  entry.currentImage = 0;
+
   let html = `<div class="box entry" style="width:100%; min-height:300px;">
                 <h3 class="subtitle">${entry.date}</h3>`;
 
@@ -56,9 +59,40 @@ diaryData.forEach((entry, i) => {
   });
 
   // Images
-  entry.images.forEach(img => {
-    html += `<img src="${img}" alt="Diary Image">`;
-  });
+ if (entry.images.length) {
+  html += `
+    <img id="image-${i}" src="${entry.images[0]}" alt="Diary Image">
+
+    <div style="margin-bottom:12px;">
+      <button onclick="prevImage(${i})">← Prev</button>
+      <span id="image-counter-${i}">1 / ${entry.images.length}</span>
+      <button onclick="nextImage(${i})">Next →</button>
+    </div>
+  `;
+}
+function prevImage(index) {
+  const entry = diaryData[index];
+  entry.currentImage =
+    (entry.currentImage - 1 + entry.images.length) % entry.images.length;
+  updateImage(index);
+}
+
+function nextImage(index) {
+  const entry = diaryData[index];
+  entry.currentImage =
+    (entry.currentImage + 1) % entry.images.length;
+  updateImage(index);
+}
+
+function updateImage(index) {
+  const entry = diaryData[index];
+  document.getElementById(`image-${index}`).src =
+    entry.images[entry.currentImage];
+
+  document.getElementById(`image-counter-${index}`).textContent =
+    `${entry.currentImage + 1} / ${entry.images.length}`;
+}
+
 
   // Videos with optional captions
   if (entry.videos.length) {
