@@ -40,15 +40,14 @@
 <script src="diaryData.js"></script>
   
 <script>
-
 // -----------------------------
 // Render diary entries
 // -----------------------------
 const container = document.getElementById("all-entries");
 
 diaryData.forEach((entry, i) => {
-
-  entry.currentImage = 0;
+  entry.currentVideo = 0;   // track current video
+  entry.currentImage = 0;   // track current image
 
   let html = `<div class="box entry" style="width:100%; min-height:300px;">
                 <h3 class="subtitle">${entry.date}</h3>`;
@@ -58,61 +57,40 @@ diaryData.forEach((entry, i) => {
     html += `<p>${paragraph}</p>`;
   });
 
-  // Images
-diaryData.forEach((entry, i) => {
-  entry.currentImage = 0;
-
-  let html = `<div class="box entry" style="width:100%; min-height:300px;">
-                <h3 class="subtitle">${entry.date}</h3>`;
-
-  // ... your paragraphs, images, videos HTML ...
-
-  container.innerHTML += html;
-
-  entry.currentVideo = 0;
-}); // 
-
-// -----------------------------
-// Image navigation functions
-// -----------------------------
-function prevImage(index) {
-  const entry = diaryData[index];
-  entry.currentImage = (entry.currentImage - 1 + entry.images.length) % entry.images.length;
-  updateImage(index);
-}
-
-function nextImage(index) {
-  const entry = diaryData[index];
-  entry.currentImage = (entry.currentImage + 1) % entry.images.length;
-  updateImage(index);
-}
-
-function updateImage(index) {
-  const entry = diaryData[index];
-  document.getElementById(`image-${index}`).src = entry.images[entry.currentImage];
-  document.getElementById(`image-counter-${index}`).textContent =
-    `${entry.currentImage + 1} / ${entry.images.length}`;
-}
-
-
-  // Videos with optional captions
+  // -----------------------------
+  // Videos (with navigation)
+  // -----------------------------
   if (entry.videos.length) {
-    html += `<video id="video-${i}" controls preload="metadata" style="width:100%; max-width:1000px;">
+    html += `
+      <video id="video-${i}" controls preload="metadata" style="width:100%; max-width:1000px;">
         <source src="${entry.videos[0].src}" type="video/mp4">
-               Your browser does not support the video tag.
-             </video>
-             <div class="video-controls" style="margin-bottom:5px;">
-               <button onclick="prevVideo(${i})">← Prev</button>
-               <span id="video-counter-${i}" style="font-size:13px;">1 / ${entry.videos.length}</span>
-               <button onclick="nextVideo(${i})">Next →</button>
-             </div>
-             <p id="video-caption-${i}" class="caption">${entry.captions[0] || ""}</p>`;
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-controls" style="margin-bottom:5px;">
+        <button onclick="prevVideo(${i})">← Prev</button>
+        <span id="video-counter-${i}" style="font-size:13px;">1 / ${entry.videos.length}</span>
+        <button onclick="nextVideo(${i})">Next →</button>
+      </div>
+      <p id="video-caption-${i}" class="caption">${entry.captions[0] || ""}</p>
+    `;
+  }
+
+  // -----------------------------
+  // Images (scrollable like videos)
+  // -----------------------------
+  if (entry.images.length) {
+    html += `
+      <img id="image-${i}" src="${entry.images[0]}" alt="Diary Image" style="max-width:600px; width:100%; height:auto; display:block; margin:12px auto;">
+      <div style="margin-bottom:12px;">
+        <button onclick="prevImage(${i})">← Prev</button>
+        <span id="image-counter-${i}">1 / ${entry.images.length}</span>
+        <button onclick="nextImage(${i})">Next →</button>
+      </div>
+    `;
   }
 
   html += `</div>`;
   container.innerHTML += html;
-
-  entry.currentVideo = 0; // track current video
 });
 
 // -----------------------------
@@ -133,17 +111,38 @@ function nextVideo(index) {
 function updateVideoPlayer(index) {
   const entry = diaryData[index];
   const videoEl = document.getElementById(`video-${index}`);
-videoEl.src = entry.videos[entry.currentVideo].src;
+  videoEl.src = entry.videos[entry.currentVideo].src;
   document.getElementById(`video-counter-${index}`).textContent = 
       `${entry.currentVideo + 1} / ${entry.videos.length}`;
 
-  // Update optional caption
   const captionEl = document.getElementById(`video-caption-${index}`);
   if (captionEl) {
     captionEl.textContent = entry.captions[entry.currentVideo] || "";
   }
 
-  videoEl.load(); // ensure it updates immediately
+  videoEl.load();
+}
+
+// -----------------------------
+// Image navigation
+// -----------------------------
+function prevImage(index) {
+  const entry = diaryData[index];
+  entry.currentImage = (entry.currentImage - 1 + entry.images.length) % entry.images.length;
+  updateImage(index);
+}
+
+function nextImage(index) {
+  const entry = diaryData[index];
+  entry.currentImage = (entry.currentImage + 1) % entry.images.length;
+  updateImage(index);
+}
+
+function updateImage(index) {
+  const entry = diaryData[index];
+  document.getElementById(`image-${index}`).src = entry.images[entry.currentImage];
+  document.getElementById(`image-counter-${index}`).textContent =
+    `${entry.currentImage + 1} / ${entry.images.length}`;
 }
 
 // -----------------------------
