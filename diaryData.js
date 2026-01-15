@@ -15,8 +15,8 @@ Midnight’s coming. Dance. 10 minutes. Dance. 5 minutes. Dance. Everyone counts
 The rest of Raya’s co. arrive just after midnight. I’ve spent too much at the bar. We’re oscillating between the dancefloor and smoking area. A guy approaches me outside, and a stilted conversation follows. Turn left and right, my mates are otherwise engaged - there’s nobody to save me. He whispers into my ear ‘Next on Channel 4, a new episode of Gogglebox’ (something like that), in a strangely familiar voice. When the bloke who does the Channel 4 voiceovers is offering you a bump in the toilet, surely it's a sign the night’s over.
 
 I end up staying a lot later than I thought I’d make it till. Feeling ready to go soon, I check my phone to see missed calls and texts from mum and dad. He’s lost his keys on their night out, so they’re locked out the house. A good reason to leave, and a free cab journey home, they come to pick me up. I say bye to everyone, and go. There’s a Watford game tomorrow, so I set my alarm for midday.`,
-    images: ["images/blog-photo1.jpg"],
-videos: [
+
+    videos: [
   { src: "https://archive.org/download/img-8145_202601/IMG_8145.mp4" },
   { src: "https://archive.org/download/img-8145_202601/IMG_8143.mp4" },
   { src: "https://archive.org/download/img-8145_202601/IMG_8142.mp4" },
@@ -24,6 +24,8 @@ videos: [
 ],
     captions: []
   },
+      images: ["images/IMG_8136.JPG"], ["images/IMG_8115.JPG"], ["images/IMG_8120.JPG"],
+
   {
     date: "2025-12-30",
     text: "Another diary entry, no video.",
