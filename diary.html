@@ -46,8 +46,8 @@
 const container = document.getElementById("all-entries");
 
 diaryData.forEach((entry, i) => {
-  entry.currentVideo = 0;   // track current video
-  entry.currentImage = 0;   // track current image
+  entry.currentVideo = 0;
+  entry.currentImage = 0;
 
   let html = `<div class="box entry" style="width:100%; min-height:300px;">
                 <h3 class="subtitle">${entry.date}</h3>`;
@@ -58,7 +58,7 @@ diaryData.forEach((entry, i) => {
   });
 
   // -----------------------------
-  // Images (scrollable like videos)
+  // Images first
   // -----------------------------
   if (entry.images.length) {
     html += `
@@ -71,12 +71,8 @@ diaryData.forEach((entry, i) => {
     `;
   }
 
-  html += `</div>`;
-  container.innerHTML += html;
-});
-  
   // -----------------------------
-  // Videos (with navigation)
+  // Videos second
   // -----------------------------
   if (entry.videos.length) {
     html += `
@@ -92,6 +88,11 @@ diaryData.forEach((entry, i) => {
       <p id="video-caption-${i}" class="caption">${entry.captions[0] || ""}</p>
     `;
   }
+
+  html += `</div>`;
+  container.innerHTML += html;
+});
+
 
 // -----------------------------
 // Video navigation
