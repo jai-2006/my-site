@@ -26,7 +26,7 @@ I end up staying a lot later than I thought I’d make it till. Feeling ready to
       "images/IMG_8115.JPG",
       "images/IMG_8120.JPG"
     ],
-    captions: ["The Dome, Archway"]
+    captions: []
   },
 
   {
