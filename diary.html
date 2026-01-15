@@ -82,11 +82,13 @@ diaryData.forEach((entry, i) => {
       <video id="video-${i}" controls preload="metadata" style="width:100%; max-width:750px; margin:12px auto;">
         <source src="${entry.videos[0].src}" type="video/mp4">
       </video>
-      <div class="video-controls" style="margin-bottom:5px;text-align:center;">
-        <button onclick="prevVideo(${i})">← Prev</button>
-        <span id="video-counter-${i}" style="font-size:13px;">1 / ${entry.videos.length}</span>
-        <button onclick="nextVideo(${i})">Next →</button>
-      </div>
+  ${entry.videos.length > 1 ? `
+  <div class="video-controls" style="margin-bottom:5px; text-align:center;">
+    <button onclick="prevVideo(${i})">← Prev</button>
+    <span id="video-counter-${i}" style="font-size:13px;">1 / ${entry.videos.length}</span>
+    <button onclick="nextVideo(${i})">Next →</button>
+  </div>
+` : ''}
       <p id="video-caption-${i}" class="caption">${entry.captions[0] || ""}</p>
     `;
   }
