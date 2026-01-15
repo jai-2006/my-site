@@ -24,7 +24,11 @@ I end up staying a lot later than I thought I’d make it till. Feeling ready to
 ],
     captions: []
   },
-      images: ["images/IMG_8136.JPG"], ["images/IMG_8115.JPG"], ["images/IMG_8120.JPG"],
+images: [
+  "images/IMG_8136.JPG",
+  "images/IMG_8115.JPG",
+  "images/IMG_8120.JPG"
+],
 
   {
     date: "2025-12-30",
