@@ -100,6 +100,13 @@ window.onload = function() {
              <button onclick="nextLatestImage()">Next →</button>
            </div>`;
 }
+  if (latestEntry.images.length > 1) {
+    html += <div style="margin-bottom:12px;">
+      <button onclick="prevLatestImage()">← Prev</button>
+    <span id="latest-image-counter">1 
+      / ${latestEntry.images.length}</span>
+    <button onclick="nextLatestImage()">Next →</button> 
+      </div>;
     }
   }
 
