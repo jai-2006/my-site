@@ -32,8 +32,8 @@ I end up staying a lot later than I thought I’d make it till. Feeling ready to
   },
 
   {
-    date: "2025-12-30",
-    text: "Another diary entry, no video.",
+    date: "Friday, January 2",
+    text: "Yes",
     images: ["images/blog-photo2.jpg"],
     videos: [],
     captions: []
