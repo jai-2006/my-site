@@ -62,7 +62,7 @@ diaryData.forEach((entry, i) => {
   // -----------------------------
   if (entry.images.length) {
     html += `
-      <img id="image-${i}" src="${entry.images[0]}" alt="Diary Image" style="max-width:600px; width:100%; height:auto; display:block; margin:12px auto;">
+      <img id="image-${i}" src="${entry.images[0]}" alt="Diary Image" style="max-width:580px; width:100%; height:auto; display:block; margin:12px auto;">
       <div style="margin-bottom:12px; text-align:center;">
         <button onclick="prevImage(${i})">← Prev</button>
         <span id="image-counter-${i}">1 / ${entry.images.length}</span>
@@ -76,7 +76,7 @@ diaryData.forEach((entry, i) => {
   // -----------------------------
   if (entry.videos.length) {
     html += `
-      <video id="video-${i}" controls preload="metadata" style="width:100%; max-width:700px; margin:12px auto;">
+      <video id="video-${i}" controls preload="metadata" style="width:100%; max-width:720px; margin:12px auto;">
         <source src="${entry.videos[0].src}" type="video/mp4">
       </video>
       <div class="video-controls" style="margin-bottom:5px;text-align:center;">
