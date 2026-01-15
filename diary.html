@@ -63,11 +63,14 @@ diaryData.forEach((entry, i) => {
   if (entry.images.length) {
     html += `
       <img id="image-${i}" src="${entry.images[0]}" alt="Diary Image" style="max-width:580px; width:100%; height:auto; display:block; margin:12px auto;">
-      <div style="margin-bottom:12px; text-align:center;">
-        <button onclick="prevImage(${i})">← Prev</button>
-        <span id="image-counter-${i}">1 / ${entry.images.length}</span>
-        <button onclick="nextImage(${i})">Next →</button>
-      </div>
+     ${entry.images.length > 1 ? `
+  <div style="margin-bottom:12px; text-align:center;">
+    <button onclick="prevImage(${i})">← Prev</button>
+    <span id="image-counter-${i}">1 / ${entry.images.length}</span>
+    <button onclick="nextImage(${i})">Next →</button>
+  </div>
+` : ''}
+
     `;
   }
 
