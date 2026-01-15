@@ -37,3 +37,20 @@ I end up staying a lot later than I thought I’d make it till. Feeling ready to
     captions: []
   }
 ];
+
+const diary = document.getElementById("diary");
+
+diaryData.forEach(entry => {
+  diary.innerHTML += `
+    <h3>${entry.date}</h3>
+    <p>${entry.text}</p>
+
+    ${entry.videos.map(v =>
+      `<video src="${v.src}" controls></video>`
+    ).join("")}
+
+    ${entry.images.map(i =>
+      `<img src="${i}">`
+    ).join("")}
+  `;
+});
