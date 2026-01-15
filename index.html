@@ -70,6 +70,100 @@
 <script src="diaryData.js"></script>
 
 <script>
+
+  // -----------------------------
+// Render latest diary entry
+// -----------------------------
+const latest = document.getElementById("latest-entry");
+const entry = diaryData[0];  // assuming first entry is latest
+
+entry.currentVideo = 0;
+entry.currentImage = 0;
+
+let html = `<div class="box entry" style="width:100%; min-height:300px;">
+              <h3 class="subtitle">${entry.date}</h3>`;
+
+// Split text into paragraphs
+entry.text.split("\n\n").forEach(paragraph => {
+  html += `<p>${paragraph}</p>`;
+});
+
+// Images
+if (entry.images.length) {
+  html += `<img id="latest-image" src="${entry.images[0]}" alt="Diary Image" style="max-width:600px; width:100%; height:auto; display:block; margin:12px auto;">`;
+
+  if (entry.images.length > 1) {  // only show buttons if more than 1 image
+    html += `<div style="margin-bottom:12px;">
+               <button onclick="prevLatestImage()">← Prev</button>
+               <span id="latest-image-counter">1 / ${entry.images.length}</span>
+               <button onclick="nextLatestImage()">Next →</button>
+             </div>`;
+  }
+}
+
+// Videos
+if (entry.videos.length) {
+  html += `<video id="latest-video" controls preload="metadata" style="width:100%; max-width:1000px;">
+            <source src="${entry.videos[0].src}" type="video/mp4">
+            Your browser does not support the video tag.
+           </video>`;
+
+  if (entry.videos.length > 1) { // only show buttons if more than 1 video
+    html += `<div class="video-controls" style="margin-bottom:5px;">
+               <button onclick="prevLatestVideo()">← Prev</button>
+               <span id="latest-video-counter" style="font-size:13px;">1 / ${entry.videos.length}</span>
+               <button onclick="nextLatestVideo()">Next →</button>
+             </div>`;
+  }
+
+  html += `<p id="latest-video-caption" class="caption">${entry.captions[0] || ""}</p>`;
+}
+
+html += `</div>`;
+latest.innerHTML = html;
+
+// -----------------------------
+// Latest image navigation
+// -----------------------------
+function prevLatestImage() {
+  entry.currentImage = (entry.currentImage - 1 + entry.images.length) % entry.images.length;
+  updateLatestImage();
+}
+
+function nextLatestImage() {
+  entry.currentImage = (entry.currentImage + 1) % entry.images.length;
+  updateLatestImage();
+}
+
+function updateLatestImage() {
+  document.getElementById("latest-image").src = entry.images[entry.currentImage];
+  const counter = document.getElementById("latest-image-counter");
+  if (counter) counter.textContent = `${entry.currentImage + 1} / ${entry.images.length}`;
+}
+
+// -----------------------------
+// Latest video navigation
+// -----------------------------
+function prevLatestVideo() {
+  entry.currentVideo = (entry.currentVideo - 1 + entry.videos.length) % entry.videos.length;
+  updateLatestVideo();
+}
+
+function nextLatestVideo() {
+  entry.currentVideo = (entry.currentVideo + 1) % entry.videos.length;
+  updateLatestVideo();
+}
+
+function updateLatestVideo() {
+  const videoEl = document.getElementById("latest-video");
+  videoEl.src = entry.videos[entry.currentVideo].src;
+  const counter = document.getElementById("latest-video-counter");
+  if (counter) counter.textContent = `${entry.currentVideo + 1} / ${entry.videos.length}`;
+  const captionEl = document.getElementById("latest-video-caption");
+  if (captionEl) captionEl.textContent = entry.captions[entry.currentVideo] || "";
+  videoEl.load();
+}
+
 // -------------------------
 // LETTERBOXD - Recently Watched (6 only)
 // -------------------------
